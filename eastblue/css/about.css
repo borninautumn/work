@@ -1,0 +1,78 @@
+section.about article.company, section.about article.history {
+    float: left;
+    width: 100%;
+    margin-top: 100px;
+}
+
+section.about .title {
+    float: left;
+    font-size: 3em;
+}
+
+section.about .title:before {
+    content: '';
+    width: 3px; height: 20px;
+    background-color: #2f67b1;
+    position: absolute;
+    top: 5px; left: -10px;
+    transform: rotate(35deg);
+}
+
+section.about article.company .company-wrap, section.about article.history .history-wrap {
+    float: left;
+    width: 100%;
+}
+section.about article.company .text, section.about article.history .date {
+    font-size: 16px;
+    margin-top: 50px;
+    transition: all 0.4s;
+}
+section.about article.company .text:nth-child(1) {
+    font-size: 26px;
+    font-weight: bold;
+    color: #2f67b1;
+}
+section.about article.company .text:nth-child(2), section.about article.history .date {
+    line-height: 30px;
+    margin-top: 30px;
+}
+section.about article.history .date {
+    float: left;
+    margin-left: 50px;
+}
+section.about article.history .date:nth-child(1) {
+    margin-left: 0;
+    font-weight: bold;
+}
+section.about article.history .date:nth-child(3) {
+    display: none;
+}
+
+section.about .pdf-down {
+    float: right;
+    margin-top: 50px;
+    background-color: #f1f1f1;
+    width: 350px; height: 60px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+section.about .pdf-down .pdf-wrap {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    transition: all 0.4s;
+}
+section.about .pdf-down .image {
+    width: 48px; height: 48px;
+    float: left;
+}
+section.about .pdf-down .image img {
+    width: 100%;
+}
+section.about .pdf-down .text {
+    font-size: 16px;
+    float: right;
+    width: 160px;
+    top: 8px;
+}
