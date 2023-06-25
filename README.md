@@ -1,2 +1,9 @@
 # work
-backup
+<h3>work backup</h3>
+<h4>Eastblue</h4>
+<ul>
+  <li>Eastblue Web (With UI/UX)</li>
+  <li>Cisuba Web (With UI/UX)</li>
+  <li>A divorce law firm web (With UI/UX)</li>
+  <li>Snowpeople App Design</li>
+</ul>
