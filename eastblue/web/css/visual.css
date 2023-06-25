@@ -1,0 +1,47 @@
+/*
+section visual
+*/
+
+section.visual .movie {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+}
+section.visual video {
+    position: absolute;
+    top: 0; left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+}
+section.visual .bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url(../images/bg_video.png);
+    opacity: 0.2;
+}
+section.visual .title {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgba(255, 255, 255, .9);
+    font-size: 75px;
+    text-align: center;
+    font-weight: bold;
+    transition: all 0.4s;
+}
+section.visual .scrolldown {
+    position: absolute;
+    color: #fff;
+    bottom: 60px; left: 50%;
+    transform: translateX(-50%);
+}
+section.visual .scrolldown:before {
+    content: '';
+    width: 1px; height: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+    position: absolute;
+    top: 30px; left: 50%;
+    transform: translateX(-50%);
+}

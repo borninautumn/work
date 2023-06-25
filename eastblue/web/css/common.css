@@ -1,0 +1,115 @@
+@import url(//cdn.jsdelivr.net/nanumsquare/1.0/nanumsquare.css);
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+
+* {
+    font-family: 'NanumSquare', 'Nanum Gothic', sans-serif;
+    font-size: 13px;
+    color: #222;
+}
+body {
+    margin: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+}
+div, header, footer, nav, section, article, aside {
+    position: relative;
+}
+img {
+    border: 0;
+    vertical-align: top;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+    height: inherit;
+    transition: all 0.4s;
+}
+
+section {
+    height: 1000px;
+}
+
+.navigation {
+    margin-top: 100px;
+    height: 30px;
+}
+.navigation nav {
+    float: right;
+}
+.navigation nav .gnb {
+    float: left;
+    margin-left: 30px;
+    line-height: 30px;
+}
+.navigation nav .gnb:nth-child(1) {
+    margin-left: 0;
+    cursor: pointer;
+}
+.navigation nav .gnb:nth-child(1):hover {
+    text-decoration:  underline;
+}
+.navigation nav .gnb:before {
+    content: '';
+    width: 5px; height: 5px;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 12px; right: -15px;
+}
+.navigation nav .gnb:nth-child(2):before, .navigation nav .gnb:nth-child(2):after {
+    display: none;
+}
+.navigation nav .gnb:after {
+    content: '';
+    width: 13px; height: 13px;
+    border: 1px solid #333;
+    border-radius: 50%;
+    position: absolute;
+    top: 7px; right: -21px;
+}
+
+
+
+/*
+footer popup
+*/
+.popup-wrap {
+    position: fixed;
+    width: 100%;
+    top: 0; bottom: 0;
+    z-index: 9999;
+    display: none;
+}
+.popup-wrap .popup {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+.popup-wrap .popup .image {
+    transition: all 0.4s;
+}
+.popup-wrap .popup .close {
+    position: absolute;
+    top: 10px; right: 10px;
+    width: 35px; height: 35px;
+    cursor: pointer;
+}
+.popup-wrap .close img {
+    width: 100%;
+}
+
+.bg-wrap {
+    position: fixed;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 999;
+    display: none;
+}

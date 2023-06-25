@@ -1,0 +1,135 @@
+header {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    height: 80px;
+    z-index: 998;
+    background-color: rgba(255, 255, 255, 1);
+    border-bottom: 1px solid #e1e1e1;
+    transform: all 0.4s;
+    display: none;
+}
+
+header.sel {
+    display: block;
+}
+
+header .inner {
+    width: 1200px;
+    margin: 0 auto;
+    height: inherit;
+    transition: all 0.4s;
+}
+
+header .logo {
+    position: absolute;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    width: 200px;
+    height: 66px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+header .logo img {
+    width: 100%;
+}
+
+header .inner nav {
+    position: absolute;
+    top: 50%; right: 0;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+}
+header .inner nav .gnb {
+    float: left;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+header .inner nav .gnb a {
+    font-size: 16px;
+    transition: all 0.4s;
+}
+
+header .inner nav .gnb:hover:before {
+    content: '';
+    position: absolute;
+    top: 120%; left: 0;
+    width: 50px; height: 1px;
+    background-color: #2f67b1;
+}
+header .inner nav .gnb:nth-child(2):hover:before {
+    width: 63px;
+}
+header .inner nav .gnb:nth-child(3):hover:before {
+    width: 87px;
+}
+header .inner nav .gnb:nth-child(4):hover:before {
+    width: 95px;
+}
+
+
+
+header .hambuger {
+    float: right;
+    border: 1px solid #000;
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+    cursor:pointer;
+    display: none;
+}
+header .hambuger .image {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+header .hambuger .image img {
+    width: 100%;
+}
+
+.drawer {
+    position: fixed;
+    top: 0; right: 0; bottom: 0;
+    width: 250px;
+    background-color: #fff;
+    display: none;
+    z-index: 99999;
+    border-left: 1px solid #ddd;
+}
+.drawer .close {
+    position: absolute;
+    top: 30px; right: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+}
+.drawer .close:before {
+    content: '';
+    width: 40px; height: 40px;
+    border: 1px solid #fff;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+.drawer .dgnb-wrap {
+    position: absolute;
+    top: 130px; left: 30%;
+    transform: translateX(-50%);
+}
+.drawer .dgnb-wrap .dgnb {
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: #666;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.drawer .dgnb-wrap .dgnb:hover:before {
+    content: '';
+    width: 100px; height: 1px;
+    border-bottom: 1px solid #666;
+    position: absolute;
+    bottom: 0; left: 0;
+}
+

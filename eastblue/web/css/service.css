@@ -1,0 +1,81 @@
+section.service {
+    background-color: #fff;
+}
+
+section.service .title {
+    float: left;
+    margin-top: 100px;
+    font-size: 3em;
+    transition: all 0.4s;
+}
+
+section.service .title:before {
+    content: '';
+    width: 3px; height: 20px;
+    background-color: #2f67b1;
+    position: absolute;
+    top: 5px; left: -10px;
+    transform: rotate(35deg);
+}
+
+section.service .project-wrap {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 50%;
+    transition: all 0.4s;
+}
+section.service .project {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.4s;
+}
+
+section.service .sogae-wrap {
+    position: absolute;
+    top: 0; right: 0;
+    width: 50%; height: 65%;
+    transition: all 0.4s;
+}
+section.service .sogae {
+    position: absolute;
+    left: 0;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+}
+section.service .sogae:nth-child(1) {
+    top: 50%;
+    font-size: 28px;
+}
+section.service .sogae:nth-child(2) {
+    top: 60%;
+}
+section.service .sogae:nth-child(3) {
+    top: 75%;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+section.service .btn-wrap {
+    width: 50%; height: 35%;
+    position: absolute;
+    bottom: 0; right: 0;
+    transition: all 0.4s;
+}
+section.service .btn-wrap .btn {
+    position: absolute;
+    top: 10%; left: 0;
+    width: 180px; height: 58px;
+    cursor: pointer;
+    transform: translateY(-50%);
+    transition: all 0.4s;
+}
+section.service .btn:nth-child(2) {
+    left: 31%;
+}
+section.service .btn:nth-child(3) {
+    left: 62%;
+}
+section.service .btn img {
+    width: 100%;
+}
