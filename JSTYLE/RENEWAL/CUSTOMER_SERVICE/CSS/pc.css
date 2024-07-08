@@ -1,0 +1,134 @@
+/* 복붙할 때 지울 스타일코드 (미리보기용) */
+#overlay_layer { display: none; }
+
+/* 디자인 리뉴얼 CSS */
+/* 공통 */
+#content { font-family: "Noto Sans KR", sans-serif; font-optical-sizing: auto; font-style: normal; font-size: 16px; color: #363636; text-transform: uppercase; }
+#content h1, #content h2, #content h3, #content h4, #content p, #content span, #content strong, #content div, #content a { font-family: "Noto Sans KR", sans-serif; }
+/* 상단 css */
+.cs__wrap ul, .cs__wrap li { list-style: none; }
+.cs__wrap a { display: block; color: inherit; cursor: pointer; text-decoration: none; }
+.cs__wrap img { vertical-align: top; }
+.cs__wrap { max-width: 1330px; margin: 0 auto; box-sizing: border-box; padding: 0; }
+.bbs-tit { margin-bottom: 70px; }
+.bbs-tit h1 { font-size: 1.1875em; text-align: center; }
+
+/* 상단 탭메뉴 */
+.cs__wrap .tabs { list-style: none; box-sizing: border-box; font-size: 16px; }
+.cs__wrap .tabs { width: 100%; border-bottom: 3px solid #f7f7f7; display: flex; flex-direction: row; justify-content: center; align-items: center; padding-left: 0; gap: 1%; }
+.cs__wrap .tabs .tab-btn a { padding: 20px 50px; font-size: 1em; }
+.tab-sel { border-bottom: 3px solid #000; font-weight: 600; }
+
+/* 탭 콘텐츠 */
+.tab-content { display: none; }
+.tab-show { display: block; }
+.show { display: block; }
+
+/* 고객센터 */
+.cs__wrap .section-top h4 { margin-top: 70px; font-size: 1.3125em; margin-bottom: 30px; font-weight: bold; }
+.cs__wrap .section-top ul { display: flex; flex-direction: row; gap: 1%; padding-left: 0; }
+.cs__wrap .section-top .cs_cont { width: 30.08%; background-color: #f7f7f7; padding: 30px; }
+.cs__wrap .section-top .cs_cont .cs-cont-title { font-size: 1.125em; font-weight: 600; margin-bottom: 5%; }
+.cs__wrap .section-top .cs_cont p { font-size: 1em; }
+/* 이용안내 */
+.cs__wrap .section-top .cs_cont:nth-child(1) strong.tel { font-size: 2.375em; color: #46479b; }
+.cs__wrap .section-top .cs_cont:nth-child(1) p.cs_time { font-weight: bold; margin-top: 5%; }
+.cs__wrap .section-top .cs_cont:nth-child(1) span.font-color-gray { color: #aaa; font-size: 0.875em; font-weight: normal; }
+/* 계좌 */
+.cs__wrap .section-top .cs_cont:nth-child(2) .banks { margin-top: 5%; display: flex; flex-direction: row; flex-wrap: wrap; padding-left: 0; width: 100%; justify-content: flex-start; gap: 1%; }
+.cs__wrap .section-top .cs_cont:nth-child(2) .banks p { margin: 0 0 2% 0; padding: 0; }
+/* 교환반품주소 */
+.cs__wrap .section-top .cs_cont:nth-child(3) strong { font-weight: normal; line-height: 25px;}
+.cs__wrap .section-top .cs_cont:nth-child(3) ul { margin-top: 5%; display: flex; flex-direction: row; flex-wrap: wrap; padding-left: 0; justify-content: flex-start; align-items: center; }
+.cs__wrap .section-top .cs_cont:nth-child(3) ul li a { padding: 12px 15px; background-color: #fff; border-radius: 25px; font-size: 0.875em; }
+
+/* 
+    고객센터 메뉴 사용자 태그로 모듈화 
+*/
+
+/* 자주하는 질문 css */
+.faq__wrap { font-optical-sizing: normal; margin-top: 70px; }
+.faq__wrap h1 { font-size: 1.615384615384615em; }
+.faq__wrap .faq-search { width: 100%;  height: 164px; background-color: hsl(239, 38%, 44%, .1); border: 0; position: relative;}
+.faq__wrap .search-wrap { margin-top: 20px; }
+.faq__wrap legend { display: none; }
+.faq__wrap fieldset { border: 0; }
+.faq__wrap .search_cont { width: 38.35%; height: 25.00%; border-radius: 35px; background-color: #fff; border: 1px solid #46479b;
+    position: absolute; top: 16.30%; left: 50%; transform: translateX(-50%);
+}
+.faq__wrap .search_cont span.keyword { display: block; height: 100%; }
+.faq__wrap .search_cont .MS_input_txt { border: 0; border-radius: 35px; width: 100%; height: 100%; text-indent: 20px; padding: 0; margin: 0; line-height: 0; }
+.faq__wrap .sch_btn { position: absolute; right: 3.08%; top: 50%; transform: translateY(-50%);}
+.faq__wrap #search-category { display: none; }
+/* 자주하는 질문 카테고리 */
+.faq__wrap .faq__menu { display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 2%; width: 100%;
+    position: absolute; left: 0; bottom: 14.39%; }
+.faq__wrap .faq__menu li a { padding: 10px 20px; background-color: #fff; color: #000; border-radius: 35px;}
+.faq__wrap .faq__menu li.now a { background-color: #000; color: #fff; }
+/* 자주하는 질문 게시글 */
+.faq__table__wrap { margin-top: 30px; }
+.faq__table__wrap .faq__table { border-top: 0 !important; }
+#faqTable tr td { display: flex; flex-direction: row; align-items: center; justify-content: flex-start; }
+#faqTable tr td span { padding-left: 20px; }
+#faqTable .tb-slide { padding: 0 20px !important; }
+#faqTable .slide-hide { display: block; }
+#faqTable .tb-slide li.adv { display: flex; flex-direction: row; justify-content: flex-start; }
+#faqTable .tb-slide li dd { margin-left: 20px; }
+#faqTable .tb-slide li.adv dd span { display: block; padding-left: 0; }
+#faqTable .tb-slide li.adv dd span.que { padding-top: 1%; }
+#faqTable .tb-slide li.adv dd span.ans { padding-top: 3%; }
+
+/* 공지사항 css */
+.notice__wrap { margin-top: 70px; }
+.notice__wrap h1 { font-size: 1.615384615384615em; }
+.notice__wrap .notice__table__wrap { margin-top: 30px; border-top: 1px solid #363636; }
+.notice__wrap .notice__table__wrap caption { display: none; }
+.notice__wrap table { border-collapse : collapse; width: 100%; }
+.notice__wrap table th { text-align: center; padding: 15px 0; }
+.notice__wrap table thead tr th:first-child { width: 5.26%; }
+.notice__wrap table thead tr th:last-child { width: 8.27% }
+.notice__wrap table tbody tr:first-child { border-top: 1px solid #e5e5e5; }
+.notice__wrap table tbody tr { border-bottom: 1px solid #e5e5e5; }
+.notice__wrap table td { padding: 18.5px 0; }
+.notice__wrap table td.td-center { text-align: center;}
+.notice__wrap table td.td-left span { padding: 5px 7px; background-color: #ccc; color: #fff; font-size: 0.7692307692307692em; border-radius: 5px; margin: 0 20px; }
+#faqWrap #faqTable tr.slide-hide td, #faqWrap #faqTable tr.slide-show td { border-bottom: 1px solid #ededed !important; }
+/* 디자인 리뉴얼 css 끝 */
+
+
+
+/* 기존 faq 리스트 css (지우면 faq 게시판 부분 못생겨짐) */
+#faqWrap #faqTable { border-top: 1px solid #222; }
+#faqWrap #faqTable thead { display: none; }
+#faqWrap #faqTable th,
+#faqWrap #faqTable tr td { padding: 7px 0 6px; border-bottom: 1px solid #ededed; background-color: #FFFFFF; }
+#faqWrap #faqTable tr.slide-hide td { border-bottom: 0px; }
+#faqWrap #faqTable th { background-color: #fafafa; }
+#faqWrap #faqTable td,
+#faqWrap #faqTable td a { color: #555; }
+#faqWrap #faqTable td { cursor: pointer; }
+#faqWrap #faqTable tr.slide-hide,
+#faqWrap #faqTable tr.slide-hide dl { display: none; }
+#faqWrap #faqTable tr.slide-show { display: table-rows; *display: block; }
+#faqWrap #faqTable tr.slide-show dl { display: block; }
+#faqWrap #faqTable tr.slide-hide td, 
+#faqWrap #faqTable tr.slide-show td { cursor: default; background-color: #fff !important; }
+#faqWrap #faqTable .tb-slide { padding: 0 40px; }
+#faqWrap #faqTable .tb-slide a { text-decoration: underline; color: #800080; }
+#faqWrap #faqTable .tb-slide ol,
+#faqWrap #faqTable .tb-slide ul { margin-left: 35px; }
+#faqWrap #faqTable .tb-slide dl { position: relative; width: 100%; }
+#faqWrap #faqTable td .tb-slide dl dt { position: absolute; left: 1px; top: 0; color: #000000; font-size: 20px; font-weight: bold; }
+#faqWrap #faqTable td .tb-slide dl.qst dt{ top: 6px; }
+#faqWrap #faqTable td .tb-slide dl dd { margin-left: 35px; padding: 10px 0; color: #292929; font-size: 13px; line-height: 21px; }
+#faqWrap #faqTable td .tb-slide dl.qst dd p span { color: #000!important; font-weight: bold; }
+#faqWrap #faqTable td .tb-slide dl.adv { margin-top: 0px; }
+#faqWrap #faqTable td .tb-slide .adv dt { color: #b9b9b9; top: 7px; }
+#faqWrap #faqTable th { border-top: 1px solid #9c9c9c!important; }
+#faqWrap .tb-center,
+#faqWrap .tb-left { font-weight: 400; color: #292929; font-size: 13px; }
+#faqWrap #faqTable th,
+#faqWrap #faqTable tr td { padding: 20px 0!important; }
+#faqWrap #faqTable tr td div { color: #363636; }
+
+.cs_hd_wrap .box_wrap02 { height:130px }
