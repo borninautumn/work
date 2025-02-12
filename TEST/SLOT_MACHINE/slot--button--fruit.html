@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬롯머신</title>
+    <style>
+        .slot {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            text-align: center;
+            font-size: 48px;
+            margin: 10px;
+            display: inline-block;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #spin-button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slot" id="slot1">🍒</div>
+        <div class="slot" id="slot2">🍋</div>
+        <div class="slot" id="slot3">🍉</div>
+        <br>
+        <button id="spin-button">Spin!</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const symbols = ['🍒', '🍋', '🍉', '🍇', '🍊', '🍎'];
+        const slot1 = document.getElementById('slot1');
+        const slot2 = document.getElementById('slot2');
+        const slot3 = document.getElementById('slot3');
+        const spinButton = document.getElementById('spin-button');
+        const resultDiv = document.getElementById('result');
+
+        function getRandomSymbol() {
+            return symbols[Math.floor(Math.random() * symbols.length)];
+        }
+
+        function spinSlots() {
+            // 슬롯머신이 돌아가면서 기호를 무작위로 변경하는 부분
+            const interval1 = setInterval(() => slot1.textContent = getRandomSymbol(), 100);
+            const interval2 = setInterval(() => slot2.textContent = getRandomSymbol(), 100);
+            const interval3 = setInterval(() => slot3.textContent = getRandomSymbol(), 100);
+
+            // 슬롯머신을 정지시키는 타이머 설정
+            setTimeout(() => clearInterval(interval1), 1000);
+            setTimeout(() => clearInterval(interval2), 2000);
+            setTimeout(() => clearInterval(interval3), 3000);
+
+            // 슬롯머신이 멈춘 후 결과를 처리하는 부분
+            setTimeout(() => {
+                // 80% 확률로 당첨 처리
+                const isWin = Math.random() < 0.8;
+
+                if (isWin) {
+                    const winningSymbol = getRandomSymbol();
+                    slot1.textContent = winningSymbol;
+                    slot2.textContent = winningSymbol;
+                    slot3.textContent = winningSymbol;
+                    resultDiv.textContent = "당첨되었습니다!";
+                } else {
+                    slot1.textContent = getRandomSymbol();
+                    slot2.textContent = getRandomSymbol();
+                    slot3.textContent = getRandomSymbol();
+                    resultDiv.textContent = "다시 시도하세요!";
+                }
+            }, 3000); // 모든 슬롯이 멈춘 후 실행
+        }
+
+        spinButton.addEventListener('click', spinSlots);
+    </script>
+</body>
+</html>
