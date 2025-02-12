@@ -1,0 +1,46 @@
+<!-- PC 카테고리 타이틀 -->
+<style>
+    .contentSwiper { width: 100%; height: 389px; overflow: hidden; position: relative; }
+    .contentSwiper .swiper-slide a { display: block; width: 100%; height: 100%; }
+    .contentSwiper .swiper-slide img { width: 100%; vertical-align: top; }
+    .contentSwiper .swiper-wrapper { width: 100%; }
+    .contentSwiper .swiper-slide { width: 36.46%; overflow: hidden; filter: brightness(65%); transition: 0.4s; }
+    .contentSwiper .swiper-slide-active { filter: brightness(100%); }
+    .contentSwiper .swiper-button-next,
+    .contentSwiper .swiper-button-prev { color: #fff; position: absolute; top: 55%; transform: translate(-50%, -50%); }
+    .contentSwiper .swiper-button-next { left: 70%; }
+    .contentSwiper .swiper-button-prev { left: 30%; }
+</style>
+
+<div class="swiper contentSwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <a href="#"><img src="//jstyle07.jpg3.kr/RENEWAL/contents/thumbs1.jpg" alt="테스트"></a>
+        </div>
+        <div class="swiper-slide">
+            <a href="#"><img src="//jstyle07.jpg3.kr/RENEWAL/contents/thumbs2.jpg" alt="테스트"></a>
+        </div>
+        <div class="swiper-slide">
+            <a href="#"><img src="//jstyle07.jpg3.kr/RENEWAL/contents/thumbs2.jpg" alt="테스트"></a>
+        </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        var swiper = new Swiper('.contentSwiper', {
+            loop: true,
+            slidesPerView: 3,
+            spaceBetween: 10,
+            freeMode: true,
+            centeredSlides: !0, // 해당 인덱스의 슬라이드를 센터로 가져옴
+            navigation: {
+                nextEl: '.contentSwiper .swiper-button-next',
+                prevEl: '.contentSwiper .swiper-button-prev',
+            },
+        });
+    });
+</script>
+
