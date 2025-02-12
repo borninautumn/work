@@ -1,0 +1,392 @@
+<style>
+    /* 이벤트 */
+    .event-container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #362949;
+    }
+
+    .event-container img {
+        display: block;
+        width: 100%;
+    }
+
+    .event-container section,
+    .event-container div {
+        position: relative;
+    }
+
+    .event-container .img-box {
+        margin-top: -1px;
+    }
+
+    .event-container a {
+        display: block;
+        text-decoration: none;
+    }
+
+    .event-container ul,
+    .event-container li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    /* EVENT 2 COMMENT */
+    .event2 {
+        background-color: #404072;
+        padding-bottom: 100px;
+    }
+
+    /* 코멘트 부분 */
+    #review-board-type .reply-write {
+        margin: 0 3.22% 0 !important;
+        border: 0 !important;
+        background-color: #61608a !important;
+        padding: 7% 20px 7% !important;
+        border-radius: 30px 30px 0 0;
+    }
+
+    #review-board-type .reply-write table th {
+        color: #fff;
+    }
+
+    .custom textarea {
+        height: 55px;
+        border: 0;
+        resize: none;
+    }
+
+    #review-board-type .reply-write table td {
+        color: #fff;
+    }
+
+    #comment_list_0 {
+        margin: 0 3.22%;
+        background-color: #edecf2;
+        border-radius: 0 0 30px 30px;
+        padding-bottom: 7%;
+    }
+
+    .sub-reviews {
+        color: #000;
+    }
+
+    #review-board-type .sub-reviews li {
+        border: 0;
+    }
+
+    #review-board-type .sub-reviews li .info .id {
+        color: #000;
+    }
+
+    #review-board-type .sub-reviews li .info .btn_White {
+        background-color: #404072;
+        color: #fff;
+        border: 0;
+    }
+
+    .pager {
+        padding-bottom: 0;
+        margin-top: 30px;
+        margin-left: 20px;
+    }
+
+    .pager ol {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1%;
+    }
+
+    .pager li {
+        width: 30px !important;
+        height: 30px !important;
+        line-height: 30px;
+        border: 1px solid #404072;
+        font-size: 13px;
+        background-color: #404072;
+        padding: 0 !important;
+    }
+
+    .pager li strong {
+        color: #fff;
+        width: 100%;
+        height: 100%;
+        line-height: 30px;
+        border: 1px solid #404072;
+    }
+
+    .pager a {
+        color: #fff;
+        line-height: 30px;
+        background-color: #bfbed0;
+    }
+
+    .fa.fa-mobile.fa-lg {
+        display: none;
+    }
+    #review-board-type .reply-write table .custom .btn_Grey {
+        background-color: #404072;
+        border: 0;
+    }
+
+    /* APP DOWNLOAD BUTTON */
+    .btn {
+        position: absolute;
+        top: 62.47%;
+        width: 36.67%;
+    }
+
+    .btn.appStore {
+        left: 12.89%;
+    }
+
+    .btn.googlePlay {
+        right: 13.00%;
+    }
+
+    /* 유의사항 */
+    .notice__wrap--more {
+        cursor: pointer;
+    }
+
+    .notice__wrap--more img {
+        margin-top: 0;
+    }
+
+    .notice__wrap--notice {
+        overflow: hidden;
+        height: 0px;
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+    }
+</style>
+
+<!-- 이벤트 내용 -->
+<div class="event-container">
+    <!-- INTRO -->
+    <div class="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_01.jpg" />
+    </div>
+    <!-- INTRO END -->
+
+    <!-- SECTION : EVENT CONTENT -->
+    <section id="event1" class="event1">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_02.jpg" />
+    </section>
+    <!-- SECTION : EVENT CONTENT END -->
+
+    <!-- SECTION : COMMENT -->
+    <section id="event2" class="event2">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_03.jpg" />
+
+        <!-- 코멘트 부분 -->
+
+        <!-- 댓글쓰기 -->
+        <!--/if_block_comment/-->
+        <div class="reply-write">
+            <h5 style="display: none;">댓글쓰기</h5>
+            <!--/form_comment/-->
+            <table>
+                <colgroup>
+                    <col width="30" />
+                    <col width="*" />
+                    <col width="60" />
+                    <col width="*" />
+                </colgroup>
+                <tbody>
+                    <!--/if_not_login/-->
+                    <!--/if_use_privacy/-->
+                    <!--/new_privacy_terms/-->
+                    <!--/else/-->
+                    <!--/if_privercy_terms/-->
+                    <!--/if_new_privercy_type/-->
+                    <tr>
+                        <td colspan="4">
+                            <ul class="agree">
+                                <li>
+                                    <p>
+                                        <span class="bold">개인정보 수집에 대한 동의</span> <a
+                                            href="<!--/link_privercy_policy_view/-->" target="_blank"
+                                            class="btn_White">약관보기</a>
+                                    </p>
+                                    <p>
+                                        <label><!--/radio_privercy_ok/-->동의</label>
+                                        <label><!--/radio_privercy_no/-->동의안함</label>
+                                    </p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--/if_third_party/-->
+                    <tr>
+                        <td colspan="4">
+                            <ul class="agree">
+                                <li>
+                                    개인정보의 제3자 제공 <label><!--/radio_third_party_ok/--> 동의</label>
+                                    <label><!--/radio_third_party_no/--> 동의안함</label>
+                                    <a href="<!--/link_third_party_view/-->" target="_blank"
+                                        class="btn_White"><strong>약관보기</strong></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--/end_if/-->
+                    <!--/if_trust/-->
+                    <tr>
+                        <td colspan="4">
+                            <ul class="agree">
+                                <li>
+                                    개인정보 처리위탁안내 <label><!--/radio_trust_ok/--> 동의</label>
+                                    <label><!--/radio_trust_no/--> 동의안함</label>
+                                    <a href="<!--/link_trust_view/-->" target="_blank"
+                                        class="btn_White"><strong>약관보기</strong></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--/end_if/-->
+                    <!--/else/-->
+                    <tr>
+                        <td colspan="4">
+                            <ul class="agree">
+                                <li>
+                                    <p>
+                                        <span class="bold">개인정보 수집에 대한 동의</span> <a
+                                            href="<!--/link_privercy_policy_view/-->" target="_blank"
+                                            class="btn_White">약관보기</a>
+                                    </p>
+                                    <p>
+                                        <label><!--/radio_privercy_ok/-->동의</label>
+                                        <label><!--/radio_privercy_no/-->동의안함</label>
+                                    </p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <!--/end_if/-->
+                    <!--/end_if/-->
+                    <!--/end_if/-->
+                    <!--/end_if/-->
+                    <tr>
+                        <th>이름</th>
+                        <td>
+                            <div>
+                                <!--/input_nickname(txt-input1)/-->
+                            </div>
+                        </td>
+                        <th style="padding-left:6px;">비밀번호</th>
+                        <td>
+                            <div>
+                                <!--/input_password(txt-input1)/-->
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>내용</th>
+                        <td colspan="3">
+                            <div class="custom">
+                                <!--/text_comment(txt-input1)/-->
+                                <a href="<!--/link_comment/-->" class="btn_Grey">댓글쓰기</a>
+                            </div>
+                        </td>
+                    </tr>
+                    <!--/if_checkbox_secret/-->
+                    <tr>
+                        <th></th>
+                        <td colspan="3"><label><!--/checkbox_secret/--> 운영자만 보기</label></td>
+                    </tr>
+                    <!--/end_if/-->
+                </tbody>
+            </table>
+            <!--/block_prevent_auto_input/-->
+            <!--/end_block/-->
+            <!--/end_form/-->
+        </div>
+        <!--/end_if/-->
+        <!-- //댓글쓰기 -->
+        <!--/block_comment/-->
+        <!--/if_comment/-->
+        <div class="sub-reviews">
+            <ul>
+                <!--/loop_comment(10)/-->
+                <li>
+                    <div class="info">
+                        <span class="id">
+                            <!--/if_comment@is_mobile_write/--><span class="fa fa-mobile fa-lg"></span> <!--/end_if/-->
+                            <!--/if_comment@icon_sub_manager/--><!--/comment@icon_sub_manager/--><!--/else/--><!--/comment@writer/--><!--/end_if/-->
+                            <!--/if_comment@write_date/--> | <!--/date(%Y.%M.%D)/comment@write_date/--><!--/end_if/-->
+                        </span>
+                        <!--/if_comment@link_del_click/--><a href="#none" onclick="<!--/comment@link_del_click/-->"
+                            class="btn_White">삭제</a><!--/end_if/-->
+                        <!--/if_comment@link_comment_click/--><a href="#none"
+                            onclick="<!--/comment@link_comment_click/-->" class="btn_White">댓글</a><!--/end_if/-->
+                    </div>
+                    <!--/if_comment@depth(+1)/-->
+                    <p class="re" style="margin-left: <!--/comment@depth/-->0px"><span
+                            class="fa fa-level-up fa-rotate-90"></span> <!--/comment@content/--></p>
+                    <!--/else/-->
+                    <p><!--/comment@content/--></p>
+                    <!--/end_if/-->
+                </li>
+                <!--/end_loop/-->
+                <tr>
+                    <td colspan=3>
+                        <div class="pager">
+                            <ol>
+                                <!--/if_pager_comment/-->
+                                <!--/loop_pager_comment::page(5)/-->
+                                <!--/if_pager_comment::page@current/-->
+                                <li><strong><!--/pager_comment::page/--></strong></li>
+                                <!--/else/-->
+                                <li><a href="<!--/pager_comment::page@link/-->"><!--/pager_comment::page/--></a></li>
+                                <!--/end_if/-->
+                                <!--/end_loop/-->
+                                <!--/end_if/-->
+                            </ol>
+                        </div>
+                    </td>
+                </tr>
+            </ul>
+        </div>
+        <!--/end_if/-->
+        <!--/end_block/-->
+        <!-- 코멘트 부분 끝 -->
+    </section>
+    <!-- SECTION : COMMENT END -->
+
+    <!-- APP DOWN -->
+    <section id="event3" class="event3">
+        <!-- BACKGROUND IMAGE -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_05.jpg" />
+        <!-- BACKGROUND IMAGE END -->
+        <a href="" class="btn appStore">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/btn_app_store.png" alt="버튼 앱스토어" />
+        </a>
+        <a href="" class="btn googlePlay">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/btn_google_play.png" alt="버튼 구글플레이">
+        </a>
+    </section>
+    <!-- APP DOWN END -->
+
+    <!-- SECTION : NOTICE -->
+    <section class="notice__wrap">
+        <div class="notice__wrap--more">
+            <!-- 유의사항 버튼 -->
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_06.jpg" />
+        </div>
+        <!-- 유의사항 내용 -->
+        <div class="notice__wrap--notice">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_app_guerrilla/event_07.jpg" />
+        </div>
+    </section>
+    <!-- SECTION : NOTICE END -->
+</div>
+<!-- EVENT CONTAINER END -->
