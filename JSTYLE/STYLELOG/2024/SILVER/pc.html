@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./common.css">
+</head>
+<body>
+
+    <div class="contents">
+        <div class="stylelog-wrap">
+            <div class="bg_left"></div>
+            <div class="bg_right"></div>
+            <div class="container">
+                <!-- 섹션1 최상단 메인 비주얼 -->
+                <section class="sec_01">
+                    <a class="logo" href="/">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/logo.png" alt="logo" />
+                    </a>
+                    <div class="swiper sec01Swiper">
+                        <div class=swiper-wrapper>
+                            <div class=swiper-slide>
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_01_slide_1.jpg" />
+                            </div>
+                            <div class=swiper-slide>
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_01_slide_2.jpg" />
+                            </div>
+                            <div class=swiper-slide>
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_01_slide_3.jpg" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sec_01_tit">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_01_tit.png" />
+                    </div>
+                </section>
+                <!-- 섹션2 유의사항 : 이후에 cont left, right 스크롤 이벤트 넣어야 함 -->
+                <section class="sec_02">
+                    <div class="link-box">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_02_bg.jpg" alt="유의사항이미지1" />
+                        <div class="link-box-cont left">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_02_left.png" alt="이벤트안내1" />
+                        </div>
+                        <div class="link-box-cont right">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_02_right.png" alt="이벤트안내2" />
+                        </div>
+                        <a href="javascript:;" class="link_btn_1">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_02_click.png" alt="클릭" />
+                        </a>
+                    </div>
+                    <div class="link_btn_1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_02_click_cont.jpg" alt="유의사항이미지2" />
+                    </div>
+                </section>
+                <!-- 섹션3 swiper slide + pager -->
+                <section class="sec_03" data-scroll="scroll">
+                    <div class="img-box-fir">
+                        <div class="swiper sec03Swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_03_slide_1.jpg" alt="슬라이드이미지" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_03_slide_2.jpg" alt="슬라이드이미지" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_03_slide_3.jpg" alt="슬라이드이미지" />
+                                </div>
+                            </div>
+                            <div class="sec_03_tit">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_03_tit.png" />
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 섹션4 분리해달라는 수정사항 적용 -->
+                <section class="sec_04 a" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_04_a.jpg" alt="img">
+                        <ul class="product-add">
+                            <li>
+                                <!-- 다오니 -->
+                                <a href="/shop/shopdetail.html?branduid=861383&gf_ref=Yz1iNmlEMkk=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <!-- 플렛디 -->
+                                <a href="/shop/shopdetail.html?branduid=861348&gf_ref=Yz1Hb3ZVTGc=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <!-- 미르온 -->
+                                <a href="/shop/shopdetail.html?branduid=861347&gf_ref=Yz1DSjhJYkI=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- 섹션4 : 플러스 버튼 링크 넣어야 함 -->
+                <section class="sec_04 b" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_04_b.jpg" alt="이미지">
+                        <ul class="product-add">
+                            <li>
+                                <!-- 볼린드 -->
+                                <a href="/shop/shopdetail.html?branduid=861481&gf_ref=Yz1TemRvSTg=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <!-- 빌로우 -->
+                                <a href="/shop/shopdetail.html?branduid=861389&gf_ref=Yz1OcklqSlk=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- 섹션5 -->
+                <section class="sec_05" data-scroll="scroll">
+                    <div class="swiper sec01Swiper">
+                        <div class=swiper-wrapper>
+                            <div class=swiper-slide>
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_05_slide_1.jpg" />
+                            </div>
+                            <div class=swiper-slide>
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_05_slide_2.jpg" />
+                            </div>
+                        </div>
+                        <div class="sec_05_tit">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_05_tit.png" />
+                        </div>
+                    </div>
+                </section>
+                <!-- 섹션6 -->
+                <section class="sec_06" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_bg.jpg" />
+                    </div>
+                    <!-- 흑백에서 컬러로 이미지 변화 -->
+                    <div class="posiImg top" data-scroll="opacity">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_before.jpg" />
+                    </div>
+                    <div class="posiImg mood1" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_mood_1.png" alt="투명" />
+                    </div>
+                    <div class="posiImg mood2" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_mood_2.png" alt="안투명" />
+                    </div>
+                    <div class="posiImg btm left" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_btm_left.png" alt="img" />
+                    </div>
+                    <div class="posiImg btm right" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_06_btm_right.png" alt="img" />
+                    </div>
+                    <ul class="product-add">
+                        <li>
+                            <!-- 레어리 -->
+                            <a href="/shop/shopdetail.html?branduid=861388&gf_ref=Yz1GRVJVbmE=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 섹션7 페이저 있는 스와이프 슬라이더  -->
+                <section class="sec_07"data-scroll="scroll">
+                    <div class="img-box-fir">
+                        <div class="swiper sec03Swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_07_slide_1.jpg" alt="슬라이드이미지" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_07_slide_2.jpg" alt="슬라이드이미지" />
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_07_slide_3.jpg" alt="슬라이드이미지" />
+                                </div>
+                            </div>
+                            <div class="sec_07_tit">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_07_tit.png" />
+                            </div>
+                            <div class="swiper-pagination"></div>
+                        </div>
+                    </div>
+                </section>
+                <!-- 섹션8 : 플러스 버튼에 스크롤 이벤트 넣어야 함 -->
+                <section class="sec_08" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_08.jpg" alt="이미지">
+                        <ul class="product-add">
+                            <li>
+                                <!-- 하티버 -->
+                                <a href="/shop/shopdetail.html?branduid=861386&gf_ref=Yz1zVWhJUGk=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <!-- 바디온 -->
+                                <a href="/shop/shopdetail.html?branduid=861349&gf_ref=Yz0yTU5uWUQ=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                            <li>
+                                <!-- 루디온 -->
+                                <a href="/shop/shopdetail.html?branduid=861382&gf_ref=Yz02TzRrNms=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- 섹션9 : 안에 컨텐츠들에 차례로 스크롤 이벤트 넣어야 함 -->
+                <section class="sec_09" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_09_bg.jpg" />
+                    </div>
+                    <div class="posiImg left" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_09_1.jpg" />
+                    </div>
+                    <div class="posiImg center" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_09_2.png" />
+                    </div>
+                    <div class="posiImg right1" data-scroll="transform2">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_09_3.jpg" />
+                    </div>
+                    <div class="posiImg right2" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_09_4.jpg" />
+                    </div>
+                </section>
+                <!-- 섹션10 -->
+                <section class="sec_10" data-scroll="scroll">         
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_10.jpg" />
+                        <ul class="product-add">
+                            <li>
+                                <!-- 투포아 -->
+                                <a href="/shop/shopdetail.html?branduid=861385&gf_ref=Yz1HWU5JNVk=" target="_blank">
+                                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+                <!-- 섹션11 전광판 롤링 효과 -->
+                <section class="sec_11" data-scroll="scroll">
+                    <div class="roller original">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_11_rolling_1.jpg" />
+                    </div>
+                    <img class="roller clone" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_11_rolling_2.jpg" />
+                </section>
+                <!-- 섹션12 : 플러스버튼에 링크 넣어야 함 -->
+                <section class="sec_12" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_12_bg.jpg" />
+                    </div>
+                    <div class="posiImg right" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_12_right.png" />
+                    </div>
+                    <div class="posiImg left" data-scroll="transform">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_12_left.png" />
+                    </div>
+                    <ul class="product-add">
+                        <li>
+                            <!-- 스왈로 -->
+                            <a href="/shop/shopdetail.html?branduid=861387&gf_ref=Yz1nZ0Q3R1A=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <!-- 모드니 -->
+                            <a href="/shop/shopdetail.html?branduid=861381&gf_ref=Yz1sR2xKbmY=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 섹션13 : 플러스 버튼에 링크 넣어야 함 -->
+                <section class="sec_13" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_13.jpg" alt="이미지">
+                    </div>
+                    <ul class="product-add">
+                        <li>
+                            <!-- 파르마 -->
+                            <a href="/shop/shopdetail.html?branduid=861390&gf_ref=Yz0ydnFHYlI=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                        <li>
+                            <!-- 듀에민 -->
+                            <a href="/shop/shopdetail.html?branduid=861350&gf_ref=Yz1mckI0SnY=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 섹션14 : 흑백에서 컬러로 전환 -->
+                <section class="sec_14" data-scroll="scroll">
+                    <div class="imgBox1" data-scroll="opacity">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_14_after.jpg" />
+                    </div>
+                    <div class="sec_14_tit">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_14_tit.png" />
+                    </div>
+                </section>
+                <!-- 섹션15 -->
+                <section class="sec_15" data-scroll="scroll">
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_15_bg.jpg" alt="이미지">
+                        <div class="posiImg top-right">
+                            <img data-scroll="transform" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_15_top_right.png" alt="이미지">
+                        </div>
+                        <div class="posiImg btm-left">
+                            <img data-scroll="transform" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_15_btm_left.png" alt="이미지">
+                        </div>
+                    </div>
+                </section>
+                <!-- 섹션16 : 컬러에서 흑백으로 -->
+                <section class="sec_16" data-scroll="scroll">
+                    <div class="imgBox1" data-scroll="opacity2">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_16_before.jpg" />
+                    </div>
+                </section>
+                <!-- 섹션17 -->
+                <section class="sec_17" data-scroll="scroll">         
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_17.jpg" />
+                    </div>
+                </section>
+                <!-- 섹션18 : 스크롤 이벤트 들어가야 함 -->
+                <section class="sec_18" data-scroll="scroll">         
+                    <div class="imgBox1">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_18_bg.jpg" />
+                    </div>
+                    <div class="posiImg center">
+                        <img data-scroll="transform" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_18.png" />
+                    </div>
+                    <ul class="product-add">
+                        <li>
+                            <!-- 세르아 -->
+                            <a href="/shop/shopdetail.html?branduid=861384&gf_ref=Yz1FeGw1TFA=" target="_blank">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/btn_plus.png" />
+                            </a>
+                        </li>
+                    </ul>
+                </section>
+                <!-- 마지막 섹션 : 스타일로그 에디터 리스트 -->
+                <section class="sec_last">
+                    <div class="swiper secLastSwiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_1.jpg" alt="에디터이미지">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_2.jpg" alt="에디터이미지">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_3.jpg" alt="에디터이미지">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_4.jpg" alt="에디터이미지">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_5.jpg" alt="에디터이미지">
+                            </div>
+                            <div class="swiper-slide">
+                                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_last_slide_6.jpg" alt="에디터이미지">
+                            </div>
+                        </div>
+                        <div class=swiper-pagination></div>
+                    </div>
+                </section>
+                <section class="togo">
+                    <div class="imgBox1">
+                        <a href="/shop/shopbrand.html?xcode=026&mcode=003&type=Y&gf_ref=Yz1nQjExcTA=">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/cate_btn.png" />
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+    <script>
+        swiperSlide();
+        clickOpen();
+        scrollEvent();
+
+        // AOS.init({
+        //     duration: 600,
+        //     offset: 50,
+        // });
+
+        // 스크롤 이벤트
+        function scrollEvent() {
+            $(window).scroll(function (s) {
+                $('[data-scroll="transform"]').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('[data-scroll="transform2"]').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('[data-scroll="scroll"]').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('scroll');
+                    } else {
+                        $(this).removeClass('scroll');
+                    }
+                });
+                $('.sec_02 .link-box-cont').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('scroll');
+                    } else {
+                        $(this).removeClass('scroll');
+                    }
+                });
+                $('.sec_06 .posiImg.mood').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('.sec_09 .posiImg').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.9)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('.sec_12 .posiImg').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.1)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('.sec_15 .posiImg').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.9)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('.sec_18 .posiImg').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.4)) {
+                        $(this).addClass('active');
+                    } else {
+                        $(this).removeClass('active');
+                    }
+                });
+                $('.product-add li').each(function () {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.2)) {
+                        $(this).addClass('scroll');
+                    } else {
+                        $(this).removeClass('scroll');
+                    }
+                });
+
+                // 색 변화
+                $('[data-scroll="opacity"').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.9)) {
+                        $(this).addClass('opacity');
+                    } else {
+                        $(this).removeClass('opacity');
+                    }
+                });
+                $('[data-scroll="opacity2"').each(function() {
+                    if ($(window).scrollTop() > ($(this).offset().top - $(window).height() / 1.9)) {
+                        $(this).addClass('opacity');
+                    } else {
+                        $(this).removeClass('opacity');
+                    }
+                });
+            });
+        }
+
+        // 클릭하면 유의사항 오픈
+        function clickOpen() {
+            const targetImg = $(".stylelog-wrap img.listImg01");
+            const targetContent = $("[class^='content'] img");
+
+            $(".stylelog-wrap .link-box a.link_btn_1").click(function () {
+                let target = $(this).parent();
+                let targetImgHeight01 = target.next().children("img").outerHeight();
+
+                target.toggleClass("act");
+
+                if (target.hasClass("act")) {
+                    target.next().css("height", targetImgHeight01 + "px");
+                } else {
+                    target.next().css("height", "0px");
+                }
+            });
+
+            targetContent.click(function () {
+                $(this).next().toggleClass('act');
+            });
+        }
+        // 스와이프 슬라이더
+        function swiperSlide() {
+            // 첫번째 섹션 페이드 스와이프 슬라이더
+            var swiper1 = new Swiper('.sec01Swiper', {
+                paceBetween: 30,
+                loop: true,
+                effect: "fade",
+                speed: 1000,
+                autoplay: {
+                    delay: 1500,
+                    disableOnInteraction: false,
+                },
+            });
+            // 세번째 섹션 pager 있는 스와이프 슬라이더
+            var swiper2 = new Swiper('.sec03Swiper', {
+                loop: true,
+                autoplay: {
+                    delay: 1500,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+            });
+            // 마지막 섹션 에디터 부분 스와이프 슬라이더
+            var swiper = new Swiper('.secLastSwiper', {
+                direction: "vertical",
+                spaceBetween: -1,
+                sliderPerView: 1,
+                loop: true,
+                autoplay: {
+                    delay: 2000,
+                    disableOnInteraction: false,
+                },
+            });
+        }
+    </script>
+</body>
+</html>
