@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>숫자 슬롯머신</title>
+    <style>
+        .slot {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #000;
+            text-align: center;
+            font-size: 48px;
+            margin: 10px;
+            display: inline-block;
+            line-height: 100px;
+        }
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        #spin-button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slot" id="slot1">0</div>
+        <div class="slot" id="slot2">0</div>
+        <div class="slot" id="slot3">%</div>
+        <br>
+        <button id="spin-button">Spin!</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        const slot1 = document.getElementById('slot1');
+        const slot2 = document.getElementById('slot2');
+        // const slot3 = document.getElementById('slot3');
+        const spinButton = document.getElementById('spin-button');
+        const resultDiv = document.getElementById('result');
+
+        function getRandomNumber() {
+            return numbers[Math.floor(Math.random() * numbers.length)];
+        }
+
+        function spinSlots() {
+            // 슬롯머신이 돌아가면서 숫자를 무작위로 변경하는 부분
+            const interval1 = setInterval(() => slot1.textContent = getRandomNumber(), 50);
+            const interval2 = setInterval(() => slot2.textContent = getRandomNumber(), 50);
+            // const interval3 = setInterval(() => slot3.textContent = getRandomNumber(), 100);
+
+            // 슬롯머신을 정지시키는 타이머 설정
+            setTimeout(() => clearInterval(interval1), 1000);
+            setTimeout(() => clearInterval(interval2), 1000);
+            // setTimeout(() => clearInterval(interval3), 3000);
+
+            // 슬롯머신이 멈춘 후 결과를 처리하는 부분
+            setTimeout(() => {
+                // 슬롯1은 8, 슬롯2는 0으로 고정
+                slot1.textContent = '8';
+                slot2.textContent = '0';
+
+                // 슬롯3은 랜덤하게 설정
+                // slot3.textContent = getRandomNumber();
+
+                // 결과 메시지 설정
+                // resultDiv.textContent = "결과: " + slot1.textContent + " " + slot2.textContent + " " + slot3.textContent;
+            }, 3000); // 모든 슬롯이 멈춘 후 실행
+        }
+
+        // spinButton.addEventListener('click', spinSlots);
+        spinSlots();
+    </script>
+</body>
+</html>
