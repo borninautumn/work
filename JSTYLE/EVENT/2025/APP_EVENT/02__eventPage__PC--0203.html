@@ -1,0 +1,238 @@
+
+<div class="event-container">
+    <!-- INTRO -->
+    <div class="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_01.jpg" />
+    </div>
+    <!-- INTRO END -->
+
+    <!-- SECTION : EVENT CONTENT -->
+    <section id="event1" class="event1">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_02.jpg" />
+    </section>
+    <!-- SECTION : EVENT CONTENT END -->
+
+    <!-- SECTION : COMMENT -->
+    <section id="event2" class="event2">
+        <!-- BACKGROUND IMAGE -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_03.jpg" />
+        <!-- BACKGROUND IMAGE END -->
+
+        <!-- 코멘트 -->
+        <!--/if_block_comment/-->
+
+        <!--/form_comment/-->
+        <fieldset>
+            <legend>코멘트 쓰기</legend>
+            <!--/if_not_login/-->
+            <!--/if_privercy_terms/-->
+            <!--/if_use_privacy/-->
+            <div class="new-privercy-contract">
+                <!--/new_privacy_terms/-->
+            </div>
+            <!--/else/-->
+            <!--/if_new_privercy_type/-->
+            <div class="new-privercy-contract">
+                <p>개인정보 수집에 대한 동의</p>
+                <div class="privercy-contract-tap">
+                    <ul>
+                        <li class="sel"><a href="#none">수집하는 개인정보 항목</a></li>
+                        <li><a href="#none">개인정보의 수집 이용목적</a></li>
+                        <li class="end"><a href="#none">개인정보의 보유 및 이용기간</a></li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="privercy-contract"><textarea
+                            readonly><!--/privercy_terms1/--></textarea></div>
+                    <div class="privercy-contract" style="display: none;"><textarea
+                            readonly><!--/privercy_terms2/--></textarea></div>
+                    <div class="privercy-contract" style="display: none;"><textarea
+                            readonly><!--/privercy_terms3/--></textarea></div>
+                </div>
+                <div class="privercy-agree">
+                    <label><!--/radio_privercy_ok/--> 정보수집에 동의합니다.</label>
+                    <label><!--/radio_privercy_no/--> 동의하지 않습니다.</label>
+                </div>
+                <!--/if_third_party/-->
+                <p>개인정보의 제3자 제공</p>
+                <div class="privercy-contract"><textarea
+                        readonly><!--/third_party_terms/--></textarea></div>
+                <div class="privercy-agree">
+                    <label><!--/radio_third_party_ok/--> 제3자 제공에 동의합니다.</label>
+                    <label><!--/radio_third_party_no/--> 동의하지 않습니다.</label>
+                </div>
+                <!--/end_if/-->
+                <!--/if_trust/-->
+                <p>개인정보 처리위탁안내</p>
+                <div class="privercy-contract"><textarea
+                        readonly><!--/trust_terms/--></textarea></div>
+                <div class="privercy-agree">
+                    <label><!--/radio_trust_ok/--> 처리위탁에 동의합니다.</label>
+                    <label><!--/radio_trust_no/--> 동의하지 않습니다.</label>
+                </div>
+                <!--/end_if/-->
+            </div>
+            <!--/else/-->
+            <div class="new-privercy-contract">
+                <p>개인정보 수집에 대한 동의</p>
+                <div class="privercy-contract"><textarea
+                        readonly><!--/privercy_terms/--></textarea></div>
+                <div class="privercy-agree">
+                    <label><!--/radio_privercy_ok/--> 정보수집에 동의합니다.</label>
+                    <label><!--/radio_privercy_no/-->동의하지 않습니다.</label>
+                </div>
+            </div>
+            <!--/end_if/-->
+            <!--/end_if/-->
+            <!--/end_if/-->
+            <!--/end_if/-->
+            <table summary="코멘트 쓰기" class="comment-box">
+                <caption>코멘트 쓰기</caption>
+                <colgroup>
+                    <col width="120" />
+                    <col />
+                    <col width="150" />
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td colspan="3" class="com-wrt-box">
+                            <div>
+                                <div class="wrt">
+                                    <label>이름 :</label>
+                                    <span class="user__name"><!--/input_nickname(input-style input-style2)/--></span>
+                                    <label>비밀번호 :</label>
+                                    <span class="user__password"><!--/input_password(input-style input-style2)/-->
+                                        <!--/if_checkbox_secret/--><!--/checkbox_secret/-->
+                                        운영자만
+                                        보기<!--/end_if/--></span>
+                                </div>
+                                <div class="wrt">
+                                    <label>내용 : </label>
+                                    <!--/text_comment/-->
+                                    <a class="btn_dgray_bbs_com" href="<!--/link_comment/-->">댓글등록</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <!--/end_form/-->
+
+        <!--/block_comment/-->
+        <!--/if_comment/-->
+        <table summary="코멘트 목록" class="comment-box">
+            <caption>코멘트 목록</caption>
+            <colgroup>
+                <col width="120" />
+                <col />
+                <col width="200" />
+            </colgroup>
+            <tbody>
+                <!--/loop_comment(10)/-->
+                <tr>
+                    <td class="tb-right">
+                        <div class="com-name">
+                            <!--/if_comment@icon_sub_manager/-->
+                            <!--/comment@icon_sub_manager/-->
+                            <!--/else/-->
+                            <!--/comment@writer/-->
+                            <!--/end_if/-->
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <!--/if_comment@depth(+1)/-->
+                            <img src="/images/d3/modern_simple/common/icon_reple.gif" 
+                                alt=""
+                                title="" 
+                                style="margin-left: <!--/comment@depth/-->0px" />
+                            <!--/end_if/-->
+                            <!--/comment@content/-->
+                        </div>
+                    </td>
+                    <td class="tb-right">
+                        <div class="bbs-link">
+                            <span>
+                                <!--/if_comment@write_date/--><!--/date(%Y-%M-%D)/comment@write_date/--><!--/end_if/-->
+                                <!--/if_comment@link_comment_click/--><a href="#"
+                                    onclick="<!--/comment@link_comment_click/-->"
+                                    class="reply none">댓글</a><!--/end_if/-->
+                                <!--/if_not_comment@link_comment_click/-->
+                                <a href="#" onclick="<!--/comment@link_del_click/-->"
+                                    class="delete none">삭제</a>
+                                <!--/else/-->
+                                <a href="#" onclick="<!--/comment@link_del_click/-->"
+                                    class="delete">삭제</a>
+                                <!--/end_if/-->
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+                <!--/end_loop/-->
+
+                <tr>
+                    <td colspan="3">
+                        <div class="pager">
+                            <ol>
+                                <!--/if_pager_comment/-->
+                                <!--/loop_pager_comment::page(5)/-->
+                                <!--/if_pager_comment::page@current/-->
+                                <li>
+                                    <strong><!--/pager_comment::page/--></strong>
+                                </li>
+                                <!--/else/-->
+                                <li>
+                                    <a href="<!--/pager_comment::page@link/-->">
+                                    <!--/pager_comment::page/-->
+                                    </a>
+                                </li>
+                                <!--/end_if/-->
+                                <!--/end_loop/-->
+                                <!--/end_if/-->
+                            </ol>
+                        </div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <!--/end_if/-->
+        <!--/end_block/-->
+
+        <!--/else_if_sorivu_comment/-->
+        <!--/sorivu_comment/-->
+        <!--/else/-->
+        <hr size="1" color="#E5E5E5" />
+        <!--/end_if/-->
+        <!-- 코멘트 끝 -->
+    </section>
+    <!-- SECTION : COMMENT END -->
+
+    <!-- APP DOWN -->
+    <section id="event3" class="event3">
+        <!-- BACKGROUND IMAGE -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_05.jpg" />
+        <!-- BACKGROUND IMAGE END -->
+        <a href="https://apps.apple.com/kr/app/%EC%9D%B4%EB%B8%94%EB%A0%9B-%EB%B0%94%EC%9D%B4-%EC%A0%9C%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9D%BC/id998067549?gf_ref=Yz1PeVFLQ0I=" target="_blank" class="btn appStore">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/btn_app_store.png" alt="버튼 앱스토어" />
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=kr.co.smartskin.jstyleshop&gf_ref=Yz1KbnVyckQ=" target="_blank" class="btn googlePlay">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/btn_google_play.png" alt="버튼 구글플레이">
+        </a>
+    </section>
+    <!-- APP DOWN END -->
+
+    <!-- SECTION : NOTICE -->
+    <section class="notice__wrap">
+        <div class="notice__wrap--more">
+            <!-- 유의사항 버튼 -->
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_06.jpg" />
+        </div>
+        <!-- 유의사항 내용 -->
+        <div class="notice__wrap--notice">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0203_app_guerrilla/event_07.jpg" />
+        </div>
+    </section>
+    <!-- SECTION : NOTICE END -->
+</div>
