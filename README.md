@@ -10,6 +10,8 @@
 <br />
 <h4>Jstyle</h4>
 <ul>
-  <li>Category</li>
-  <li>Style Log</li>
+  <li><b>Publishing</b></li>
+  <li>Event Page</li>
+  <li>Category Ttitle section</li>
+  <li>Style-Log</li>
 </ul>
