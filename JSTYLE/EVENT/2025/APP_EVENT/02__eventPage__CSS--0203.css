@@ -1,0 +1,165 @@
+/* 이벤트 내용 부분 */
+.event-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #362949;
+}
+
+.event-container img {
+    display: block;
+    width: 100%;
+}
+
+.event-container section,
+.event-container div {
+    position: relative;
+}
+
+/* .event-container .img-box {
+    margin-top: -1px;
+} */
+
+.event-container a {
+    display: block;
+    text-decoration: none;
+}
+
+.event-container ul,
+.event-container li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* EVENT 2 COMMENT */
+.event2 {
+    background-color: #404072;
+    padding-bottom: 100px;
+}
+
+/* 댓글 부분 */
+.bbs-table-view .wrt textarea { width: 95%; resize: none; border: 0; }
+.bbs-table-view .comment-box td.com-wrt-box { 
+    background-color: #61608a; 
+    padding: 30px;
+    border-radius: 30px 30px 0 0;
+}
+#comment_list_0 .comment-box { border-radius: 0 0 30px 30px; }
+.bbs-table-view .com-wrt-box label { color: #fff; padding: 0; }
+.bbs-table-view .btn_dgray_bbs_com {
+    color: #fff;
+    background-color: #404072;
+}
+
+.bbs-table-view td.com-wrt-box {
+    border: 0;
+}
+
+.bbs-table-view .comment-box td {
+    border: 0;
+    color: #fff;
+}
+
+.bbs-table-view .comment-box .bbs-link a {
+    display: inline-block;
+    background-color: #404072;
+}
+
+.bbs-table-view .comment-box .com-name {
+    color: #fff;
+}
+
+.bbs-table-view .comment-box {
+    padding: 0 30px;
+    margin-bottom: 0;
+}
+
+#comment_form { margin: 0 29px; }
+
+#comment_list_0 {
+    margin: 0 29px;
+    border-radius: 0 0 30px 30px;
+    background-color: #61608a;
+}
+
+.pager {
+    padding-bottom: 0;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.pager ol {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 1%;
+}
+
+.pager li {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    background-color:  #404072;
+    font-size: 13px;
+    border: 1px solid #52526f;
+}
+
+.pager li strong {
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    line-height: 30px;
+    background-color:  #404072;
+}
+
+.pager a {
+    color: #61608a;
+    line-height: 30px;
+}
+
+.bbs-table-view .com-wrt-box .input-style {
+    width: 100%;
+}
+
+.bbs-table-view .wrt span.user__name input.MS_input_txt.input-style.input-style2 { width: 95%; }
+.bbs-table-view .wrt span.user__password input.MS_input_txt.input-style.input-style2 { width: 99%; }
+.bbs-table-view .wrt span.user__password { width: 100%; }
+.bbs-table-view .com-wrt-box .wrt { margin-bottom: 2%; }
+.bbs-table-view .comment-box .bbs-link span { color: #ccc; }
+
+/* APP DOWNLOAD BUTTON */
+.btn {
+    position: absolute;
+    top: 62.47%;
+    width: 36.67%;
+}
+
+.btn.appStore {
+    left: 12.89%;
+}
+
+.btn.googlePlay {
+    right: 13.00%;
+}
+
+/* 유의사항 */
+.notice__wrap--more {
+    cursor: pointer;
+}
+
+.notice__wrap--more img {
+    margin-top: 0;
+}
+
+.notice__wrap--notice {
+    overflow: hidden;
+    height: 0px;
+    transition-property: height;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
