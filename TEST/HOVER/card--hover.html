@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mobile hover -> touch</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            width: 100%;
+            height: 100vh;
+            background: #1e306a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            border-radius: 5px;
+            background: linear-gradient(180deg, #fff4, transparent);
+            transition: 1s;
+            width: 175px;
+            height: 200px;
+            margin: 0 -45px;
+            transform: translateY(calc(var(--r) * -2px)) rotate(calc(var(--c) * 1deg));
+        }
+
+        .card:hover {
+            transform: rotate(0) scale(1.5);
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            margin: 0 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card" style="--c:15; --r:5"></div>
+    <div class="card" style="--c:15; --r:15"></div>
+    <div class="card" style="--c:15; --r:25"></div>
+    <div class="card" style="--c:15; --r:35"></div>
+</body>
+
+</html>
