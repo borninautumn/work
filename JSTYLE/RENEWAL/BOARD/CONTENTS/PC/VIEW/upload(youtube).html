@@ -1,0 +1,47 @@
+<style>
+    .content__container {
+        flex-direction: column;
+    }
+
+    .content_wrapper,
+    .fixed-img-collist {
+        width: 100%;
+    }
+
+    .fixed-img-collist {
+        margin-top: 50px !important;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li {
+        width: calc((100% - 24px) / 4) !important;
+        padding: 0 4px !important;
+    }
+
+    .video-container {
+        position: relative;
+        height: 0;
+        padding-bottom: 56.25% !important;
+    }
+
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .video__frame {
+        padding-bottom: 0;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li:first-child {
+        padding-left: 0 !important;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li:nth-child(4n) {
+        padding-right: 0 !important;
+    }
+</style>
+<div class=video-container><iframe allowfullscreen frameborder=0 src=https://www.youtube.com/embed/Q59efbaVaOc></iframe>
+</div>
