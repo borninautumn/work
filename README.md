@@ -8,6 +8,18 @@
   <li>Snowpeople App Design and Web</li>
 </ul>
 <br />
+<h4>BEBENINE</h4>
+<ul>
+  <li><b>Contents Design</b></li>
+  <li>Event Images</li>
+</ul>
+<br />
+<h4>STANS</h4>
+<ul>
+  <li><b>Publishing</b></li>
+  <li><b>UI/UX< Design/b></li>
+</ul>
+<br />
 <h4>Jstyle</h4>
 <ul>
   <li><b>Publishing</b></li>
