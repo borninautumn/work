@@ -1,0 +1,245 @@
+<title>레이아웃 잡는 중</title>
+
+<style>
+    ul, li { list-style: none; }
+    .container { max-width: 900px; margin: 150px auto; box-sizing: border-box; padding: 0; }
+    .container img { width: 100%; display: block;}
+
+    /* 쿠폰 */
+    .products__wrap, .coupon__wrap { position: relative; }
+    .coupon__wrap ul { position: absolute; top: 46.61%; left: 0;
+        display: flex; flex-direction: row; justify-content: center; align-items: center; width: 100%; flex-wrap: wrap; gap: 2%; padding-left: 0; }
+    .coupon__wrap li { width: 28.78%; height: 15.93%; margin-bottom: 3.37%; }
+    .coupon__wrap a { display: block; width: 100%; }
+
+    /* 상품 연동 : 탭메뉴 */
+    .products__wrap .tabs {
+        position: absolute; top: 31.29%; left: 0;
+        width: 100%;
+        display: flex; flex-direction: row; gap: 1%; margin: 0; padding-left: 0;
+        align-items: end; justify-content: center;
+    }
+    .tab_btn { width: 20.76%; height: 2.64%; cursor: pointer; opacity: 0.7; transition: all 0.3s; }
+    .sel { opacity: 1; }
+    .tab_content { position: absolute; top: 47.15%; left: 0; width: 100%; display: none; }
+    .tab_content .prod_box { display: flex; flex-direction: row; width: 100%; padding: 0; padding-left: 0; justify-content: center; align-items: center; gap: 3%; }
+    .tab_content .prod_item { height: 41.00%; width: 44.00%; }
+    .show { display: block; }
+
+    /* 유의사항 부분 css */
+    .notice__wrap img { width: 100%; display: block; }
+    .notice__wrap, 
+    .notice__wrap--more { position: relative; }
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice { 
+        overflow: hidden; height: 0px; 
+        transition-property: height; 
+        transition-duration: 0.2s; 
+        transition-timing-function: linear; 
+        z-index: -99; 
+    }
+    .notice__wrap--notice.active { height: 100%; }
+</style>
+
+<main class="container">
+    <!-- 인트로 -->
+    <section class="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_01.gif" alt="image">
+    </section>
+    
+    <!-- 쿠폰 섹션 -->
+    <section class="coupon__wrap">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_02.jpg" alt="image">
+        <!-- 쿠폰 -->
+        <ul>
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=QU5FS0Q4WVU=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0605.png" alt="0605 coupon">
+                </a>
+            </li>
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=WTQ3SFZGNUE=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0606.png" alt="0606 coupon">
+                </a>
+            </li>
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=UzVHRlZCODc=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0607.png" alt="0607 coupon">
+                </a>
+            </li>
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=R09ORTZZNTU=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0608.png" alt="0608 coupon">
+                </a>
+            </li>
+            
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=VlZBT1RYNzI=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0609.png" alt="0609 coupon">
+                </a>
+            </li>
+            
+            <li>
+                <a href="/shop/down_coupon.html?couponnum=S1hOSEk1TVI=">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/coupon_0610.png" alt="0610 coupon">
+                </a>
+            </li>
+        </ul>
+        <!-- 버튼: 수특 상품 쇼핑하러 가기 -->
+        <a href="/shop/shopbrand.html?xcode=143&type=Y&gf_ref=Yz1WVmQzc24=" target="_blank">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_03.jpg" alt="수특 상품 쇼핑하러 가기">
+        </a>
+    </section>
+
+    <!-- 상반기 결산 베스트 아이템 -->
+    <section class="products__wrap">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_04.jpg" alt="image" />
+        <!-- 탭메뉴 -->
+        <ul class="tabs">
+            <li class="tab_btn sel">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_top.png" alt="상의">
+            </li>
+            <li class="tab_btn">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_btm.png" alt="하의">
+            </li>
+            <li class="tab_btn">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_onepiece.png" alt="원피스">
+            </li>
+            <li class="tab_btn">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_set.png" alt="세트">
+            </li>
+        </ul>
+
+        <!-- 상의 -->
+        <div class="tab_content show">
+            <ul class="prod_box">
+                <!-- 코마린 프린팅 티셔츠 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861011&gf_ref=Yz1LT3dpRno=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_top_1.png" alt="코마린" />
+                    </a>
+                </li>
+                <!-- 아센프 길이별 티셔츠 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861567&gf_ref=Yz1yeUFYa1g=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_top_2.png" alt="아센프" />
+                    </a>
+                </li> 
+            </ul>
+        </div>
+        <!-- 하의 -->
+        <div class="tab_content">
+            <ul class="prod_box">
+                <!-- 드네아 히든밴딩 길이별 일자 슬랙스 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861799&gf_ref=Yz1OTVBSaXk=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_btm_1.png" alt="드네아" />
+                    </a>
+                </li>
+                <!-- 러드엘 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861955&gf_ref=Yz1IVjVSYm0=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_btm_2.png" alt="러드엘" />
+                    </a>
+                </li> 
+            </ul>
+        </div>
+        <!-- 원피스 -->
+        <div class="tab_content">
+            <ul class="prod_box">
+                <!-- 카테오 스트링 뷔스티에 롱 원피스 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861782&gf_ref=Yz1SSkdGdU0=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_onepiece_1.png" alt="카테오" />
+                    </a>
+                </li>
+                <!-- 메리븐 스모크 탑 원피스 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861852&gf_ref=Yz16V0xzajk=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_onepiece_2.png" alt="메리븐" />
+                    </a>
+                </li> 
+            </ul>
+        </div>
+        <!-- 세트 -->
+        <div class="tab_content">
+            <ul class="prod_box">
+                <!-- 쥬리므 골지 트레이닝 세트 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861693&gf_ref=Yz14VVBscTc=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_set_1.png" alt="쥬리므" />
+                    </a>
+                </li>
+                <!-- 아티블 티셔츠 나시 세트 -->
+                <li class="prod_item">
+                    <a href="/shop/shopdetail.html?branduid=861047&gf_ref=Yz1TSHYycUY=" target="_blank">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/tab_set_2.png" alt="아티블" />
+                    </a>
+                </li> 
+            </ul>
+        </div>
+        <!-- 버튼: 카테고리 상품 모아보기 -->
+        <a href="/shop/shopbrand.html?xcode=143&type=Y&gf_ref=Yz1HbWRhREE=" target="_blank">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_05.jpg" alt="카테고리 상품 모아보기">
+        </a>
+    </section>
+    <!-- 라스트피스 관련 -->
+    <section class="lastpiece__wrap">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_06.jpg" alt="image" />
+        <a href="/shop/shopbrand.html?xcode=120&type=Y&gf_ref=Yz1SZkRUdjI=" target="_blank">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_07.jpg" alt="라스트피스 상품 보러가기">
+        </a>
+    </section>
+    <!-- 유의사항 토글 -->
+    <section class="notice__wrap">
+        <div class="notice__wrap--more">
+            <!-- 유의사항 버튼 -->
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_08.jpg"
+                alt="view precautions button">
+        </div>
+        <!-- 유의사항 내용 -->
+        <div class="notice__wrap--notice">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0605_oneday/event_09.jpg" alt="detail of precautions ">
+        </div>
+    </section>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<script>
+    const tabBtn = $('.tab_btn');
+    const tabCont = $('.tab_content');
+    const moreNotice = $('.notice__wrap--more');
+    const notice = $('.notice__wrap--notice')
+    
+    tabMenuFunc();
+    toggleNotice(); 
+
+    // 탭메뉴
+    function tabMenuFunc() {
+        for (let i = 0; i < tabCont.length; i++) {
+            tabBtn.eq(i).on('click', function () {
+                tabBtn.removeClass('sel');
+                tabBtn.eq(i).addClass('sel');
+                tabCont.removeClass('show');
+                tabCont.eq(i).addClass('show');
+            });
+        }
+    }
+
+    // 유의사항 토글
+    function toggleNotice() {
+        moreNotice.on('click', function() {
+            let height = $(".notice__wrap--notice img").innerHeight();
+            $(".notice__wrap--notice").toggleClass("active");
+            if (notice.hasClass("active")) {
+                notice.css("height", height + "px");
+            } else {
+                notice.css("height", "0px");
+            }
+        })
+    }
+</script>
