@@ -1,0 +1,39 @@
+<style>
+    main.container, main.container div { position: relative; }
+    .container { padding: 0; box-sizing: border-box; max-width: 900px; margin: 0 auto; }
+    .container img { width: 100%; }
+    .container a { display: block; cursor: pointer; text-decoration: none; }
+    .downloads--app { position: relative; }
+    .downloads--app .app { position: absolute; width: 38.89%; top: 0; }
+    .downloads--app .app.android { left: 10.33%; }
+    .downloads--app .app.iphone { right: 8.00%; }
+    /* 유의사항 부분 css */
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice { 
+        overflow: hidden; height: 0px; 
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        z-index: -99;
+    }
+    .notice__wrap--notice.active { height: 100%; }
+</style>
+
+<main class="container">
+    <!-- 인트로 -->
+    <div><img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/event_01.jpg" alt="image" /></div>
+    <!-- 이벤트 내용 안내 -->
+    <div><img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/event_02.jpg" alt="image" style="margin-top: -1px;" /></div>
+    <div><img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/event_03.jpg" alt="image" style="margin-top: -1px;" /></div>
+    <!-- 버튼2 : 앱 다운로드 -->
+    <div class="downloads--app">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/event_04.jpg" alt="image" style="margin-top: -1px;">
+        <a class="app android" href="https://play.google.com/store/apps/details?id=kr.co.smartskin.jstyleshop&gf_ref=Yz1kczR3cDI=">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/btn_google.png" alt="go to google play">
+        </a>
+        <a class="app iphone" href="https://apps.apple.com/kr/app/%EC%9D%B4%EB%B8%94%EB%A0%9B-%EB%B0%94%EC%9D%B4-%EC%A0%9C%EC%9D%B4%EC%8A%A4%ED%83%80%EC%9D%BC/id998067549?gf_ref=Yz1mS1o2blg=">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/1014_guerrilla/btn_ios.png" alt="go to app store">
+        </a>
+    </div>
+</main>
