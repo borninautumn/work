@@ -1,0 +1,200 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url('https://fonts.cdnfonts.com/css/minion-pro');
+
+/* scrolling gently */
+html { scroll-behavior: smooth; transition: all .3s; }
+
+/* reset css */
+.stylelog__container { 
+    box-sizing: border-box; border: 0; margin: 0; padding: 0;
+    font-family: 'Pretendard-Regular';
+    font-weight: 400;
+    font-style: normal;
+    max-width: 900px;
+    background-color: #000;
+}
+.stylelog__container ul,
+.stylelog__container li { list-style: none; }
+.stylelog__container a,
+.stylelog__container span { display: block; }
+.stylelog__container main, 
+.stylelog__container section, 
+.stylelog__container div { position: relative; }
+.stylelog__container a { text-decoration: none; cursor: pointer; color: inherit; }
+.stylelog__container img { width: 100%; vertical-align: top; }
+.tabs--fixed ul { list-style: none; }
+.tabs--fixed a { display: block; text-decoration: none; cursor: pointer; color: inherit; }
+.stylelog__container .img__box--fadeUp { position: absolute; }
+.stylelog__container .btn--landing { position: absolute; }
+.stylelog__container .img__box { position: absolute; }
+
+/* stylelog contents css */
+.stylelog__container .img__tit { position: absolute; top: 20.75%; left: 50%; transform: translateX(-50%); width: 36.82%; }
+/* INTRO TITLE STROKE */
+.stylelog__container .intro .stroke { 
+    position: absolute; top: 24.16%; left: 50%; transform: translateX(-50%);
+    width: 100%;
+}
+.text_line {
+    stroke-dasharray: 600;
+    stroke-dashoffset: 600;
+    animation: dash 3s linear forwards, filling 3s ease-in forwards;
+}
+.text_line text {
+    font-family: 'Minion Pro', sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 3em;
+}
+@keyframes dash { to { stroke-dashoffset: 0; } }
+@keyframes filling {
+    0%,
+    90% { fill: black; fill-opacity: 0; }
+    100% { fill: #fff; fill-opacity: 1; }
+}
+
+/* POLAROID SWIPER */
+.stylelog__container .polaroid .polarSwiper { width: 100%; position: absolute; top: 26.23%; overflow: hidden; }
+.stylelog__container .polarSwiper .swiper-slide { width: 34.69%; }
+
+/* LOOK1 */
+.stylelog__container .stylelog__look1 .img__box--fadeUp { right: 0; width: 42.29%; }
+.stylelog__container .stylelog__look1 .img__box--fadeUp.fir { top: 37.07%; } 
+.stylelog__container .stylelog__look1 .img__box--fadeUp.sec { top: 73.19%; } 
+.stylelog__container .stylelog__look1 .btn--landing { top: 82.07%; left: 7.63%; width: 41.33%; }
+
+/* LOOK2 */
+.stylelog__container .stylelog__look2 .img__box--fadeUp.fir { width: 33.91%; top: 37.83%; right: 14.95%; } 
+.stylelog__container .stylelog__look2 .img__box--fadeUp.sec { width: 28.33%; top: 62.74%; right: 2.76%; } 
+.stylelog__container .stylelog__look2 .btn--landing { width: 52.22%; top: 78.63%; left: 7.63%; }
+
+/* LOOK3 */
+.stylelog__container .stylelog__look3 .look3Swiper { position: absolute; top: 50.89%; width: 100%; overflow: hidden; }
+.stylelog__container .stylelog__look3 .look3Swiper .swiper-slide { width: 28.54%; }
+.stylelog__container .stylelog__look3 .look3Swiper .swiper-next,
+.stylelog__container .stylelog__look3 .look3Swiper .swiper-prev { width: 4.01%; position: absolute; top: 50.49%; z-index: 99; cursor: pointer; }
+.stylelog__container .stylelog__look3 .look3Swiper .swiper-next { right: 6.46%; transform: rotate(180deg); }
+.stylelog__container .stylelog__look3 .look3Swiper .swiper-prev { left: 6.46%; }
+
+/* LOOK4 */
+.stylelog__container .stylelog__look4 .look4Swiper { 
+    position: absolute; top: 40.26%; left: 6.51%; 
+    max-width: 32.34%; height: 58.79%; 
+}
+.stylelog__container .stylelog__look4 .look4Swiper .verticalSwiper { width: 100%; height: 100%; }
+.stylelog__container .stylelog__look4 .fadeSwiper { position: absolute; top: 47.64%; right: 10.00%; width: 44.84%; }
+.stylelog__container .stylelog__look4 .btn--landing { width: 40.56%; top: 78.29%; right: 13.93%; }
+
+/* LOOK5 */
+.stylelog__container .stylelog__look5 .film { position: absolute; top: 43.33%; left: 6.51%; width: 38.07%; overflow: hidden; }
+.stylelog__container .stylelog__look5 .filmSwiper { position: absolute; top: 0; left: 11.49%; width: 77.29%; height: 100%; }
+.stylelog__container .stylelog__look5 .img__box.left { width: 54.74%; left: 0; top: 74.11%; }
+.stylelog__container .stylelog__look5 .img__box.move2 { width: 23.80%; top: 74.11%; right: 19.43%; }
+.stylelog__container .stylelog__look5 .img__box.move3 { width: 23.80%; top: 85.86%; right: 19.43%; }
+.stylelog__container .stylelog__look5 .btn--landing { width: 59.33%; top: 63.29%; left: 6.51%; } 
+
+/* EDIT */
+.stylelog__container .edit__wrap .more { width: 36.11%; position: absolute;  top: 16.51%; left: 50%; transform: translateX(-50%);}
+
+/* tabs--hover */
+.tabs--hover {
+    position: sticky !important;
+    top: 0; left: 0;
+    z-index: 1000;
+    padding: 3% 0;
+}
+.tabs--hover ul {
+    display: flex; 
+    flex-direction: row;
+    justify-content: center;
+    margin: 0; padding: 0; gap: 1%;
+}
+.tabs--hover .stab { 
+    border: 1px solid #fff; color: #fff;
+    border-radius: 35px; 
+    padding: 1% 3.5%;
+}
+.tabs--hover .stab.sel {
+    background-color: #fff; color: #000;
+}
+
+.tabs--fixed .ftab:hover {
+    background-color: #fff; color: #000;
+}
+/* tabs--fixed */
+.tabs--fixed { 
+    position: fixed; 
+    bottom: 0; right: 30px; 
+    z-index: 99; 
+}
+.tabs--fixed ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0; padding: 0;
+}
+.tabs--fixed .ftab { 
+    width: 100%; 
+    border: 1px solid #fff; color: #fff;
+    border-radius: 35px; 
+    margin-bottom: 10px; padding: 5px 10px;
+    text-align: center; 
+}
+.tabs--fixed .ftab.sel {
+    background-color: #fff; color: #000;
+}
+
+/* 삭제X */
+.proSection {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+.proSection .product_wrap_section .list {
+    font-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: start;
+    gap: 1%;
+    padding-left: 1%;
+}
+.proSection .product_wrap_section h2 {
+    padding: 40px 0 30px;
+    font-size: 20px;
+    font-family: "NanumGothic";
+    font-weight: 700;
+    padding-left: 3%;
+}
+
+/* SCROLL */
+.scroll_btn a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: block;
+    position: fixed;
+    bottom: 80px;
+    text-align: center;
+    z-index: 99;
+    background: #333;
+    border: #333;
+    box-sizing: border-box;
+    right: 12px;
+    display: none;
+    transition: all .3s;
+}
+.scroll_btn a.top_btn { bottom: 130px; }
+.scroll_btn a.bot_btn { transform: rotate(180deg); -webkit-transform: -webkit-rotate(180deg); }
+.scroll_btn a img {
+    width: 14px;
+    padding-top: 15px;
+    /* margin-left: 13px !importante; */
+    margin-left: 0 !important;
+}
+
+img.LegacyImgeCustomButton__Image-ch-front__sc-13afzgx-1.gWMaet { display: none !important; }
+.dlyGCd { display: none; }
+#ch-plugin-entry { display: none; }
