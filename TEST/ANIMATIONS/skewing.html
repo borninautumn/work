@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .coupon { width: 600px; height: 300px; border: 1px solid black; box-sizing: border-box; border-radius: 30px; background-color: gray; position: relative; margin: 0 auto; }
+        .random_wrap { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .random_wrap .num { overflow: hidden; height: 100px; border: 1px solid red; }
+        .random_wrap .num p { font-size: 100px; color: #fff; letter-spacing: 20px; animation: vertical-shaking 1.5s infinite; margin: 0; padding: 0; text-align: center; line-height: 100px; }
+        @keyframes vertical-shaking {
+            0% { transform: translateY(0); }
+            15% { transform: translateY(100px); }
+            30% { transform: translateY(-100px); }
+            45% { transform: translateY(100px); }
+            60% { transform: translateY(0px); }
+            75% { transform: translateY(0px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="coupon">
+        <div class="random_wrap">        
+            <div class="num">
+                <p>80%</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
