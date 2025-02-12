@@ -1,0 +1,93 @@
+<style>
+    .wrapLive { max-width: 800px; margin: 0 auto; background-color: #faf8f4; position: relative; }
+    .wrapLive img {
+        display: block;
+        max-width: 100%;
+    }
+
+    .wrapLive .linkBox {
+        position: relative;
+    }
+
+    .wrapLive .linkBox a {
+        position: absolute;
+    }
+
+    .wrapLive .linkBox1 {
+        position: relative;
+    }
+
+    .wrapLive .posiBox .btn01 {
+        position: absolute;
+        width: 77.625%;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .wrapLive .posiBox .copy {
+        position: absolute;
+        width: 77.625%;
+        top: 21.61016949153%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .aspect {
+        aspect-ratio: 9/16;
+        width: 60%;
+        overflow: hidden;
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        margin-left: 0; padding-left: 0;
+    }
+
+    .aspect iframe {
+        width: 100%;
+        height: 100%;        
+    }
+    .posiBox { position: relative; }
+    .posiControl { height: 100% !important; }
+
+    /* 모바일에선 이거 추가하자 */
+    .ytp-offline-slate-button-text { margin: 0 !important; }
+</style>
+
+<div class="wrapLive">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_01.jpg" alt="img1">
+    <div class="posiBox" style="padding-bottom: 100%;">
+        <div class="posiControl">
+            <figure class="aspect">
+                <iframe src="https://youtube.com/embed/n_DzvOWHsBk" title="YouTube video player" frameBorder="0"
+                    allowFullScreen></iframe>
+            </figure>
+        </div>
+    </div>
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_03.jpg" alt="img1">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_04.jpg" alt="img1">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_05.jpg" alt="img1">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_06.jpg" alt="img1">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_07.jpg" alt="img1">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_08.jpg" alt="img1">
+    <div class="posiBox">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_09.jpg" alt="img1">
+        <a href="javascript:;" class="copy">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0724_live/live_m_240724_btn2.png" alt="img1">
+        </a>
+    </div>
+</div>
+
+<script>
+    $(".copy").on("click", function () {
+        copy(window.location.href);
+    });
+
+    const copy = (text) => {
+        const $textarea = document.createElement("textarea");
+        document.body.appendChild($textarea);
+        $textarea.value = text;
+        $textarea.select();
+        document.execCommand("copy");
+        document.body.removeChild($textarea);
+        alert("URL이 복사가 완료되었습니다.");
+    };
+</script>
