@@ -1,0 +1,288 @@
+* {
+    box-sizing: border-box;
+}
+
+
+#bbsData .bbs-link {
+    position: relative;
+}
+
+#bbsData .bbs-link-top {
+    margin-top: 10px;
+    margin-bottom: -40px;
+    margin-right: 400px;
+    text-align: left;
+    margin-left: 18px;
+}
+
+#bbsData .bbs-link-btm {
+    margin-top: 10px;
+    margin-bottom: -40px;
+    text-align: right;
+}
+
+.bbs-table-list {
+    max-width: 1330px;
+    margin: 0 auto;
+
+}
+
+.bbs-table-list td a {
+    font-weight: bold
+}
+
+/* 240405 게시글 리스트 */
+.fixed-img-collist ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 1%;
+    margin: 0 auto;
+}
+
+.fixed-img-collist ul li {
+    position: relative;
+    clear: both;
+    width: 32%;
+    margin: 0;
+}
+
+.fixed-img-collist ul li a {
+    display: block;
+}
+
+.fixed-img-collist ul li .thumbs_wrap {
+    border-radius: 15px;
+    overflow: hidden;
+    padding: 0 !important;
+    height: 250px;
+    font-size: 0;
+}
+.fixed-img-collist ul li .thumbs_wrap img {
+    display: block;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    background-color: black;
+}
+
+/*
+.fixed-img-collist ul li a:hover .subject:after {
+    width: 100%;
+}
+.fixed-img-collist ul li a .subject:after {
+    content: '';
+    display: block;
+    width: 0; height: 2px;
+    position: absolute;
+    left: 0; bottom: 0;
+    background-color: #222;
+    transition: width 500ms ease-in;
+}
+*/
+.fixed-img-collist ul li a strong {
+    color: #343434;
+    font-size: 16px;
+}
+
+/* noimage */
+.fixed-img-collist ul li a .noimg {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #f2f2f2;
+    font-weight: bold;
+    line-height: 254px;
+    border: 1px solid #e9e9e9;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+
+
+/* 추가 */
+.bbs-hd .link li a.on {
+    font-weight: bold;
+    /* 240403 추가 */
+    background-color: #222;
+    border: 1px solid #222;
+    color: #fff;
+}
+
+#bbsData .bbs-hd {
+    display: block;
+    padding: 100px 0 50px;
+    background-image: none;
+}
+
+
+/* 추추가 */
+.info_wrap {
+    margin-top: 15px;
+}
+.info_wrap .date,
+.info_wrap .hits {
+    font-size: 14px;
+}
+.info_wrap .hits {
+    margin-left: 15px;
+}
+#bbsData .bbs-hd #board_cateselect {
+    height: 35px;
+    display: none; /* 240403 추가함 */
+}
+#bbsData .bbs-hd #board_cateselect > a {
+    display: inline-block;
+    width: 60px; height: 35px;
+    text-align: center;
+    line-height: 35px;
+    background-color: #222;
+    color: #222;
+}
+
+
+/* 240403 추가 */
+.bbs-hd .link li a {
+    display: block;
+    line-height: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 2px 28px !important;
+    background-image: none !important;
+    color: #222;
+}
+.bbs-hd .link li {
+    border-radius: 50px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    border: 1px solid #CCC;
+    margin-left: 5px;
+    position: relative;
+    transition: all 0.3s;
+}
+.bbs-hd .link li:hover {
+    background-color: #222;
+}
+.bbs-hd .link li:hover a {
+    color: #fff;
+}
+
+.bbs-hd .link li:first-child {
+    margin-left: 0;
+}
+.bbs-hd .link {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    margin: 0 auto;
+}
+.select_a_btn {
+    display: none !important;
+}
+.board_cate_tabs {
+    color: #222;
+}
+.subject { display: block; }
+
+
+/* 240403 paging css */
+.paging {
+    padding: 50px 0; height: 25px;
+}
+.paging a {
+    width: 25px; height: inherit;
+    border: 1px solid #CCC;
+    text-align: center;
+    line-height: 25px;
+    padding-bottom: 0;
+}
+.paging a.now {
+    background-color: #000;
+    color: #fff;
+}
+
+/* 240529 수정*/
+.paging a, .paging li a, .paging li strong { margin-left: 0; margin-right: 0; }
+.paging li.last a, .paging a.last { width: 25px; height: 25px; }
+
+/* 240403 검색창 */
+#bbsData .bbs-sch input[type=text] {
+    width: 300px; height: 39px;
+}
+
+#bbsData .bbs-sch a.btn_serch {
+    /* padding: 0 25px; */
+    width: 114px;
+    height: 39px;
+}
+
+.bbs-sch {
+    padding: 30px 0;
+    margin: 0 auto;
+    background-color: #F8F8F8;
+    text-align: center;
+}
+
+/* 240404 검색부분 추가 */
+.bbs-sch fieldset {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.bbs-sch select {
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+}
+.search_selected {
+    width: 134px; height: 39px;
+}
+.search_selected .brd-st {
+    width: 100%; height: 100%;
+}
+
+
+/* 240403 글쓰기 버튼 삭제 */
+.bbs-link { display: none; }
+
+
+
+/* 240404 추가함 */
+#contentWrapper { 
+    padding-top: 0 !important;
+    margin-bottom: 100px;
+}
+
+/* h3 안보이게 함 */
+.bbs-tit h3 { display: none; }
+
+/* subject 부분 */
+.fixed-img-collist ul li p.subject {
+    font-weight: 700;
+    font-size: 18px;
+    position: relative;
+}
+
+.info_wrap p.tb-bold { display: none; }
+
+/* 240610 swiper slide css */
+.contentSwiper { width: 100%; overflow: hidden; position: relative; }
+.contentSwiper .swiper-slide a { display: block; width: 100%; position: relative; }
+.contentSwiper .swiper-slide img { width: 100%; vertical-align: top; }
+.contentSwiper .swiper-wrapper { width: 100%; }
+.contentSwiper .swiper-slide { width: 36.46%; overflow: hidden; filter: brightness(80%); transition: all 1s; }
+.contentSwiper .swiper-slide-active { filter: brightness(100%); }
+.contentSwiper .swiper-slide.swiper-slide-active .filter { opacity: 1; transition: opacity 1s; }
+.contentSwiper .swiper-button-next,
+.contentSwiper .swiper-button-prev { position: absolute; top: 50%; transform: translate(-50%, -50%); }
+.contentSwiper .swiper-button-next::after,
+.contentSwiper .swiper-button-prev::after { content: ' '; }
+.contentSwiper .swiper-button-next { right: 29.65%; }
+.contentSwiper .swiper-button-prev { left: 30.75%; }
+.contentSwiper .swiper-slide .filter { position: absolute; top: 48%; left: 50%; transform: translate(-50%, -50%); opacity: 0; width: 100%; }
+.contentSwiper .swiper-slide .filter-text { text-align: center; color: #fff;  }
+.contentSwiper .swiper-slide h3.filter-text { font-weight: bold; font-size: 45px; font-family: "Montserrat", sans-serif !important; }
+.contentSwiper .swiper-slide p.filter-text { font-size: 22px; font-family: "Noto Sans KR", sans-serif !important; }
+
