@@ -1,0 +1,166 @@
+<style>
+    .recmd-item-wrap {
+        display: none !important;
+    }
+
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    /* 베스트아이템 */
+
+    .topTitleBox1 img {
+        width: 100%;
+        display: block;
+    }
+
+    .topTitleBox1,
+    .posiBox {
+        position: relative;
+    }
+
+    .topTitleBox1 .posiBox .coupon {
+        position: absolute;
+        width: 11.15%; height: 4.83%;
+        bottom: 9.67%; right: 31.72%;
+        cursor: pointer;
+    }
+
+    .arrowBox01 {
+        cursor: pointer;
+        display: block;
+    }
+
+    .arrowBox01 img {
+        margin-top: 0;
+    }
+    .arrowBox01 .arrow {
+        width: 0px;
+        height: 0px;
+        /* border-bottom: 9px solid #fff; */
+        /* border-left: 6px solid transparent; */
+        /* border-right: 6px solid transparent; */
+        /* transform: rotateX(-180deg); */
+        /* margin-top: -2px; */
+        opacity: 0; 
+    }
+
+    .arrowBox01 .arrow.active {
+        transform: rotateX(0deg);
+    }
+
+    .arrowBox02 {
+        overflow: hidden;
+        height: 0px;
+        transition-duration: 0.2s;
+    }
+
+    .arrowBox02.active {
+        height: 100%;
+    }
+</style>
+<!-- 상단꾸미기 HTML -->
+<div class="heroimg topTitleBox1">
+    <div class="posiBox">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/wide_tit_01.jpg">        
+        <div class="arrowBox01">
+            <!-- 유의사항 펼치기 버튼 -->
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/wide_tit_02.jpg" />
+            <div class="arrow"></div>
+        </div>
+    </div>
+    <div class="arrowBox02">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/wide_tit_03.jpg">
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(".topTitleBox1 .arrowBox01").click(function () {
+        let height = $(".topTitleBox1 .arrowBox02 img").innerHeight();
+
+        $(".topTitleBox1 .arrowBox01 .arrow").toggleClass("active");
+        $(".topTitleBox1 .arrowBox02").toggleClass("active");
+
+        if ($(".topTitleBox1 .arrowBox01 .arrow").hasClass("active")) {
+            $(".arrowBox02").css("height", height + "px");
+        } else {
+            $(".arrowBox02").css("height", "0px");
+        }
+    });
+</script>
+
+
+
+
+
+<style>
+    .recmd-item-wrap {
+        display: none !important;
+    }
+
+    * {
+        margin: 0; padding: 0; box-sizing: border-box;
+    }
+
+    /* 베스트아이템 */
+    .MK_product_list.best_product{display: none !important;}  /*베스트 아이템 */
+
+
+    .topTitleBox1 img {
+        width: 100%;
+        display: block;
+    }
+
+    .topTitleBox1,
+    .posiBox {
+        position: relative;
+    }
+
+    .topTitleBox1 .posiBox .coupon {
+        position: absolute;
+        width: 20.88%; height: 3.35%;
+        bottom: 7.83%; right: 14.50%;
+        cursor: pointer;
+    }
+
+    .arrowBox01 {
+        cursor: pointer;
+        display: block;
+    }
+
+    .arrowBox01 img {
+        margin-top: -4.09%;
+    }
+    .arrowBox01 .arrow {
+        width: 0px;
+        height: 0px;
+        /* border-bottom: 9px solid #fff; */
+        /* border-left: 6px solid transparent; */
+        /* border-right: 6px solid transparent; */
+        /* transform: rotateX(-180deg); */
+        /* margin-top: -2px; */
+        opacity: 0; 
+    }
+
+    .arrowBox01 .arrow.active {
+        transform: rotateX(0deg);
+    }
+
+    .arrowBox02 {
+        overflow: hidden;
+        height: 0;
+        transition-duration: 0.2s;
+    }
+
+    .arrowBox02.active {
+        height: 100%;
+    }
+</style>
+<!-- 상단꾸미기 HTML -->
+<div class="heroimg topTitleBox1">
+    <div class="posiBox">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/tit_01.jpg">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/tit_02.jpg" />
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0412_guerrilla/tit_03.jpg">
+    </div>
+</div>
