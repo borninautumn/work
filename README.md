@@ -10,14 +10,14 @@
 <br />
 <h4>BEBENINE</h4>
 <ul>
-  <li><b>Contents Design</b></li>
+  <li>Contents Design</li>
   <li>Event Images</li>
 </ul>
 <br />
 <h4>STANS</h4>
 <ul>
-  <li><b>Publishing</b></li>
-  <li><b>UI/UX< Design/b></li>
+  <li>Publishing</li>
+  <li>UI/UX< Design</li>
 </ul>
 <br />
 <h4>Jstyle</h4>
