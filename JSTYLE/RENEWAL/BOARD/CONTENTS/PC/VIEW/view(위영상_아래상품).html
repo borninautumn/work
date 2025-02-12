@@ -1,0 +1,145 @@
+<style>
+.content__container { flex-direction: column; }
+.content_wrapper, .fixed-img-collist { width: 100%; }
+.fixed-img-collist { margin-top: 50px !important; }
+.bbs-table-view .fixed-img-collist ul li { width: calc((100% - 24px) / 4) !important; padding: 0 4px !important; }
+.video-container { position: relative; height: 0; padding-bottom: 56.25% !important; }
+.video-container iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+.video__frame { padding-bottom: 0; }
+.bbs-table-view .fixed-img-collist ul li:first-child { padding-left: 0 !important; }
+.bbs-table-view .fixed-img-collist ul li:nth-child(4n) { padding-right: 0 !important; }
+</style>
+
+<!--/script_scroll(1)/-->
+<div id="wrap">
+    <!--/include_header(1)/-->
+    <div id="contentWrapper">
+        <div id="contentWrap">
+            <!--/include_menu(1)/-->
+            <div id="content">
+                <div id="bbsData">
+                    <div class="page-body">
+
+                        <!-- //게시판 리스트 -->
+                        <div class="bbs-tit">
+                            <h3>CONTENTS</h3>
+                        </div>
+
+                        <div class="bbs-table-view">
+                            <table summary="게시글 보기">
+                                <caption>게시글 보기</caption>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <!-- 게시글 제목 -->
+                                            <div class="tb-center"><!--/subject/--></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="data-bd-cont">
+                                                <!-- 게시글 썸네일 -->
+                                                <!--/if_attach_image/-->
+                                                <div class="attach">
+                                                    <!--/if_attach_image_size/-->
+                                                    <img width="<!--/attach_image_size/-->"
+                                                        src="<!--/attach_image/-->" />
+                                                    <!--/else/-->
+                                                    <img src="<!--/attach_image/-->" />
+                                                    <!--/end_if/-->
+                                                </div>
+                                                <!--/end_if/-->
+
+                                                <!-- 게시글 콘텐츠 -->
+                                                <div class="content__container">
+                                                    <div class="content_wrapper">
+                                                        <div class="video__frame"><!--/content/--></div>
+                                                    </div>
+                                                    <!-- 게시글 관련 상품 -->
+                                                    <!--/if_recommend_product/-->
+                                                    <div class="fixed-img-collist">
+                                                        <h3 class="list-tit">게시글 관련 상품</h3>
+                                                        <ul class="clear">
+                                                            <!--/loop_recommend_product/-->
+                                                            <li>
+                                                                <a href="<!--/recommend_product@link/-->">
+                                                                    <span class="prd"><img
+                                                                            src="<!--/recommend_product@image_s/-->"
+                                                                            alt="" title="" /></span>
+                                                                    <span
+                                                                        class="prd-name"><!--/recommend_product@name/--></span>
+                                                                </a>
+                                                                <p class="sell">
+                                                                    <!--/number/recommend_product@price_sell/-->원
+                                                                </p>
+                                                                <p class="icons"><!--/recommend_product@icons/--></p>
+                                                            </li>
+                                                            <!--/end_loop/-->
+                                                        </ul>
+                                                    </div>
+                                                    <!--/end_if/-->
+                                                </div>
+                                                <!--/if_link_report_popup/-->
+                                                <a href="javascript:void(0);" class="btn-report"
+                                                    onclick="<!--/link_report_popup/-->">신고/차단</a>
+                                                <!--/end_if/-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 하단버튼 -->
+                            <div class="bbs-list">
+                                <!--/if_link_list/-->
+                                <a href="<!--/link_list/-->" class="listButton">목록</a>
+                                <!--/end_if/-->
+                            </div>
+                            <!-- //하단버튼 -->
+
+                            <!-- 이전글 다음글 -->
+                            <ul class="list-link">
+                                <!--/if_link_prev_article/-->
+                                <li>
+                                    <span class="arrow prev"></span>
+                                    <!--/if_prev_article_product_name/-->
+                                    <a
+                                        href="<!--/link_prev_article_product/-->">[<!--/prev_article_product_name/-->]</a>
+                                    <!--/end_if/-->
+                                    <!--/if_prev_article_subject/-->
+                                    <a href="<!--/link_prev_article/-->"><!--/prev_article_subject/--></a>
+                                    <!--/if_prev_article_comment_count(+1)/-->
+                                    (<!--/prev_article_comment_count/-->)
+                                    <!--/end_if/-->
+                                    <!--/end_if/-->
+                                </li>
+                                <!--/end_if/-->
+                                <!--/if_link_next_article/-->
+                                <li>
+                                    <span class="arrow next"></span>
+                                    <!--/if_next_article_product_name/-->
+                                    <a
+                                        href="<!--/link_next_article_product/-->">[<!--/next_article_product_name/-->]</a>
+                                    <!--/end_if/-->
+                                    <!--/if_next_article_subject/-->
+                                    <a href="<!--/link_next_article/-->"><!--/next_article_subject/--></a>
+                                    <!--/if_next_article_comment_count(+1)/-->
+                                    (<!--/next_article_comment_count/-->)
+                                    <!--/end_if/-->
+                                    <!--/end_if/-->
+                                </li>
+                                <!--/end_if/-->
+                            </ul>
+                            <!-- //이전글 다음글 -->
+                        </div><!-- .page-body -->
+
+                    </div><!-- #bbsData -->
+                </div><!-- #content -->
+            </div><!-- #contentWrap -->
+        </div><!-- #contentWrapper-->
+        <hr />
+        <!--/include_footer(1)/-->
+    </div>
+</div><!-- #wrap -->
