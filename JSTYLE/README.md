@@ -3,7 +3,8 @@
 <ul>
   <li>
     <p>
-      Silver Jewelry Collection | Date: 2024. 03. 27
+      Silver Jewelry Collection
+      Date: 2024. 03. 27
     </p>
   </li>
   <li>
