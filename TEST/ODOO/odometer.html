@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="http://github.hubspot.com/odometer/themes/odometer-theme-minimal.css" />
+    <style>
+        HTML CSS JSResult Skip Results Iframe EDIT ON body {
+            background: #000;
+        }
+
+        .odo-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 100vw;
+            height: 100vh;
+
+        }
+
+        .odometer {
+            font-size: 4vw;
+            padding: 30px;
+            font-family: 'Alfa Slab One', cursive;
+            color: #1EC0F1;
+            border: 3px solid #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="odo-wrap">
+        <div class="odometer">??</div>
+        <!-- <div class="odometer">000</div>
+        <div class="odometer">000</div> -->
+    </div>
+
+    <script src="http://github.hubspot.com/odometer/odometer.js"></script>
+    <script>
+        setTimeout(function () {
+            const odometer = document.querySelectorAll(".odometer");
+            odometer[0].innerHTML = 99;
+            odometer[1].innerHTML = 234;
+            odometer[2].innerHTML = 345;
+        }, 100);
+
+
+        // 고차함수 한번만 실행
+        var _once = function (func) {
+            var flag, result;
+            return function () {
+                if (flag) { return result };
+                flag = true;
+                return result = func.apply(this.argument);
+            }
+        }
+
+        var hi = _once(function () {
+            console.log('hi')
+        });
+
+        hi();
+    </script>
+</body>
+
+</html>
