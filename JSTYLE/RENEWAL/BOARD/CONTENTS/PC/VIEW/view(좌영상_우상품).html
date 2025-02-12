@@ -1,0 +1,531 @@
+<style>
+    .bbs-link {
+        font-size: 0
+    }
+
+    .bbs-link a {
+        margin: 0 2px;
+    }
+
+    .bbs-link a.delete {
+        padding: 0 3px 0 5px;
+    }
+
+    .bbs-link a.reply {
+        padding: 0;
+    }
+
+    .input-style2 {
+        width: 120px;
+        margin: 0px 5px;
+    }
+
+    .data-bd-cont .add_info {
+        float: left;
+        border: 1px solid #e5e5e5;
+        width: 97%;
+        padding: 5px 10px;
+        line-height: 150%;
+        margin-bottom: 10px;
+    }
+
+    .data-bd-cont .add_title {
+        float: left;
+        width: 30%;
+        font-weight: bold;
+    }
+
+    .data-bd-cont .add_content {
+        float: left;
+        width: 70%;
+    }
+
+    .data-bd-cont .attach {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    /* 관련 상품 목록 */
+    .fixed-img-collist {
+        margin-top: 50px;
+        padding-top: 10px;
+        width: 65%;
+    }
+
+    .list-tit {
+        padding-left: 7px;
+        color: #9d9d9d;
+        background: url('/images/d3/modern_simple/common/bull_join_required.gif') no-repeat 0 50%;
+    }
+
+    .fixed-img-collist ul {
+        padding: 15px 11px 0;
+    }
+
+    .fixed-img-collist ul li {
+        float: left;
+        padding: 0 10px 15px;
+        text-align: center;
+    }
+
+    .fixed-img-collist ul li a {
+        display: block;
+        width: 150px;
+        font-size: 11px;
+        color: #9d9d9d;
+    }
+
+    .fixed-img-collist ul li a span.prd img {
+        width: 100%;
+        display: block;
+    }
+
+    .fixed-img-collist ul li p {
+        padding: 1px;
+        font-size: 11px;
+        color: #666;
+        font-weight: bold;
+    }
+
+    /* 개인정보보호정책 동의 */
+    .privercy-contract textarea {
+        height: 60px;
+        width: 660px;
+    }
+
+    .privercy-contract-tap {
+        height: 30px;
+    }
+
+    .privercy-contract-tap li a {
+        padding: 7px 10px;
+    }
+
+    /* 개인정보 수집 이용 */
+    .privercy-contract .tbl {
+        width: 100% !important;
+        padding: 0;
+        margin: 0;
+        border-spacing: 0;
+        border-collapse: collapse;
+        border-top: 1px solid #dadada;
+        border-left: 1px solid #dadada;
+    }
+
+    .privercy-contract .tbl caption {
+        display: none;
+    }
+
+    .privercy-contract .tbl th {
+        line-height: 32px;
+        color: #3b3b3b;
+        font-size: 12px;
+        font-weight: bold;
+        background: #f0f0f0;
+        text-align: center;
+    }
+
+    .privercy-contract .tbl th,
+    .privercy-contract .tbl td {
+        height: 32px;
+        padding: 0;
+        margin: 0;
+        border-right: 1px solid #dadada;
+        border-bottom: 1px solid #dadada;
+        letter-spacing: -1px
+    }
+
+    .privercy-contract .tbl td .txt-l {
+        padding: 5px 3px;
+        margin: 0;
+        text-align: left;
+    }
+
+    /* 신고 버튼 */
+    .bbs-table-view .data-bd-cont .btn-report {
+        display: inline-block;
+        font-size: 11px;
+        color: #9d9d9d;
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+    }
+
+    .comment-box .reporting {
+        padding: 5px 0;
+    }
+
+    .comment-box .reporting span {
+        display: inline-block;
+        padding-left: 15px;
+        background: url(/images/d3/modern_simple/ico_reciew_reporting_h17_pc.png) left 3px no-repeat;
+        color: #808080;
+        font-size: 11px;
+        background-size: 10px 10px;
+    }
+
+    .comment-box .reporting a {
+        display: inline-block;
+        padding: 0;
+        font-size: 11px;
+        color: #999999;
+    }
+
+
+    /* 240530 게시글 제목 부분 */
+    .bbs-table-view thead th {
+        border-top: 0;
+        font-size: 1.2em;
+        padding: 20px 0;
+    }
+
+    /* 240530 게시판 이름 부분 */
+    #bbsData .bbs-tit {
+        margin-bottom: 70px !important;
+        display: none;
+    }
+
+    .bbs-table-view {
+        margin-top: 0;
+        padding: 0;
+        border-top: 0;
+    }
+
+    /* 240530 추가 */
+    .bbs-table-view tbody td {
+        padding-top: 50px;
+    }
+
+    /* 240531 목록버튼 수정 */
+    .list-link li.con-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-top: 15px;
+    }
+
+    .list-link li a {
+        font-size: 13px;
+        padding: 6px 10px;
+    }
+
+    /* 240719 add */
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+    /* font 추가 */
+    .bbs-table-view table thead {
+        border-bottom: 1px solid #e5e5e5;
+    }
+
+    .bbs-table-view table thead .tb-center {
+        text-align: center;
+        padding: 30px 0 30px 10px;
+        color: #000;
+        font-size: 15px;
+        font-family: "Noto Sans KR", sans-serif;
+        font-weight: bold;
+    }
+
+    #bbsData .bbs-tit h3 {
+        font-weight: bold;
+        color: #000;
+        font-family: "Montserrat", sans-serif;
+        font-size: 35px;
+    }
+
+    .bbs-list {
+        text-align: center;
+        margin: 70px 0;
+    }
+
+    .bbs-list .listButton {
+        padding: 15px 78px;
+        font-size: 12px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #512772;
+        display: inline-block;
+    }
+
+    /* 240719 수정함 */
+    .list-link span.arrow {
+        padding-left: 10px;
+        background-repeat: no-repeat;
+        background-position: center bottom !important;
+    }
+
+    .list-link span.arrow.next {
+        position: relative;
+        overflow: hidden;
+        background-image: none;
+    }
+
+    .list-link span.arrow.next::before {
+        content: '';
+        background-image: url(//jstyle07.jpg3.kr/RENEWAL/contents/view/arrow.png);
+        transform: rotate(180deg);
+        background-position: center top;
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 13px;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .list-link span.arrow.prev {
+        background-image: url(//jstyle07.jpg3.kr/RENEWAL/contents/view/arrow.png);
+    }
+
+    .list-link {
+        position: relative;
+        border-top: 1px solid #e5e5e5;
+        padding: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    .list-link li {
+        padding: 20px 0px;
+        border-bottom: 1px solid #E5E5E5;
+    }
+
+    .list-link li a {
+        color: #000;
+    }
+
+    #bbsData {
+        font-family: "Noto Sans KR", sans-serif;
+    }
+
+    .bbs-table-view .fixed-img-collist {
+        border-top: 0;
+        margin-top: 0;
+        padding-top: 0;
+    }
+
+    .bbs-table-view .list-tit {
+        margin-bottom: 3px;
+        display: none;
+    }
+
+    p.sell {
+        display: block !important;
+        margin: 10px 0;
+    }
+
+    p.icons {
+        display: flex !important;
+        flex-direction: row;
+        width: 100%;
+    }
+
+    span.MK-product-icons img {
+        margin-right: 5px;
+    }
+
+    span.prd-name {
+        display: block !important;
+        color: #000;
+        margin-top: 10px;
+    }
+
+    .bbs-table-view .fixed-img-collist ul {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0 !important;
+        margin: 0 !important;
+        text-align: left !important;
+        width: 100%;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li {
+        float: none !important;
+        display: block;
+        padding: 0 3px !important;
+        margin-bottom: 25px;
+        width: calc((100% - 18px)/ 3) !important;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li a span.prd img {
+        width: 100% !important;
+        height: 100% !important;
+        margin-bottom: 0 !important;
+    }
+
+    .bbs-table-view .fixed-img-collist ul li a {
+        padding: 0 !important;
+    }
+
+    /* 240723 add */
+    .bbs-table-view td {
+        display: block !important;
+    }
+
+    .bbs-table-view .data-bd-cont {
+        width: 100% !important;
+        position: relative;
+        padding: 0 !important;
+    }
+
+    .content__container {
+        display: flex;
+        flex-direction: row;
+        gap: 1%;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    .content_wrapper {
+        width: 35%;
+        position: relatvie;
+    }
+
+    .video__frame {
+        position: sticky;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding-bottom: 177.777%;
+    }
+</style>
+
+<!--/script_scroll(1)/-->
+<div id="wrap">
+    <!--/include_header(1)/-->
+    <div id="contentWrapper">
+        <div id="contentWrap">
+            <!--/include_menu(1)/-->
+            <div id="content">
+                <div id="bbsData">
+                    <div class="page-body">
+
+                        <!-- //게시판 리스트 -->
+                        <div class="bbs-tit">
+                            <h3>CONTENTS</h3>
+                        </div>
+
+                        <div class="bbs-table-view">
+                            <table summary="게시글 보기">
+                                <caption>게시글 보기</caption>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <!-- 게시글 제목 -->
+                                            <div class="tb-center"><!--/subject/--></div>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="data-bd-cont">
+                                                <!-- 게시글 썸네일 -->
+                                                <!--/if_attach_image/-->
+                                                <div class="attach">
+                                                    <!--/if_attach_image_size/-->
+                                                    <img width="<!--/attach_image_size/-->"
+                                                        src="<!--/attach_image/-->" />
+                                                    <!--/else/-->
+                                                    <img src="<!--/attach_image/-->" />
+                                                    <!--/end_if/-->
+                                                </div>
+                                                <!--/end_if/-->
+
+                                                <!-- 게시글 콘텐츠 -->
+                                                <div class="content__container">
+                                                    <div class="content_wrapper">
+                                                        <div class="video__frame"><!--/content/--></div>
+                                                    </div>
+                                                    <!-- 게시글 관련 상품 -->
+                                                    <!--/if_recommend_product/-->
+                                                    <div class="fixed-img-collist">
+                                                        <h3 class="list-tit">게시글 관련 상품</h3>
+                                                        <ul class="clear">
+                                                            <!--/loop_recommend_product/-->
+                                                            <li>
+                                                                <a href="<!--/recommend_product@link/-->">
+                                                                    <span class="prd"><img
+                                                                            src="<!--/recommend_product@image_s/-->"
+                                                                            alt="" title="" /></span>
+                                                                    <span
+                                                                        class="prd-name"><!--/recommend_product@name/--></span>
+                                                                </a>
+                                                                <p class="sell">
+                                                                    <!--/number/recommend_product@price_sell/-->원</p>
+                                                                <p class="icons"><!--/recommend_product@icons/--></p>
+                                                            </li>
+                                                            <!--/end_loop/-->
+                                                        </ul>
+                                                    </div>
+                                                    <!--/end_if/-->
+                                                </div>
+                                                <!--/if_link_report_popup/-->
+                                                <a href="javascript:void(0);" class="btn-report"
+                                                    onclick="<!--/link_report_popup/-->">신고/차단</a>
+                                                <!--/end_if/-->
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <!-- 하단버튼 -->
+                            <div class="bbs-list">
+                                <!--/if_link_list/-->
+                                <a href="<!--/link_list/-->" class="listButton">목록</a>
+                                <!--/end_if/-->
+                            </div>
+                            <!-- //하단버튼 -->
+
+                            <!-- 이전글 다음글 -->
+                            <ul class="list-link">
+                                <!--/if_link_prev_article/-->
+                                <li>
+                                    <span class="arrow prev"></span>
+                                    <!--/if_prev_article_product_name/-->
+                                    <a
+                                        href="<!--/link_prev_article_product/-->">[<!--/prev_article_product_name/-->]</a>
+                                    <!--/end_if/-->
+                                    <!--/if_prev_article_subject/-->
+                                    <a href="<!--/link_prev_article/-->"><!--/prev_article_subject/--></a>
+                                    <!--/if_prev_article_comment_count(+1)/-->
+                                    (<!--/prev_article_comment_count/-->)
+                                    <!--/end_if/-->
+                                    <!--/end_if/-->
+                                </li>
+                                <!--/end_if/-->
+                                <!--/if_link_next_article/-->
+                                <li>
+                                    <span class="arrow next"></span>
+                                    <!--/if_next_article_product_name/-->
+                                    <a
+                                        href="<!--/link_next_article_product/-->">[<!--/next_article_product_name/-->]</a>
+                                    <!--/end_if/-->
+                                    <!--/if_next_article_subject/-->
+                                    <a href="<!--/link_next_article/-->"><!--/next_article_subject/--></a>
+                                    <!--/if_next_article_comment_count(+1)/-->
+                                    (<!--/next_article_comment_count/-->)
+                                    <!--/end_if/-->
+                                    <!--/end_if/-->
+                                </li>
+                                <!--/end_if/-->
+                            </ul>
+                            <!-- //이전글 다음글 -->
+                        </div><!-- .page-body -->
+
+                    </div><!-- #bbsData -->
+                </div><!-- #content -->
+            </div><!-- #contentWrap -->
+        </div><!-- #contentWrapper-->
+        <hr />
+        <!--/include_footer(1)/-->
+    </div>
+</div><!-- #wrap -->
+
+<!-- 입어주라방 업로드 코드 -->
+<iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"allowfullscreen allowscriptaccess=always frameborder=0 src="https://www.youtube.com/embed/lGKma2ZEMj8?hl=ko_KR&version=3&vq=hd720&autoplay=0&loop=1&showinfo=0&controls=1&rel=0&playlist=lGKma2ZEMj8"style=position:absolute;width:100%;height:100% type=application/x-shockwave-flash></iframe>
+<!-- mobile -->
+<figure class=aspect><iframe allowfullscreen frameborder=0 src=https://youtube.com/embed/lqmKw0sz7JA title="YouTube video player"></iframe></figure>
