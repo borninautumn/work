@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- google webfont link -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <!-- style css -->
+    <style>
+        main,
+        section,
+        div,
+        article {
+            position: relative;
+        }
+
+        ul,
+        ol,
+        li {
+            list-style: none;
+        }
+
+        a,
+        img {
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            vertical-align: top;
+        }
+
+        body {
+            background-color: #fcfcfc;
+        }
+
+        .container {
+            font-family: "Montserrat", "Noto Sans KR", sans-serif;
+            font-size: 18px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            box-sizing: border-box;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1.title {
+            color: #361056;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 100px;
+            margin-bottom: 0;
+            transition: all 0.3s;
+        }
+
+        h3.sub__title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            text-align: center;
+            margin: 0;
+            transition: all 0.3s;
+        }
+
+
+        /* 
+    등급혜택 
+*/
+        .level__wrap {
+            max-width: 780px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+            margin-top: 70px;
+        }
+
+        /* 탭메뉴 */
+        .tabs {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: end;
+            gap: 1%;
+            margin: 0 0 50px;
+            padding: 0;
+        }
+
+        .tab__btn {
+            width: 20%;
+            cursor: pointer;
+            border-radius: 15px 0 0 0;
+            transition: all 0.3s;
+        }
+
+        .tab__btn span {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.3rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        /* family */
+        .tabs .tab__btn:nth-child(1) {
+            height: 66px;
+            border: 1px solid #c3a999;
+            color: #c3a999;
+        }
+
+        .tabs .tab__btn:nth-child(1).family {
+            background-color: #c3a999;
+        }
+
+        .tabs .tab__btn:nth-child(1).family span {
+            color: #fff;
+        }
+
+        /* silver */
+        .tabs .tab__btn:nth-child(2) {
+            height: 88px;
+            border: 1px solid #a3a3a3;
+            color: #a3a3a3;
+        }
+
+        .tabs .tab__btn:nth-child(2).silver {
+            background-color: #a3a3a3;
+        }
+
+        .tabs .tab__btn:nth-child(2).silver span {
+            color: #fff;
+        }
+
+        /* gold */
+        .tabs .tab__btn:nth-child(3) {
+            height: 106px;
+            border: 1px solid #fbb70e;
+            color: #fbb70e;
+        }
+
+        .tabs .tab__btn:nth-child(3).gold {
+            background-color: #fbb70e;
+        }
+
+        .tabs .tab__btn:nth-child(3).gold span {
+            color: #fff;
+        }
+
+        /* vip */
+        .tabs .tab__btn:nth-child(4) {
+            height: 126px;
+            border: 1px solid #ff673a;
+            color: #ff673a;
+        }
+
+        .tabs .tab__btn:nth-child(4).vip {
+            background-color: #ff673a;
+        }
+
+        .tabs .tab__btn:nth-child(4).vip span {
+            color: #fff;
+        }
+
+        /* vvip */
+        .tabs .tab__btn:nth-child(5) {
+            height: 146px;
+            border: 1px solid #f11466;
+            color: #f11466;
+        }
+
+        .tabs .tab__btn:nth-child(5).vvip {
+            background-color: #f11466;
+        }
+
+        .tabs .tab__btn:nth-child(5).vvip span {
+            color: #fff;
+        }
+
+        /* royal */
+        .tabs .tab__btn:nth-child(6) {
+            height: 166px;
+            border: 1px solid #361056;
+            color: #361056;
+        }
+
+        .tabs .tab__btn:nth-child(6).royal {
+            background-color: #361056;
+        }
+
+        .tabs .tab__btn:nth-child(6).royal span {
+            color: #fff;
+        }
+
+        /* 탭 콘텐츠 */
+        .tcont__wrap {
+            clear: both;
+            display: none;
+        }
+
+        .tab__cont {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .tab__cont .cont.left {
+            width: 20%;
+            border-top: 2px solid rgb(54, 16, 86);
+        }
+
+        .tab__cont .cont.left .lev__name {
+            font-size: 2.3rem;
+            color: rgb(54, 16, 86);
+            text-transform: uppercase;
+        }
+
+        .tab__cont .cont.left p {
+            color: #aaa;
+            font-size: 1.3rem;
+            margin-top: -30px;
+        }
+
+        .tab__cont .cont.right {
+            width: 75%;
+            border-top: 1px solid #eee;
+        }
+
+        .tab__cont .cont.right p {
+            font-size: 1.5rem;
+            margin-top: -15px;
+        }
+
+        .tab__cont .cont.right p:first-child {
+            margin-top: 30px;
+
+        }
+
+        .tab__cont .cont.right p span {
+            font-size: 1.1rem;
+        }
+
+        .tab__cont .cont.right p span.new {
+            position: relative;
+        }
+
+        .tab__cont .cont.right p span.new::after {
+            content: 'new';
+            text-transform: uppercase;
+            color: #ff6d44;
+            font-size: 12px;
+            font-weight: bold;
+            position: absolute;
+            left: 3px;
+        }
+
+        .show {
+            display: block;
+        }
+
+        /* 
+    responsive 
+*/
+        @media (max-width: 640px) {
+            h1.title {
+                font-size: 2.5rem;
+            }
+
+            h2.sub__title {
+                font-size: 1.3rem
+            }
+
+            .tab__btn span {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 540px) {
+            h1.title {
+                font-size: 2rem;
+            }
+
+            h2.sub__title {
+                font-size: 1.1rem
+            }
+
+            /* 
+        tab menu
+    */
+            .tab__btn span {
+                font-size: 0.6rem;
+                bottom: 10px;
+            }
+
+            .tabs .tab__btn:nth-child(1) {
+                height: 36px;
+            }
+
+            .tabs .tab__btn:nth-child(2) {
+                height: 46px;
+            }
+
+            .tabs .tab__btn:nth-child(3) {
+                height: 56px;
+            }
+
+            .tabs .tab__btn:nth-child(4) {
+                height: 66px;
+            }
+
+            .tabs .tab__btn:nth-child(5) {
+                height: 76px;
+            }
+
+            .tabs .tab__btn:nth-child(6) {
+                height: 86px;
+            }
+        }
+
+        /* @media (max-width: 420px) {
+    h1.title { font-size: 1.7rem; }
+    h2.sub__title { font-size: 1rem; }
+} */
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1 class="title">TITLE</h1>
+        <h3 class="sub__title">SUB TITLE</h3>
+        <section class="level__wrap">
+            <div class="tabs">
+                <div class="tab__btn family"><span>family</span></div>
+                <div class="tab__btn"><span>silver</span></div>
+                <div class="tab__btn"><span>gold</span></div>
+                <div class="tab__btn"><span>vip</span></div>
+                <div class="tab__btn"><span>vvip</span></div>
+                <div class="tab__btn"><span>royal</span></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- jQuery Import -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        const tabButton = $('.tab__btn');
+        const tabContent = $('.tcont__wrap');
+
+        tabFunc();
+
+        function tabFunc() {
+            // tab1
+            tabButton.eq(0).on('click', function () {
+
+                // 탭버튼 remove
+                tabButton.eq(5).removeClass('royal');
+                tabButton.eq(4).removeClass('vvip');
+                tabButton.eq(3).removeClass('vip');
+                tabButton.eq(2).removeClass('gold');
+                tabButton.eq(1).removeClass('silver');
+                // add
+                tabButton.eq(0).addClass('family');
+                tabContent.eq(0).addClass('family');
+
+                // 탭컨텐츠 remove
+                tabContent.eq(5).removeClass('royal');
+                tabContent.eq(4).removeClass('vvip');
+                tabContent.eq(3).removeClass('vip');
+                tabContent.eq(2).removeClass('gold');
+                tabContent.eq(1).removeClass('silver');
+            });
+            // tab2
+            tabButton.eq(1).on('click', function () {
+                // 탭컨텐츠 remove
+                tabContent.eq(5).removeClass('royal');
+                tabContent.eq(4).removeClass('vvip');
+                tabContent.eq(3).removeClass('vip');
+                tabContent.eq(2).removeClass('gold');
+                tabContent.eq(0).removeClass('family');
+                // 탭버튼 remove
+                tabButton.eq(5).removeClass('royal');
+                tabButton.eq(4).removeClass('vvip');
+                tabButton.eq(3).removeClass('vip');
+                tabButton.eq(2).removeClass('gold');
+                tabButton.eq(0).removeClass('family');
+                // add
+                tabButton.eq(1).addClass('silver');
+                tabContent.eq(1).addClass('silver');
+            });
+            // tab3
+            tabButton.eq(2).on('click', function () {
+                // 탭컨텐츠 remove
+                tabContent.eq(5).removeClass('royal');
+                tabContent.eq(4).removeClass('vvip');
+                tabContent.eq(3).removeClass('vip');
+                tabContent.eq(1).removeClass('silver');
+                tabContent.eq(0).removeClass('family');
+                // 탭버튼 remove
+                tabButton.eq(5).removeClass('royal');
+                tabButton.eq(4).removeClass('vvip');
+                tabButton.eq(3).removeClass('vip');
+                tabButton.eq(1).removeClass('silver');
+                tabButton.eq(0).removeClass('family');
+                // add
+                tabButton.eq(2).addClass('gold');
+                tabContent.eq(2).addClass('gold');
+            });
+            // tab4
+            tabButton.eq(3).on('click', function () {
+                // 탭컨텐츠 remove
+                tabContent.eq(5).removeClass('royal');
+                tabContent.eq(4).removeClass('vvip');
+                tabContent.eq(2).removeClass('gold');
+                tabContent.eq(1).removeClass('silver');
+                tabContent.eq(0).removeClass('family');
+                // 탭버튼 remove
+                tabButton.eq(5).removeClass('royal');
+                tabButton.eq(4).removeClass('vvip');
+                tabButton.eq(2).removeClass('gold');
+                tabButton.eq(1).removeClass('silver');
+                tabButton.eq(0).removeClass('family');
+                // add
+                tabButton.eq(3).addClass('vip');
+                tabContent.eq(3).addClass('vip');
+            });
+            // tab5
+            tabButton.eq(4).on('click', function () {
+                // 탭컨텐츠 remove
+                tabContent.eq(5).removeClass('royal');
+                tabContent.eq(3).removeClass('vip');
+                tabContent.eq(2).removeClass('gold');
+                tabContent.eq(1).removeClass('silver');
+                tabContent.eq(0).removeClass('family');
+                // 탭버튼 remove
+                tabButton.eq(5).removeClass('royal');
+                tabButton.eq(3).removeClass('vip');
+                tabButton.eq(2).removeClass('gold');
+                tabButton.eq(1).removeClass('silver');
+                tabButton.eq(0).removeClass('family');
+                // add
+                tabButton.eq(4).addClass('vvip');
+                tabContent.eq(4).addClass('vvip');
+            });
+            // tab6
+            tabButton.eq(5).on('click', function () {
+                // 탭컨텐츠 remove
+                tabContent.eq(4).removeClass('vvip');
+                tabContent.eq(3).removeClass('vip');
+                tabContent.eq(2).removeClass('gold');
+                tabContent.eq(1).removeClass('silver');
+                tabContent.eq(0).removeClass('family');
+                // 탭버튼 remove
+                tabButton.eq(4).removeClass('vvip');
+                tabButton.eq(3).removeClass('vip');
+                tabButton.eq(2).removeClass('gold');
+                tabButton.eq(1).removeClass('silver');
+                tabButton.eq(0).removeClass('family');
+                // add
+                tabButton.eq(5).addClass('royal');
+                tabContent.eq(5).addClass('royal');
+            });
+        }
+
+
+    </script>
+</body>
+
+</html>
