@@ -1,0 +1,113 @@
+<!-- MOBILE 카테고리 타이틀 -->
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+    /* MOBILE 베스트 아이템 안보이게 하기 */
+    .MK_product_list.best_product { display: none !important; }
+
+    /* 카테고리 타이틀 부분 CSS */
+    .category__title img { width: 100%; display: block; }
+    .category__title { position: relative; }
+    .timer__wrap { font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif; }
+    /* 타이머 */
+    .timer__wrap .timer {
+        width: 100%; height: 11.5%;
+        display: flex;
+        flex-direction: row;
+        position: absolute !important;
+        justify-content: center;
+        align-items: center;
+        padding: 0; margin: 0;
+    }
+    .timer.timer1 { top: 78.8%; color: #000; }
+    .timer #timer1-day1,
+    .timer #timer1-day2,
+    .timer #timer1-hour1,
+    .timer #timer1-hour2,
+    .timer #timer1-min1,
+    .timer #timer1-min2,
+    .timer #timer1-sec1,
+    .timer #timer1-sec2 { 
+        position: absolute; top: 0; left: 0;
+        font-size: 3.5em; line-height: 1.39; text-align: center;
+        width: 11.5%; height: 100%;
+        font-variant-numeric: tabular-nums;
+        display: block;
+    }
+    /* 시간, 분, 초 */
+    .timer #timer1-hour1 { left: 7.63%; }
+    .timer #timer1-hour2 { left: 20%; }
+    .timer #timer1-min1 { left: 38.13%; }
+    .timer #timer1-min2 { left: 50.5%; }
+    .timer #timer1-sec1 { left: 68.5%; }
+    .timer #timer1-sec2 { left: 80.88%; }
+</style>
+
+<section class="category__title">
+    <img src="#" />
+    <!-- 타이머1 -->
+    <div class="timer__wrap">
+        <div id="timer1" class="timer timer1">
+            <!-- <span id="timer1-day1"></span><span id="timer1-day2"></span> -->
+            <span id="timer1-hour1"></span><span id="timer1-hour2"></span>
+            <span id="timer1-min1"></span><span id="timer1-min2"></span>
+            <span id="timer1-sec1"></span><span id="timer1-sec2"></span>
+        </div>
+    </div>
+</section>
+
+<script>
+    function init() {
+        countdownTimer('timer1', '2025/06/25 23:59:00'); // 첫번째 타이머
+    }
+
+    function countdownTimer(timerId, endTime) {
+        let interval;
+
+        function startTimer() {
+            clearInterval(interval); // 기존 인터벌 제거 (중복 방지)
+
+            const finalEndTime = new Date(endTime).getTime(); // 각 타이머의 종료 시간
+
+            interval = setInterval(() => {
+                const currentTime = new Date().getTime(); // 현재 시간 (밀리초)
+                const diff = finalEndTime - currentTime; // 남은 시간 계산
+
+                // 최종 종료 시간을 초과하면 타이머 종료
+                if (diff <= 0) {
+                    clearInterval(interval);
+                    //document.getElementById(`${timerId}-day1`).innerText = '0';
+                    //document.getElementById(`${timerId}-day2`).innerText = '0';
+                    document.getElementById(`${timerId}-hour1`).innerText = '0';
+                    document.getElementById(`${timerId}-hour2`).innerText = '0';
+                    document.getElementById(`${timerId}-min1`).innerText = '0';
+                    document.getElementById(`${timerId}-min2`).innerText = '0';
+                    document.getElementById(`${timerId}-sec1`).innerText = '0';
+                    document.getElementById(`${timerId}-sec2`).innerText = '0';
+                    return;
+                }
+
+                // 남은 시간 계산 (일, 시간, 분, 초 단위)
+                // const totalHours = Math.floor(diff / (1000 * 60 * 60)); // 전체 남은 시간
+                //const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                const hours = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+                // const hours = String(totalHours).padStart(3, '0');
+                const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+                const secs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+                // 숫자를 개별적으로 분리하여 해당 타이머의 HTML 요소 업데이트
+                //document.getElementById(`${timerId}-day1`).innerText = days[0];
+                //document.getElementById(`${timerId}-day2`).innerText = days[1];
+                document.getElementById(`${timerId}-hour1`).innerText = hours[0];
+                document.getElementById(`${timerId}-hour2`).innerText = hours[1];
+                document.getElementById(`${timerId}-min1`).innerText = mins[0];
+                document.getElementById(`${timerId}-min2`).innerText = mins[1];
+                document.getElementById(`${timerId}-sec1`).innerText = secs[0];
+                document.getElementById(`${timerId}-sec2`).innerText = secs[1];
+            }, 1000);
+        }
+
+        startTimer(); // 타이머 실행
+    }
+
+    init();
+</script>
