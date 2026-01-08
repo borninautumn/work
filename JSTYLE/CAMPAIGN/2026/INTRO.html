@@ -1,0 +1,696 @@
+<!-- PC -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    @font-face {
+        font-family: 'SchoolSafetyNotification';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+        font-weight: 400;
+        font-display: swap;
+    }
+    @font-face {
+        font-family: 'SchoolSafetyNotification';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+        font-weight: 700;
+        font-display: swap;
+    }
+
+    /* 기본 설정: 흰색 깜빡임 방지 */
+    body { margin: 0; padding: 0; background-color: #000; overflow-x: hidden; }
+
+    .campaign_container { position: relative; width: 100%; height: 100vh; }
+    
+    /* 인트로 섹션 */
+    
+    /* 인트로 */
+    #intro { 
+        position: fixed; 
+        inset: 0; 
+        z-index: 100; 
+        background: #000; 
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.3s steps(2); /* 점멸 느낌을 위한 짧은 전환 */
+    }
+    .into_btm_txt { position: absolute; top: 49.72%; left: 50%; transform: translateX(-50%); }
+    .into_txt_wrap { 
+        position: absolute; left: 50%; top: 30.56%; transform: translateX(-50%); 
+        width: 1116px; /* 너비 고정: 왼쪽에서 타이핑되는 느낌 유지 */
+        display: flex; justify-content: flex-start;
+    }
+    .intro-text { 
+        font-family: 'SchoolSafetyNotification', sans-serif;
+        font-size: 120px; color: #fff; font-weight: bold; letter-spacing: -1px;
+        text-align: left; white-space: nowrap;
+    }
+    /* 마지막 마침표 깜빡임 */
+    .last-dot { animation: dotBlink 0.8s infinite; }
+    @keyframes dotBlink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+    }
+
+    /* 메인 섹션: 점멸하듯 나타나는 효과 */
+    .main-content {
+        display: none; 
+        position: relative; width: 100%; height: 100vh;
+    }
+    .main-content.show {
+        display: block;
+        animation: impact-in 0.4s ease-out; /* 확 나타나는 효과 */
+    }
+    @keyframes impact-in {
+        0% { transform: scale(1.1); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* 전광판(Marquee) 설정 */
+    .marquee-container {
+        width: 100%; 
+        overflow: hidden;
+        background: transparent;
+        position: absolute; top: 36.39%;
+        z-index: 2;
+        pointer-events: none; /* 클릭 방해 금지 */
+    }
+    .marquee-text {
+        display: flex;
+        width: fit-content;
+        animation: marquee-img 60s linear infinite;
+    }
+    .marquee-text img {
+        display: block; height: 150px;
+        padding-right: 320px;
+    }
+    @keyframes marquee-img {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 로고 */
+    .campaign_logo { position: absolute; left: 5%; top: 6.48%; }
+    .campaign_logo, .campaign_tabs, .campaignSwiper .arrow {
+        z-index: 10;
+    }
+    .sub_title { position: absolute; top: 7.41%; left: 13.75%; z-index: 10; }
+
+    /* slide */
+    .campaignSwiper { position: relative; width: 100%; height: 100%; }
+    .campaignSwiper .swiper-slide.bg-05 { background-color: #caabb8; }
+    .campaignSwiper .swiper-slide.bg-04 { background-color: #343f51; }
+    .campaignSwiper .swiper-slide.bg-03 { background-color: #95a229; }
+    .campaignSwiper .swiper-slide.bg-02 { background-color: #b7a290; }
+    .campaignSwiper .swiper-slide.bg-01 { background-color: #151515; }
+    .campaignSwiper .chapter_img, 
+    .campaignSwiper .chapter_txt {
+        position: absolute;
+        z-index: 3; /* 전광판(2)보다 위로 올림 */
+        left: 50%; transform: translateX(-50%);
+    }
+    .campaignSwiper .chapter_img { top: 20.37%; }
+    .campaignSwiper .chapter_txt { bottom: 7.69%; }
+    .campaignSwiper .arrow { position: absolute; top: 65.28%; cursor: pointer; }
+    .campaignSwiper .arrow.arrow-next { right: 3.91%; }
+    .campaignSwiper .arrow.arrow-prev { left: 3.96%; }
+    .campaignSwiper .chapter_img p { 
+        position: absolute; top: 41.57%; left: 50%; transform: translateX(-50%);
+        width: 56.05%; height: 13.74%; 
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #151515; border-radius: 50px; box-sizing: border-box;
+        font-family: 'SchoolSafetyNotification', sans-serif; 
+        font-size: 24px; color: #151515; letter-spacing: -1px;
+        text-align: center; line-height: 3.3;
+    }
+
+    /* 탭 */
+    .campaign_tabs { position: absolute; right: 4.95%; top: 6.85%; }
+    .campaign_tabs ul { display: flex; flex-direction: row; justify-content: flex-start; align-items: center; gap: 93px; }
+    .campaign_tabs .campaign_tab { 
+        font-family: 'SchoolSafetyNotification', sans-serif; font-size: 24px; color: #fff; 
+        opacity: 0.2; 
+        cursor: pointer; 
+    }
+    .campaign_tabs .campaign_tab.sel { opacity: 1; }
+</style>
+
+<main class="campaign_container">
+    <!-- intro -->
+    <section id="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/intro.jpg" />
+        <div class="into_txt_wrap">
+            <p id="typing-text" class="intro-text"></p>
+        </div>
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/intro_txt.png" class="into_btm_txt" />
+    </section>
+    <!-- contents -->
+    <section id="main" class="main-content">
+        <!-- logo -->
+        <div class="campaign_logo">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/logo.png" />
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/subtxt.png" />
+        </div>
+        <!-- tab -->
+        <div class="campaign_tabs">
+            <ul>
+                <li class="campaign_tab sel">01</li>
+                <li class="campaign_tab">02</li>
+                <li class="campaign_tab">03</li>
+                <li class="campaign_tab">04</li>
+                <li class="campaign_tab">05</li>
+            </ul>
+        </div>    
+        <!-- swiper -->
+        <div class="swiper campaignSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-01">                
+                <!-- marquee -->
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                    </div>
+                </div>
+                    <div class="chapter_img">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/chapter01.png" />
+                        <p>Release 01.06</p>
+                        <!-- <p>VIEW ❯</p> -->
+                    </div>
+                    <div class="chapter_txt">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_01.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide bg-02">                
+                <!-- marquee -->
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                    </div>
+                </div>
+                    <div class="chapter_img">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/chapter02.png" />
+                        <p>Release 01.13</p>
+                        <!-- <p>VIEW ❯</p> -->
+                    </div>
+                    <div class="chapter_txt">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_02.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide bg-03">                
+                <!-- marquee -->
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                    </div>
+                </div>
+                    <div class="chapter_img">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/chapter03.png" />
+                        <p>Release 01.20</p>
+                        <!-- <p>VIEW ❯</p> -->
+                    </div>
+                    <div class="chapter_txt">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_03.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide bg-04">                
+                <!-- marquee -->
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                    </div>
+                </div>
+                    <div class="chapter_img">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/chapter04.png" />
+                        <p>Release 01.27</p>
+                        <!-- <p>VIEW ❯</p> -->
+                    </div>
+                    <div class="chapter_txt">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_04.png" />
+                    </div>
+                </div>
+                <div class="swiper-slide bg-05">                
+                <!-- marquee -->
+                <div class="marquee-container">
+                    <div class="marquee-text">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                    </div>
+                </div>
+                    <div class="chapter_img">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/chapter05.png" />
+                        <p>Release 02.03</p>
+                        <!-- <p>VIEW ❯</p> -->
+                    </div>
+                    <div class="chapter_txt">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_05.png" />
+                    </div>
+                </div>
+            </div>
+            <div class="arrow arrow-next">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/arrow_right.png" />
+            </div>
+            <div class="arrow arrow-prev">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/arrow_left.png" />
+            </div>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const textElement = document.getElementById('typing-text');
+        const content = "Be Bold. Be You. Be.";
+        let index = 0;
+        const typingSpeed = 250;
+
+        // 1. 타이핑 함수를 먼저 선언하고 실행
+        function type() {
+            if (!textElement) return;
+            if (index < content.length) {
+                const char = content.charAt(index);
+                if (index === content.length - 1 && char === '.') {
+                    const dotSpan = document.createElement('span');
+                    dotSpan.className = 'last-dot';
+                    dotSpan.textContent = char;
+                    textElement.appendChild(dotSpan);
+                    startTransition(); 
+                } else {
+                    const textNode = document.createTextNode(char);
+                    textElement.appendChild(textNode);
+                }
+                index++;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        function startTransition() {
+            setTimeout(() => {
+                const intro = document.getElementById('intro');
+                const main = document.getElementById('main');
+                if (intro && main) {
+                    intro.style.opacity = '0';
+                    setTimeout(() => {
+                        intro.style.display = 'none';
+                        main.classList.add('show');
+                        // swiper autoplay start
+                        if (swiper) {
+                            swiper.slideTo(0, 0);
+                            swiper.autoplay.start();
+                        }
+                    }, 600);
+                }
+            }, 2500);
+        }
+
+        // 타이핑 시작
+        setTimeout(type, 100);
+
+        // Swiper
+        let swiper;
+        swiper = new Swiper('.campaignSwiper', {
+            spaceBetween: 0,
+            autoplay: false,
+            loop: true,
+            navigation: {
+                nextEl: '.arrow-next',
+                prevEl: '.arrow-prev',
+            },
+            // tab과 연결
+            on: {
+                // 스와이프해서 슬라이드 바뀔 때 실행
+                slideChange: function() {
+                    const tabs = document.querySelectorAll('.campaign_tab');
+                    const currentIndex = this.realIndex; // 현재 활성화된 슬라이드 인덱스
+                    // 모든 탭의 'sel' 클래스 제거하고 현재 인덱스에만 추가
+                    tabs.forEach((tab, index) => {
+                        if (index === currentIndex) {
+                            tab.classList.add('sel');
+                        } else {
+                            tab.classList.remove('sel');
+                        }
+                    });
+                }
+            }
+        });
+
+        // 2. 탭 이벤트
+        const tabs = document.querySelectorAll('.campaign_tab');
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', function() {
+                // 클릭한 탭의 인덱스로 슬라이드 이동
+                swiper.slideToLoop(index);
+                // 탭 활성화 (즉각적 반응 위해 추가함)
+                tabs.forEach(t => t.classList.remove('sel'));
+                this.classList.add('sel');
+            });
+        });
+    });
+
+    swiper.autoplay.stop();
+</script>
+
+<!-- MOBILE -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<style>
+    @font-face {
+        font-family: 'SchoolSafetyNotification';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-R.woff2') format('woff2');
+        font-weight: 400; font-display: swap;
+    }
+    @font-face {
+        font-family: 'SchoolSafetyNotification';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimAllimjangTTF-B.woff2') format('woff2');
+        font-weight: 700; font-display: swap;
+    }
+
+    body { margin: 0; padding: 0; background-color: #000; overflow-x: hidden; }
+    .campaign_container { position: relative; max-width: 800px; width: 100%; height: 100dvh; overflow: hidden; margin: 0 auto; }
+    .campaign_container img { display: block; width: 100%; }
+
+    /* [INTRO] */
+    #intro { 
+        position: fixed; inset: 0; z-index: 1000; background: #000; 
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity 0.6s ease-in-out; will-change: opacity;
+        height: 100dvh;
+    }
+    #intro > img { width: 100%; height: 100dvh; object-fit: cover; }
+    .intro_btm_txt { position: absolute; top: 48.7%; left: 50%; transform: translateX(-50%); width: 56.75%; }
+    .intro_top_txt { position: absolute; top: 28.06%; left: 50%; transform: translateX(-50%); width: 56.63%; }
+    .into_txt_wrap { position: absolute; left: 50%; top: 36.67%; transform: translateX(-50%); width: 100%; display: flex; justify-content: center; }
+    .intro-text { font-family: 'SchoolSafetyNotification', sans-serif; font-size: 9vw; line-height: 1.2; color: #fff; font-weight: bold; text-align: center; white-space: pre-line; }
+    .last-dot { animation: dotBlink 0.8s infinite; }
+    @keyframes dotBlink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* [MAIN CONTENT] */
+    .main-content {
+        display: block; position: fixed; inset: 0; z-index: 1; 
+        opacity: 0; visibility: hidden; transition: opacity 0.8s ease; 
+        overflow: hidden;
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+    }
+    .main-content.show { opacity: 1; visibility: visible; animation: impact-in 0.6s ease-out forwards; }
+    @keyframes impact-in { 0% { transform: scale(1.1); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
+    /* [SWIPER BASE] */
+    .campaignSwiper { width: 100%; height: 100%; }
+    .swiper-slide { 
+        position: relative; width: 100%; height: 100%; 
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    .bg-01 { background-color: #151515; }
+    .bg-02 { background-color: #b7a290; }
+    .bg-03 { background-color: #95a229; }
+    .bg-04 { background-color: #343f51; }
+    .bg-05 { background-color: #bd9097; }
+
+    /* [LAYER 2: MARQUEE] - 오타 수정 및 최적화 */
+    .marquee-container {
+        position: absolute; top: 36.39%; left: 0; width: 100%;
+        z-index: 2; pointer-events: none;
+        -webkit-transform: translateZ(1px);
+        transform: translateZ(1px);
+        overflow: hidden;
+    }
+    .marquee-text {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: nowrap !important;
+        width: max-content !important; 
+        /* 3D 가속을 사용하여 사파리 버벅임 방지 */
+        animation: marquee-img 30s linear infinite !important;
+        will-change: transform;
+    }
+
+    .marquee-text img {
+        display: block;
+        height: 70px;
+        width: auto !important;
+        flex-shrink: 0 !important;
+        padding-right: 150px;
+    }
+
+    /* translate3d로 문법 수정 (콤마 오류 해결) */
+    @keyframes marquee-img {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(-50%, 0, 0); }
+    }
+
+    /* [LAYER 3: CONTENT WRAP] */
+    .chapter_content_wrap {
+        position: relative; width: 100%; height: 100%; z-index: 10;
+        -webkit-transform: translateZ(10px);
+        transform: translateZ(10px);
+        pointer-events: none;
+    }
+    .chapter_img { position: absolute; top: 24.34%; left: 50%; transform: translateX(-50%); width: 53.63%; }
+    .chapter_txt { position: absolute; top: 71.54%; left: 50%; transform: translateX(-50%); }
+    
+    .bg-01 .chapter_txt { width: 42%; }
+    .bg-02 .chapter_txt { width: 34.88%; }
+    .bg-03 .chapter_txt { width: 18.75%; }
+    .bg-04 .chapter_txt { width: 29.5%; }
+    .bg-05 .chapter_txt { width: 37.25%; }
+
+    .chapter_img .goCont { 
+        position: absolute; top: 43.57%; left: 50%; transform: translateX(-50%);
+        width: 56.56%; background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid #151515; border-radius: 50px;
+        font-family: 'SchoolSafetyNotification', sans-serif; font-size: 13px; text-align: center; line-height: 3;
+        pointer-events: auto;
+    }
+
+    /* [FIXED UI] */
+    .campaign_logo { position: absolute; left: 9.75%; top: 6.48%; width: 20.25%; cursor: pointer; z-index: 50; transform: translateZ(50px); }
+    .campaign_tabs { position: absolute; right: 13%; top: 6.85%; z-index: 50; transform: translateZ(50px); }
+    .campaign_tabs ul { display: flex; gap: 10px; list-style: none; margin: 0; padding: 0; }
+    .campaign_tab { font-family: 'SchoolSafetyNotification', sans-serif; font-size: 18px; color: #fff; opacity: 0.2; cursor: pointer; }
+    .campaign_tab.sel { opacity: 1; }
+    .arrow { position: absolute; top: 50.65%; cursor: pointer; width: 12.75%; z-index: 50; transform: translateZ(50px); padding: 0 0 20px; }
+    .arrow-next { right: 5.75%; }
+    .arrow-prev { left: 6.75%; }
+    .sub_title { position: absolute; bottom: 6.25%; left: 50%; transform: translateX(-50%); width: 60.88%; z-index: 10; }
+</style>
+
+<main class="campaign_container">
+    <section id="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_intro.jpg" />
+        <div class="into_txt_wrap"><p id="typing-text" class="intro-text"></p></div>
+        <div class="intro_btm_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/intro_txt.png" /></div>
+        <div class="intro_top_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_intro_txt2.png" /></div>
+    </section>
+
+    <section id="main" class="main-content">
+        <div class="campaign_logo"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/logo.png" /></div>
+        <div class="campaign_tabs">
+            <ul>
+                <li class="campaign_tab sel">01</li>
+                <li class="campaign_tab">02</li>
+                <li class="campaign_tab">03</li>
+                <li class="campaign_tab">04</li>
+                <li class="campaign_tab">05</li>
+            </ul>
+        </div>
+
+        <div class="swiper campaignSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide bg-01">
+                    <div class="marquee-container">
+                        <div class="marquee-text">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        </div>
+                    </div>
+                    <div class="chapter_content_wrap">
+                        <div class="chapter_img">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_chapter01.png" />
+                            <a class="goCont" href="/shop/page.html?id=3029&gf_ref=Yz0zMkRiQXc=">VIEW ❯</a>
+                        </div>
+                        <div class="chapter_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_01.png" /></div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-02">
+                    <div class="marquee-container">
+                        <div class="marquee-text">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" />
+                        </div>
+                    </div>
+                    <div class="chapter_content_wrap">
+                        <div class="chapter_img">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_chapter02.png" />
+                            <p class="goCont">Release 01.13</p>
+                            <!-- <a class="goCont" href="/m/page.html?id=3030&gf_ref=Yz1GelhRSm8=">VIEW ❯</a> -->
+                        </div>
+                        <div class="chapter_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_02.png" /></div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-03">
+                    <div class="marquee-container">
+                        <div class="marquee-text"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /></div>
+                    </div>
+                    <div class="chapter_content_wrap">
+                        <div class="chapter_img">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_chapter03.png" />
+                            <p class="goCont">Release 01.20</p>
+                            <!-- <a class="goCont" href="/shop/page.html?id=3029&gf_ref=Yz0zMkRiQXc=">VIEW ❯</a> -->
+                        </div>
+                        <div class="chapter_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_03.png" /></div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-04">
+                    <div class="marquee-container">
+                        <div class="marquee-text"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /></div>
+                    </div>
+                    <div class="chapter_content_wrap">
+                        <div class="chapter_img">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_chapter04.png" />
+                            <p class="goCont">Release 01.27</p>
+                            <!-- <a class="goCont" href="/shop/page.html?id=3029&gf_ref=Yz0zMkRiQXc=">VIEW ❯</a> -->
+                        </div>
+                        <div class="chapter_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_04.png" /></div>
+                    </div>
+                </div>
+                <div class="swiper-slide bg-05">
+                    <div class="marquee-container">
+                        <div class="marquee-text"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/bg_marquee.png" aria-hidden="true" /></div>
+                    </div>
+                    <div class="chapter_content_wrap">
+                        <div class="chapter_img">
+                            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/mo_chapter05.png" />
+                            <p class="goCont">Release 02.03</p>
+                            <!-- <a class="goCont" href="/shop/page.html?id=3029&gf_ref=Yz0zMkRiQXc=">VIEW ❯</a> -->
+                        </div>
+                        <div class="chapter_txt"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/txt_05.png" /></div>
+                    </div>
+                </div>
+            </div>
+            <div class="arrow arrow-next"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/arrow_right.png" /></div>
+            <div class="arrow arrow-prev"><img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/arrow_left.png" /></div>
+        </div>
+    </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const textElement = document.getElementById('typing-text');
+        const content = "Be Bold. Be You. Be.";
+        let index = 0;
+        const typingSpeed = 150;
+
+        function type() {
+            if (!textElement) return;
+            if (index < content.length) {
+                const char = content.charAt(index);
+                if (index === content.length - 1 && char === '.') {
+                    const dotSpan = document.createElement('span');
+                    dotSpan.className = 'last-dot';
+                    dotSpan.textContent = char;
+                    textElement.appendChild(dotSpan);
+                    startTransition(); 
+                } else {
+                    const textNode = document.createTextNode(char);
+                    textElement.appendChild(textNode);
+                }
+                index++;
+                setTimeout(type, typingSpeed);
+            }
+        }
+
+        let swiper = new Swiper('.campaignSwiper', {
+            loop: true,
+            autoplay: { delay: 3000, disableOnInteraction: false },
+            navigation: { nextEl: '.arrow-next', prevEl: '.arrow-prev' },
+            watchSlidesProgress: true,
+            observer: true,
+            observeParents: true,
+            on: {
+                slideChange: function() {
+                    const tabs = document.querySelectorAll('.campaign_tab');
+                    const currentIndex = this.realIndex;
+                    tabs.forEach((tab, i) => tab.classList.toggle('sel', i === currentIndex));
+                }
+            }
+        });
+
+        swiper.autoplay.stop();
+
+        function startTransition() {
+            setTimeout(() => {
+                const intro = document.getElementById('intro');
+                const main = document.getElementById('main');
+                if (intro && main) {
+                    main.classList.add('show');
+                    if (swiper) { 
+                        swiper.update(); 
+                        swiper.loopFix();
+                        swiper.slideToLoop(0, 0); 
+                    }
+                    requestAnimationFrame(() => {
+                        setTimeout(() => {
+                            intro.style.opacity = '0';
+                            setTimeout(() => {
+                                intro.style.display = 'none';
+                                if (swiper) swiper.autoplay.start();
+                            }, 600);
+                        }, 50);
+                    });
+                }
+            }, 3000);
+        }
+
+        document.querySelectorAll('.campaign_tab').forEach((tab, i) => {
+            tab.addEventListener('click', () => swiper.slideToLoop(i));
+        });
+
+        setTimeout(type, 100);
+        const logo = document.querySelector('.campaign_logo');
+        if (logo) logo.addEventListener('click', () => location.reload());
+    });
+</script>
