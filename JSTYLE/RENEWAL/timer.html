@@ -1,0 +1,217 @@
+<style>
+/* 유의사항 부분 css */
+.notice__wrap img { width: 100%; display: block; }
+.notice__wrap,
+.notice__wrap--more { position: relative; }
+.notice__wrap--more { cursor: pointer; display: block; }
+.notice__wrap--more img { margin-top: 0; }
+.notice__wrap--notice {
+    overflow: hidden;
+    height: 0px;
+    transition-property: height;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    z-index: -99;
+}
+.notice__wrap--notice.active { height: 100%; }
+
+/* 250625 add 토요배송*/
+.satTodayDlvr__wrap { width: 100%; position: relative; }
+.satTodayDlvr__wrap img { width: 100%; margin-top: 0; }
+.notice__wrap--more--satDlvr { display: block; cursor: pointer; }
+.notice__wrap--notice--satDlvr {
+    overflow: hidden;
+    height: 0px;
+    transition-property: height;
+    transition-timing-function: linear;
+    transition-duration: 0.3s;
+    z-index: -99;
+}
+.notice__wrap--notice--satDlvr.active { height: 100%; }
+.satTodayDlvr__wrap__inner { position: relative; }
+
+/* 260414 add */
+.dayTodayDlvr__wrap .goDlvr { position: absolute; width: 8.07%; height: 4.4%; top: 41.37%; left: 31.77%; }
+.satTodayDlvr__wrap__inner .satGoDlvr { position: absolute; width: 10.68%; height: 4.23%; top: 83.93%; right: 28.28%; }
+
+/* 평일 유의사항 토글 */
+.notice__wrap--more2 { display: block; cursor: pointer; }
+.notice__wrap--notice2 {
+    overflow: hidden;
+    height: 0px;
+    transition-property: height;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    z-index: -99;
+}
+.notice__wrap--notice2.active { height: 100%; }
+
+/* 타이머 */
+.dayTodayDlvr__wrap img { width: 100%; }
+.dayTodayDlvr__wrap .timer-left,
+.dayTodayDlvr__wrap .timer-right { position: absolute; top: 64.98%; width: 33.49%; height: 15.47%;  }
+.dayTodayDlvr__wrap .timer-left { left: 14.9%; }
+.dayTodayDlvr__wrap .timer-right { right: 14.9%; }
+.dayTodayDlvr__wrap .clockBoxWrapper { 
+    display: flex; flex-direction: column; align-items: center;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); 
+}
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 .dot,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 .dot,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox01 .dot,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox02 .dot { width: 15px; text-align: center; color: #7a7977; }
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox01 .dot,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox02 .dot { opacity: 0; }
+.dayTodayDlvr__wrap .clock_inner { position: relative; }
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 { display: flex; justify-content: center; align-items: center; }
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox01,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox02 { display: flex; flex-direction: row; }
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.h,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.m,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.s,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox01 p,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.h,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.m, 
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.s,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox02 p { width: 123px; text-align: center; margin: 0; }
+/* 타이머 폰트 크기 */
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox01 p,
+.dayTodayDlvr__wrap .clockBoxWrapper .clockBox02 p { font-size: 1em; }
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.h,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.m,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock01 span.s,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.h,
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.m, 
+.dayTodayDlvr__wrap .clockBoxWrapper .clock02 span.s { font-size: 3em; font-weight: 500; }
+</style>
+
+<!-- 상단꾸미기 HTML -->
+<div class="title_ban_wrap">
+    <!-- //////////////////// 이벤트 배너 영역 시작 //////////////////// -->
+    <!-- //////////////////// 이벤트 배너영역 끝 //////////////////// -->
+  
+    <!-- //////////////////// 당발 평일 카테고리 타이틀 //////////////////// -->
+    <section class="dayTodayDlvr__wrap">
+        <div class="clock_wrapper">
+            <div class="clock_inner">
+                <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/0428/wide_tit_01.jpg" />
+                <a href="https://service-area.pingpongpingpong.com/" target="_blank" class="goDlvr"></a>
+                <div class="timer-left">
+                    <div class="clockBoxWrapper">
+                        <div class="clock01">
+                            <span class="h">00</span>
+                            <span class="dot">:</span>
+                            <span class="m">00</span>
+                            <span class="dot">:</span>
+                            <span class="s">00</span>
+                        </div>
+                        <div class="clockBox01">
+                            <p>HRS</p>
+                            <span class="dot">:</span>
+                            <p>MINS</p>
+                            <span class="dot">:</span>
+                            <p>SECS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="timer-right">
+                    <div class="clockBoxWrapper">
+                        <div class="clock01">
+                            <span class="h">00</span>
+                            <span class="dot">:</span>
+                            <span class="m">00</span>
+                            <span class="dot">:</span>
+                            <span class="s">00</span>
+                        </div>
+                        <div class="clockBox01">
+                            <p>HRS</p>
+                            <span class="dot">:</span>
+                            <p>MINS</p>
+                            <span class="dot">:</span>
+                            <p>SECS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 유의사항 토글 -->
+            <div class="notice__wrap--more2">
+                <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/0428/wide_tit_02.jpg" />
+            </div>
+            <!-- 숨겨진 콘텐츠 -->
+            <div class="notice__wrap--notice2">
+                <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/0428/wide_tit_03.jpg" />
+            </div>
+            <!-- 유의사항 토글 끝 -->
+        </div>
+    </section>
+    <!-- //////////////////// 당발 평일 카테고리 타이틀 끝 //////////////////// -->
+    
+
+    <!-- //////////////////// 당발 토요일 카테고리 타이틀 //////////////////// -->
+    <section class="satTodayDlvr__wrap">
+        <div class="satTodayDlvr__wrap__inner">
+            <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/weekend/wide_01.jpg" />
+            <a href="https://service-area.pingpongpingpong.com/" target="_blank" class="satGoDlvr"></a>
+        </div>
+        <!-- 유의사항 -->
+        <div class="notice__wrap--more--satDlvr">
+            <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/weekend/wide_02.jpg" />
+        </div>
+        <div class="notice__wrap--notice--satDlvr">
+            <img src="//jstyle07.jpg3.kr/SITE/TITLE/2026/todayDlvr/weekend/wide_03.jpg" />
+        </div>
+    </section>
+    <!-- //////////////////// 당발 토요일 카테고리 끝 //////////////////// -->
+</div>
+<!-- 상단꾸미기 HTML 끝 -->
+
+<script>
+  $(function () {
+    // 12시 마감(오늘도착), 16시 마감(내일도착) 타이머 초기화
+    initCountdown(12, '.clock01', '.time_notice01', "오늘도착이 마감되었습니다");
+    initCountdown(16, '.clock02', '.time_notice02', "내일도착이 마감되었습니다");
+  
+    function initCountdown(targetHour, clockSelector, noticeSelector, message) {
+        const $clock = $(clockSelector);
+        const $notice = $(noticeSelector);
+        
+        const isTimerActive = true; // true = 타이머 on / false = 타이머 off
+  
+        function updateTimer() {
+            const now = new Date();
+            const day = now.getDay(); // 0(일)~6(토)
+            const end = new Date();
+            
+            end.setHours(targetHour, 0, 0, 0); 
+  
+            let diff = end - now;
+  
+            // [조건] 평일(월~금)이고 시간이 남았을 때만 타이머 작동
+            // 주말(토,일)이거나 시간이 지났으면 00:00:00 처리
+            if (day >= 1 && day <= 5 && diff > 0) {
+                const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+                const m = Math.floor((diff / (1000 * 60)) % 60);
+                const s = Math.floor((diff / 1000) % 60);
+  
+                // 시, 분, 초를 각각의 span에 할당
+                $clock.find('.h').text(h < 10 ? "0" + h : h);
+                $clock.find('.m').text(m < 10 ? "0" + m : m);
+                $clock.find('.s').text(s < 10 ? "0" + s : s);
+                
+                $notice.hide(); // 시간 남았을 땐 공지 숨김
+            } else {
+                // 주말이거나 마감 시간이 지났을 때
+                $clock.find('.h, .m, .s').text("00");
+                $notice.text(message).show().addClass("color_bk");
+            }
+        }
+  
+        if (isTimerActive) {
+            // 즉시 실행 후 1초마다 반복 (실시간의 핵심)
+            updateTimer();
+            setInterval(updateTimer, 1000);
+        }
+    }
+  });
+</script>
