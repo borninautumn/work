@@ -1,0 +1,31 @@
+<style>
+    /* 유의사항 부분 css */
+    .notice__wrap,
+    .notice__wrap--more { position: relative; }
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice {
+        height: 0px;
+        overflow: hidden;
+        transition: height 0.3s ease; /* 애니메이션 효과 추가 */
+    }
+    .notice__wrap--notice.active { overflow: visible; }
+</style>
+
+<main class="event__container">
+
+    <!-- NOTICE -->
+    <section>
+        <div class="notice__wrap--more">
+            <!-- 유의사항 버튼 -->
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_FW_SEASON_OFF/event_14.jpg" alt="notice_image more"
+                class="imgBox">
+        </div>
+        <!-- 유의사항 내용 -->
+        <div class="notice__wrap--notice">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0113_FW_SEASON_OFF/event_15.jpg" alt="notice_image"
+                class="imgBox">
+        </div>
+    </section>
+    
+</main>

@@ -1,0 +1,124 @@
+<!-- PC 카테고리 타이틀 -->
+<style>
+    /* PC 베스트 아이템 안보이게 하기 */
+    .recmd-item-wrap { display: none !important; }
+    /* 공통 */
+    .dlvr_evt_cate_title { position: relative; }
+    .dlvr_evt_cate_title img { width: 100%; display: block; }
+    /* 카테고리타이틀 부분 */
+    .dlvr_evt_category_title--image { position: inherit; }
+    /* 유의사항 부분 css */
+    .dlvr_evt_notice_wrap--more { position: inherit; cursor: pointer; display: block; }
+    .dlvr_evt_notice_wrap--more img { margin-top: 0; }
+    .dlvr_evt_notice_wrap--notice { 
+        overflow: hidden;
+        height: 0px;
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        z-index: -99;
+    }
+    .dlvr_evt_notice_wrap--notice.active { height: 100%; }
+    /* 쿠폰 */
+    .dlvrEvtCoupon { position: absolute; width: 22.19%; height: 66.87%; top: 15.95%; right: 20.47%; }
+</style>
+
+<section class="dlvr_evt_cate_title">
+    <!-- 카테고리 타이틀 부분 -->
+    <div class="dlvr_evt_category_title--image">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/wide_tit_01.jpg" />
+        <a href="#" class="dlvrEvtCoupon"></a>
+    </div>
+    <!-- 유의사항 부분 -->
+    <div class="dlvr_evt_notice_wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/wide_tit_02.jpg" />
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="dlvr_evt_notice_wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/wide_tit_03.jpg" />
+    </div>
+</section>
+
+<script>
+    function dlvrEvtNoticeToggle() {
+        const dlvrEvtNoticeCont = document.querySelector('.dlvr_evt_notice_wrap--notice');
+        const dlvrEvtNoticeContImg = dlvrEvtNoticeCont.querySelector('img');
+        const height = dlvrEvtNoticeContImg ? dlvrEvtNoticeContImg.clientHeight : 0;
+
+        dlvrEvtNoticeCont.classList.toggle('active');
+
+        if (dlvrEvtNoticeCont.classList.contains('active')) {
+            dlvrEvtNoticeCont.style.height = height + 'px';
+        } else {
+            dlvrEvtNoticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const dlvrEvtNoticeBtn = document.querySelector('.dlvr_evt_notice_wrap--more');
+    if (dlvrEvtNoticeBtn) { dlvrEvtNoticeBtn.addEventListener('click', dlvrEvtNoticeToggle); }
+</script>
+
+
+<!-- MOBILE 카테고리 타이틀 -->
+<style>
+    /* MOBILE 베스트 아이템 안보이게 하기 */
+    .MK_product_list.best_product { display: none !important; }
+    /* 공통 */
+    .dlvr_evt_cate_title { position: relative; }
+    .dlvr_evt_cate_title img { width: 100%; display: block; }
+    /* 카테고리타이틀 부분 */
+    .dlvr_evt_category_title--image { position: inherit; }
+    /* 유의사항 부분 css */
+    .dlvr_evt_notice_wrap--more { position: inherit; cursor: pointer; display: block; }
+    .dlvr_evt_notice_wrap--more img { margin-top: 0; }
+    .dlvr_evt_notice_wrap--notice { 
+        overflow: hidden;
+        height: 0px;
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        z-index: -99;
+    }
+    .dlvr_evt_notice_wrap--notice.active { height: 100%; }
+    /* 쿠폰 */
+    .dlvrEvtCoupon { position: absolute; width: 44.88%; height: 66.67%; top: 16.67%; right: 7%; }
+</style>
+
+<section class="dlvr_evt_cate_title">
+    <!-- 카테고리 타이틀 부분 -->
+    <div class="dlvr_evt_category_title--image">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/tit_01.jpg" />
+        <a href="#" class="dlvrEvtCoupon"></a>
+    </div>
+    <!-- 유의사항 부분 -->
+    <div class="dlvr_evt_notice_wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/tit_02.jpg" />
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="dlvr_evt_notice_wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2026/0209_todayDlvr_event/tit_03.jpg" />
+    </div>
+</section>
+
+<script>
+    function dlvrEvtNoticeToggle() {
+        const dlvrEvtNoticeCont = document.querySelector('.dlvr_evt_notice_wrap--notice');
+        const dlvrEvtNoticeContImg = dlvrEvtNoticeCont.querySelector('img');
+        const height = dlvrEvtNoticeContImg ? dlvrEvtNoticeContImg.clientHeight : 0;
+
+        dlvrEvtNoticeCont.classList.toggle('active');
+
+        if (dlvrEvtNoticeCont.classList.contains('active')) {
+            dlvrEvtNoticeCont.style.height = height + 'px';
+        } else {
+            dlvrEvtNoticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const dlvrEvtNoticeBtn = document.querySelector('.dlvr_evt_notice_wrap--more');
+    if (dlvrEvtNoticeBtn) { dlvrEvtNoticeBtn.addEventListener('click', dlvrEvtNoticeToggle); }
+</script>

@@ -1,0 +1,76 @@
+<style>
+    /* reset */
+    .tabs ul, .tabs li, .tabs ol { list-style: none; margin: 0; padding: 0; }
+    .tabs ul { 
+        display: flex; flex-direction: row; 
+        justify-content: center; align-items: center;
+        gap: 1%;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .tabs .tab {
+        /* width: 디자인 된 탭의 width값 */
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    .tabs .tab.sel {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    /* 탭 메뉴 부분 */
+    .tab__content { 
+        background-color: rgba(0, 0, 0, 0.1);
+        display: none;
+        /* padding, margin 값은 디자인 된 간격에 따라서 조절 */
+    }
+    .show { display: block; }
+    /* 탭 내용 부분 */
+</style>
+
+<!-- 탭 메뉴 -->
+<div class="tabs">
+    <ul>
+        <li class="tab sel">1
+            <!-- 탭 메뉴 텍스트 or 이미지 -->
+        </li>
+        <li class="tab">2
+            <!-- 탭 메뉴 텍스트 or 이미지 -->
+        </li>
+        <li class="tab">3
+            <!-- 탭 메뉴 텍스트 or 이미지 -->
+        </li>
+    </ul>
+</div>
+<!-- 탭 메뉴 끝 -->
+
+<!-- 탭 내용 -->
+<div class="tab__content show">11</div>
+<div class="tab__content">22</div>
+<div class="tab__content">33</div>
+<!-- 탭 내용 끝 -->
+
+<script>
+    function init() {
+        tabsFunction();
+    }
+
+    // TABS
+    function tabsFunction() {
+        const tabBtn = document.querySelectorAll('.tab');
+        const tabCont = document.querySelectorAll('.tab__content');
+
+        for (let i = 0; i < tabCont.length; i++) {
+            tabBtn[i].addEventListener('click', function() {
+                // 모든 탭에서 'sel' class remove
+                tabBtn.forEach(tab => tab.classList.remove('sel'));
+                // 현재 클릭한 탭에 'sel' class add
+                tabBtn[i].classList.add('sel');
+
+                // 모든 탭 콘텐츠에서 'show' class remove
+                tabCont.forEach(content => content.classList.remove('show'));
+                // 현재 선택한 콘텐츠에 'show' class add
+                tabCont[i].classList.add('show');
+            })
+        }
+    }
+
+    init();
+</script>

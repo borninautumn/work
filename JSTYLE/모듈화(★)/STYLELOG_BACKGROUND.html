@@ -1,0 +1,36 @@
+<!-- 스타일로그 좌우 백그라운드 -->
+
+<!-- 헤더부분 -->
+<!-- 헤더부분 끝 -->
+
+<!-- STYLELOG -->
+<div class="bg left"></div>
+<div class="bg right"></div>
+
+<!-- 스타일로그 코드 -->
+<!-- 상품연동 -->
+
+<style>
+    /* STYLELOG BACKGROUND */
+    .bg {
+        position: fixed;
+        top: 0;
+        width: calc((100% - 800px) / 2);
+        height: 100vh;
+        z-index: -1;
+    }
+
+    /* LEFT */
+    .bg.left {
+        background: url('');
+        background-size: cover;
+        right: calc(50% + 400px);
+    }
+
+    /* RIGHT */
+    .bg.right {
+        background: url('');
+        background-size: cover;
+        left: calc(50% + 400px);
+    }
+</style>

@@ -1,0 +1,186 @@
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+
+<style>
+    .live__container img { display: block; width: 100%; }
+    .live__container {
+        max-width: 772px;
+        margin: 0 auto;
+        position: relative;
+        box-sizing: border-box;
+    }
+    
+    /* 동영상 관련 CSS */
+    .live__wrap { position: relative; } 
+    .vedio__container .vedio--controller { height: 100% !important; }
+    .aspect {
+        aspect-ratio: 9/16;
+        width: 60%;
+        overflow: hidden;
+        position: absolute;
+        top: 43%; left: 50%;
+        transform: translate(-50%, -50%);
+        margin-left: 0;
+        padding-left: 0;
+    }
+    .aspect iframe { width: 100%; height: 100%; }
+
+    /* 링크 공유 */
+    .live__container .copyBtn { display: block; }
+
+    /* 모바일에선 이거 추가 */
+    .ytp-offline-slate-button-text { margin: 0 !important; }
+
+    /* 타이머 */
+    .timer__wrap { position: relative; }
+    .timer__wrap .timer { 
+        position: absolute;
+        top: 58.38%; left: 0;
+        width: 100%;
+    }
+    .timer__wrap .timer span { 
+        display: inline-block;
+        width: 9.72%; height: 11.93%;
+        font-weight: 600; 
+        font-size: 5em; /* mobile: 2, 3em */
+        line-height: 1.5; /* mobile: 1.3 */
+        text-align: center;
+        color: #000;
+        position: absolute;
+    }
+    .timer1 #timer1-hour1 { left: 10.23%; }
+    .timer1 #timer1-hour2 { left: 20.85%; }
+    .timer1 #timer1-hour3 { left: 31.48%; }
+    .timer1 #timer1-min1 { left: 45.08%; }
+    .timer1 #timer1-min2 { left: 55.7%; }
+    .timer1 #timer1-sec1 { left: 69.3%; }
+    .timer1 #timer1-sec2 { left: 79.92%; }
+</style>
+
+<section class="live__container">
+    <div class="intro">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_01.jpg" alt="intro image" />
+    </div>
+    <!-- 입어주라방 영상 -->
+    <div class="live__wrap">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_02.jpg" alt="live layout background image" />
+        <div class="vedio__container">
+            <div class="vedio--controller">
+                <figure class="aspect">
+                    <!-- 본 영상 -->
+                    <!-- <iframe src="https://youtube.com/embed/5Q8Ggu3PPrI" 
+                        title="YouTube video player" frameBorder="0"
+                        allowFullScreen>
+                    </iframe> -->
+                    <!-- 예고 영상 -->
+                    <video width="100%" height="100%" autoplay loop muted>
+                        <source src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/0319_preview.mp4" type="video/mp4" />
+                    </video>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <!-- 모델 인포 -->
+    <div class="modelInfo">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_03.jpg" alt="model info image" />
+    </div>
+    <!-- 타이머 -->
+    <div class="timer__wrap">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_04.jpg" alt="timer background image" />
+        <div id="timer1" class="timer timer1">
+            <span id="timer1-hour1"></span><span id="timer1-hour2"></span><span id="timer1-hour3"></span>
+            <span id="timer1-min1"></span><span id="timer1-min2"></span>
+            <span id="timer1-sec1"></span><span id="timer1-sec2"></span>
+        </div>
+    </div>
+    <!-- 이벤트 -->
+    <div class="event__wrap">
+        <!-- 적립금 다운 -->
+        <a href="/shop/down_reserve.html?reservenum=QlI0WEpSSlg=">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_05.jpg" />
+        </a>
+    
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_06.jpg" />
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_07.jpg" />
+        
+        <!-- url 공유 -->
+        <a href="javascript:;" class="copyBtn">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_08.jpg" alt="img1">
+        </a>
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0319_live/live_m_250319_09.jpg" alt="img1">
+    </div>
+</section>
+
+<script>
+    function init() {
+        countdownTimer('timer1', '2025/03/19 19:00:00');
+        urlCopy();
+    }
+
+    // 타이머
+    function countdownTimer(timerId, endTime) {
+        let interval;
+
+        function startTimer() {
+            clearInterval(interval); // 기존 인터벌 제거 (중복 방지)
+
+            const finalEndTime = new Date(endTime).getTime(); // 각 타이머 종료 시간
+
+            interval = setInterval(() => {
+                const currentTime = new Date().getTime(); // 현재 시간 (밀리초)
+                const diff = finalEndTime - currentTime; // 남은 시간 계산
+
+                // 최종 종료 시간을 초과하면 타이머 종료
+                if (diff <= 0) {
+                    clearInterval(interval);
+
+                    document.getElementById(`${timerId}-hour1`).innerText = '0';
+                    document.getElementById(`${timerId}-hour2`).innerText = '0';
+                    document.getElementById(`${timerId}-hour3`).innerText = '0';
+                    document.getElementById(`${timerId}-min1`).innerText = '0';
+                    document.getElementById(`${timerId}-min2`).innerText = '0';
+                    document.getElementById(`${timerId}-sec1`).innerText = '0';
+                    document.getElementById(`${timerId}-sec2`).innerText = '0';
+
+                    return;
+                }
+
+                // 남은 시간 계산 (시간, 분, 초 단위)
+                const totalHours = Math.floor(diff / (1000 * 60 * 60)); // 전체 남은 시간
+                const hours = String(totalHours).padStart(3, '0');
+                const mins = String(Math.floor((diff / (1000 * 60)) % 60)).padStart(2, '0');
+                const secs = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+                // 숫자를 개별적으로 분리하여 해당 타이머의 HTML 요소 업데이트
+                document.getElementById(`${timerId}-hour1`).innerText = hours[0];
+                document.getElementById(`${timerId}-hour2`).innerText = hours[1];
+                document.getElementById(`${timerId}-hour3`).innerText = hours[2];
+                document.getElementById(`${timerId}-min1`).innerText = mins[0];
+                document.getElementById(`${timerId}-min2`).innerText = mins[1];
+                document.getElementById(`${timerId}-sec1`).innerText = secs[0];
+                document.getElementById(`${timerId}-sec2`).innerText = secs[1];
+            }, 1000);
+        }
+
+        startTimer(); // 타이머 실행
+    }
+
+    // URL 복사
+    function urlCopy() {
+        const copyBtn = document.querySelector('.copyBtn');
+        copyBtn.addEventListener('click', function() {
+            copy(window.location.href);
+        });
+
+        const copy = (text) => {
+            const $textarea = document.createElement("textarea");
+            document.body.appendChild($textarea);
+            $textarea.value = text;
+            $textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild($textarea);
+            alert("URL이 복사가 완료되었습니다.");
+        };
+    }
+
+    init();
+</script>

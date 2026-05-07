@@ -1,0 +1,126 @@
+<style>
+    /* 1. 컨테이너 설정 */
+    .timer__container {
+        width: 100%;
+        max-width: 100%; /* 모바일에서 꽉 차게 */
+        margin: 20px auto;
+        padding: 0 15px; /* 양옆 여백 */
+        box-sizing: border-box;
+        font-family: "Pretendard", -apple-system, sans-serif;
+    }
+
+    /* 2. 진행바 (드래그바) 스타일 */
+    .progress__track {
+        width: 100%;
+        height: 4px; /* 바 두께 */
+        background-color: #eee;
+        position: relative;
+        margin-bottom: 12px;
+        border-radius: 2px;
+        overflow: hidden;
+    }
+
+    .progress__bar {
+        position: absolute;
+        left: 0; top: 0;
+        height: 100%;
+        background-color: #ff4e00;
+        width: 0%; /* JS에서 계산 */
+        transition: width 1s linear;
+    }
+
+    /* 3. 텍스트 레이아웃 */
+    .timer__text-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap; /* 모바일에서 좁을 경우 줄바꿈 허용 */
+    }
+
+    /* 왼쪽: 남은 시간 */
+    .time-left {
+        color: #ff4e00;
+        font-weight: 700;
+        font-size: 18px; /* PC 기본 크기 */
+        letter-spacing: -0.5px;
+    }
+
+    /* 오른쪽: 종료 날짜 */
+    .end-date {
+        color: #999;
+        font-size: 14px;
+    }
+
+    /* ★ 4. 모바일 최적화 (반응형) ★ */
+    @media (max-width: 768px) {
+        .time-left {
+            font-size: 15px; /* 모바일에서는 글자를 살짝 작게 */
+        }
+        .end-date {
+            font-size: 12px;
+        }
+        .timer__container {
+            padding: 0 10px;
+            margin: 15px auto;
+        }
+    }
+</style>
+
+<div class="timer__container">
+    <div class="progress__track">
+        <div id="progress-bar" class="progress__bar"></div>
+    </div>
+    <div class="timer__text-wrap">
+        <div class="time-left">
+            <span id="display-timer">0일 00:00:00</span> 남음
+        </div>
+        <div id="display-end-date" class="end-date">00월 00일 까지</div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        // 설정값: 시작일과 종료일을 입력하세요.
+        const START_TIME = '2026/04/27 00:00:00'; 
+        const END_TIME = '2026/04/28 10:00:00';
+
+        const start = new Date(START_TIME).getTime();
+        const end = new Date(END_TIME).getTime();
+        const total = end - start;
+
+        // 종료 날짜 텍스트 세팅
+        const endDateObj = new Date(END_TIME);
+        const endMonth = String(endDateObj.getMonth() + 1).padStart(2, '0');
+        const endDate = String(endDateObj.getDate()).padStart(2, '0');
+        document.getElementById('display-end-date').innerText = `${endMonth}월 ${endDate}일 까지`;
+
+        function updateTimer() {
+            const now = new Date().getTime();
+            const remain = end - now;
+
+            if (remain <= 0) {
+                document.getElementById('progress-bar').style.width = '100%';
+                document.getElementById('display-timer').innerText = '이벤트 종료';
+                clearInterval(interval);
+                return;
+            }
+
+            // 바 너비 계산 (%)
+            const elapsed = now - start;
+            let progress = (elapsed / total) * 100;
+            progress = Math.min(Math.max(progress, 0), 100);
+            document.getElementById('progress-bar').style.width = progress + '%';
+
+            // 시간 텍스트 계산
+            const d = Math.floor(remain / (1000 * 60 * 60 * 24));
+            const h = String(Math.floor((remain / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+            const m = String(Math.floor((remain / (1000 * 60)) % 60)).padStart(2, '0');
+            const s = String(Math.floor((remain / 1000) % 60)).padStart(2, '0');
+
+            document.getElementById('display-timer').innerText = `${d}일 ${h}:${m}:${s}`;
+        }
+
+        updateTimer();
+        const interval = setInterval(updateTimer, 1000);
+    })();
+</script>

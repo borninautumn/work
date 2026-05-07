@@ -1,0 +1,52 @@
+<!-- 예시임 -->
+<div style="text-align: center;">
+    <h1>분류 쿠폰 남은시간 : <span class="couponTime" style="border:1px solid red;"><!--/coupon_remain_time(IB14RMTN)/--></span>
+    </h1>
+</div>
+
+<script>
+    window.onload = function () {
+        var elements = document.getElementsByClassName('couponTime');
+
+        for (var i = 0; i < elements.length; i++) {
+            (function (target) {
+                // 1. 초기 숫자 추출
+                var rawText = target.innerText || target.textContent;
+                var totalSeconds = parseInt(rawText.replace(/[^0-9]/g, ''));
+
+                if (isNaN(totalSeconds) || totalSeconds <= 0) {
+                    target.innerText = "기간 만료";
+                    return;
+                }
+
+                // 2. 1초마다 반복 실행되는 타이머 설정
+                var countdown = setInterval(function () {
+                    if (totalSeconds <= 0) {
+                        target.innerText = "기간 만료";
+                        clearInterval(countdown); // 0초가 되면 타이머 중지
+                        return;
+                    }
+
+                    // 3. 시간 계산
+                    var days = Math.floor(totalSeconds / 86400);
+                    var hours = Math.floor((totalSeconds % 86400) / 3600);
+                    var mins = Math.floor((totalSeconds % 3600) / 60);
+                    var secs = totalSeconds % 60;
+
+                    // 4. 화면 출력 (두 자릿수 유지: 예 09분 05초)
+                    var timeString = "";
+                    if (days > 0) timeString += days + "일 ";
+                    timeString += (hours < 10 ? '0' + hours : hours) + "시간 "
+                        + (mins < 10 ? '0' + mins : mins) + "분 "
+                        + (secs < 10 ? '0' + secs : secs) + "초";
+
+                    target.innerText = timeString;
+
+                    // 5. 1초씩 차감
+                    totalSeconds--;
+                }, 1000);
+
+            })(elements[i]);
+        }
+    };
+</script>

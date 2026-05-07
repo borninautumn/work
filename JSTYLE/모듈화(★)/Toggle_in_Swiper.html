@@ -1,0 +1,183 @@
+<link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    section { max-width: 900px; margin: 0 auto; padding: 0; border: 0; background-color: #f3f3f3; overflow: hidden; }
+    .wrap img { display: block; width: 100%; }
+    
+    /* SWIPER */
+    .mySwiper1, .mySwiper2, .mySwiper3 { 
+        width: 92.89%;
+        display: flex; flex-direction: row;
+        margin-left: 7.11%;
+        padding: 10px 0 22px;
+    }
+    .mySwiper1 .swiper-slide, .mySwiper2 .swiper-slide, .mySwiper3 .swiper-slide {
+        width: 27.44%;
+    }
+
+    .empty { background-color: goldenrod; color: #fff; height: 500px; text-align: center; padding: 50px 0; }
+
+    .btn { cursor: pointer; }
+    
+    /* detail을 숨김 */
+    .detail {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease-in-out, opacity 0.3s ease-in-out;
+        opacity: 0;
+    }
+
+    /* 활성화될 때 애니메이션 적용 */
+    .detail.active {
+        opacity: 1;
+    }
+</style>
+<section>
+    <div class="empty">empty div</div>
+
+    <div class="wrap">
+        <div class="btn">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideTop.jpg" />
+        </div>
+
+        <div class="detail">
+            <div class="swiper mySwiper1">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont2_slide1.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont2_slide2.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont2_slide3.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont2_slide4.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont2_slide5.png" />
+                </div>
+            </div>
+        </div>
+
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideBtm.jpg" />
+    </div>
+</section>
+
+<section>
+    <div class="empty">empty div</div>
+
+    <div class="wrap">
+        <div class="btn">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideTop.jpg" />
+        </div>
+
+        <div class="detail">
+            <div class="swiper mySwiper2">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont1_slide1.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont1_slide2.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont1_slide3.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont1_slide1.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont1_slide2.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideBtm.jpg" />
+    </div>
+</section>
+
+<section>
+    <div class="empty">empty div</div>
+
+    <div class="wrap">
+        <div class="btn">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideTop.jpg" />
+        </div>
+
+        <div class="detail">
+            <div class="swiper mySwiper3">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont3_slide1.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont3_slide2.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont3_slide3.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont3_slide4.png" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/wide_tabcont3_slide5.png" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0220_slacks_guide/toggle_slideBtm.jpg" />
+    </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const btns = document.querySelectorAll(".btn");
+
+    btns.forEach((btn, index) => {
+        const detail = btn.nextElementSibling;
+        let swiperInstance = null;
+
+        btn.addEventListener("click", function () {
+            const isActive = detail.classList.contains("active");
+
+            if (isActive) {
+                // 닫기
+                detail.style.maxHeight = detail.scrollHeight + "px"; // 현재 높이 유지
+                setTimeout(() => {
+                    detail.style.maxHeight = "0px"; // 줄어드는 애니메이션
+                }, 10);
+                detail.classList.remove("active");
+
+                setTimeout(() => {
+                    if (swiperInstance) {
+                        swiperInstance.destroy(true, true);
+                        swiperInstance = null;
+                    }
+                }, 500);
+            } else {
+                // 열기
+                detail.classList.add("active");
+                detail.style.maxHeight = detail.scrollHeight + "px"; // 실제 콘텐츠 높이로 설정
+
+                setTimeout(() => {
+                    swiperInstance = new Swiper(`.mySwiper${index + 1}`, {
+                        loop: true,
+                        autoplay: { delay: 3000 },
+                        slidesPerView: 3.2,
+                        spaceBetween: 20,
+                    });
+                }, 500);
+            }
+        });
+    });
+});
+</script>
+
+
+
+https://evellet.com/shop/page.html?id=2093
+https://evellet.com/m/page.html?id=2093

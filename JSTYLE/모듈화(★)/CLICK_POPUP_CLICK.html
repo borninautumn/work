@@ -1,0 +1,85 @@
+<style>
+    .container { max-width: 900px; margin: 0; padding: 0; position: relative; }
+    ul, li { list-style: none; margin: 0; padding: 0; }
+    .landing { position: absolute; }
+    .landing:nth-child(1) {
+        top: 30px; left: 100px;
+    }
+    .landing:nth-child(2) {
+        top: 50px; right: 30px;
+    }
+    .landing:nth-child(3) {
+        top: 100px; left: 150px;
+    }
+    .landing--popup { display: none; position: absolute; top: 0; z-index: 99; }
+    .landing:nth-child(1) .landing--popup { left: 50px; }
+    .landing:nth-child(2) .landing--popup { right: 50px; }
+    .landing:nth-child(3) .landing--popup { left: 50px; }
+</style>
+
+<main class="container">
+    <ul class="landing__wrap">
+        <li class="landing">
+            <span><img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/targetItem.png" alt="add"></span>
+            <div class="landing--popup">
+                <a href="#">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/item08.png" alt="product">
+                </a>
+            </div>
+        </li>
+        <li class="landing">
+            <span><img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/targetItem.png" alt="add"></span>
+            <div class="landing--popup">
+                <a href="#">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/item08.png" alt="product">
+                </a>
+            </div>
+        </li>
+        <li class="landing">
+            <span><img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/targetItem.png" alt="add"></span>
+            <div class="landing--popup">
+                <a href="#">
+                    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2023/silverjewelry/item08.png" alt="product">
+                </a>
+            </div>
+        </li>
+    </ul>
+</main>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    const landings = document.querySelectorAll(".landing");
+
+    landings.forEach(landing => {
+        landing.addEventListener("click", function (event) {
+            event.stopPropagation(); // 이벤트 버블링 방지
+            
+            const popup = landing.querySelector(".landing--popup");
+            
+            // 현재 popup이 열려있으면 닫기
+            if (popup.style.display === "block") {
+                popup.style.display = "none";
+                return;
+            }
+            
+            // 모든 popup 닫기
+            document.querySelectorAll(".landing--popup").forEach(p => {
+                p.style.display = "none";
+            });
+
+            // 클릭한 요소의 popup 열기
+            if (popup) {
+                popup.style.display = "block";
+            }
+        });
+    });
+
+    // 문서 클릭 시 모든 popup 닫기
+    document.addEventListener("click", function () {
+        document.querySelectorAll(".landing--popup").forEach(popup => {
+            popup.style.display = "none";
+        });
+    });
+});
+
+</script>

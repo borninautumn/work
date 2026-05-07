@@ -1,0 +1,124 @@
+<!-- PC 카테고리 타이틀 -->
+<style>
+    /* PC 베스트 아이템 안보이게 하기 */
+    .recmd-item-wrap { display: none !important; }
+    /* 공통 */
+    .category__title { position: relative; }
+    .category__title img { width: 100%; display: block; }
+    /* 카테고리타이틀 부분 */
+    .category__title--image { position: inherit; }
+    /* 유의사항 부분 css */
+    .notice__wrap,
+    .notice__wrap--more { position: inherit; }
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice { 
+        overflow: hidden;
+        height: 0px;
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        z-index: -99;
+    }
+    .notice__wrap--notice.active { height: 100%; }
+</style>
+
+<section class="category__title">
+    <!-- 카테고리 타이틀 부분 -->
+    <div class="category__title--image">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_01.jpg" alt="카테타이틀 이미지" />
+    </div>
+
+    <!-- 유의사항 부분 -->
+    <div class="notice__wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_04.jpg" alt="notice_image more" />
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="notice__wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_05.jpg" alt="notice_image" />
+    </div>
+</section>
+
+<script>
+    function noticeToggle() {
+        const noticeCont = document.querySelector('.notice__wrap--notice');
+        const noticeContImg = noticeCont.querySelector('img');
+        const height = noticeContImg ? noticeContImg.clientHeight : 0;
+
+        noticeCont.classList.toggle('active');
+
+        if (noticeCont.classList.contains('active')) {
+            noticeCont.style.height = height + 'px';
+        } else {
+            noticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const noticeBtn = document.querySelector('.notice__wrap--more');
+    if (noticeBtn) { noticeBtn.addEventListener('click', noticeToggle); }
+</script>
+
+
+<!-- MOBILE 카테고리 타이틀 -->
+<style>
+    /* MOBILE 베스트 아이템 안보이게 하기 */
+    .MK_product_list.best_product { display: none !important; }
+    /* 공통 */
+    .category__title { position: relative; }
+    .category__title img { width: 100%; display: block; }
+    /* 카테고리타이틀 부분 */
+    .category__title--image { position: inherit; }
+    /* 유의사항 부분 css */
+    .notice__wrap,
+    .notice__wrap--more { position: inherit; }
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice { 
+        overflow: hidden;
+        height: 0px;
+        transition-property: height;
+        transition-duration: 0.2s;
+        transition-timing-function: linear;
+        z-index: -99;
+    }
+    .notice__wrap--notice.active { height: 100%; }
+</style>
+
+<section class="category__title">
+    <!-- 카테고리 타이틀 부분 -->
+    <div class="category__title--image">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_01.jpg" alt="카테타이틀 이미지" />
+    </div>
+
+    <!-- 유의사항 부분 -->
+    <div class="notice__wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_04.jpg" alt="notice_image more" />
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="notice__wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0102_newbie/wide_tit_05.jpg" alt="notice_image" />
+    </div>
+</section>
+
+<script>
+    function noticeToggle() {
+        const noticeCont = document.querySelector('.notice__wrap--notice');
+        const noticeContImg = noticeCont.querySelector('img');
+        const height = noticeContImg ? noticeContImg.clientHeight : 0;
+
+        noticeCont.classList.toggle('active');
+
+        if (noticeCont.classList.contains('active')) {
+            noticeCont.style.height = height + 'px';
+        } else {
+            noticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const noticeBtn = document.querySelector('.notice__wrap--more');
+    if (noticeBtn) { noticeBtn.addEventListener('click', noticeToggle); }
+</script>

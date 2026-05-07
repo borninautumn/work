@@ -1,0 +1,106 @@
+<span class="dc_time" style="display: inline-block;">
+    혜택 종료까지 
+    <span class="timer_view"></span>
+    <input type="hidden" class="timer_val" value="<!--/basket@discount_remain_sec_time/-->">
+</span>
+
+<!-- 상품 개수 5개 ~ 10개일 때 -->
+<script>
+    (function($) {
+        // 현재 스크립트와 가장 가까운 'dc_time' 영역 선택
+        var $parent = $('.dc_time').last();
+        var $view = $parent.find('.timer_view');
+        var count = parseInt($parent.find('.timer_val').val());
+
+        // 1. 처음부터 값이 없거나 0 이하라면 아예 숨김
+        if (isNaN(count) || count <= 0) {
+            $parent.hide(); 
+            return;
+        }
+
+        var timer = setInterval(function() {
+            // 2. 카운트다운 도중 0이 되면 숨기고 타이머 정지
+            if (count <= 0) {
+                $parent.hide();
+                clearInterval(timer);
+                return;
+            }
+
+            var sec = count;
+            var d, h, i, s;
+
+            d = Math.floor(sec / 86400);
+            sec -= d * 86400;
+            h = Math.floor(sec / 3600);
+            sec -= h * 3600;
+            i = Math.floor(sec / 60);
+            sec -= i * 60;
+            s = sec;
+
+            var h_str = (h < 10) ? '0' + h : h;
+            var i_str = (i < 10) ? '0' + i : i;
+            var s_str = (s < 10) ? '0' + s : s;
+
+            // 출력 형식 (일수가 있을 때만 'n일' 표시)
+            var displayTime = (d > 0 ? d + '일 ' : '') + h_str + '시간 ' + i_str + '분 ' + s_str + '초';
+            $view.html(displayTime);
+
+            count--;
+        }, 1000);
+    })(jQuery);
+</script>
+
+<!-- 상품 개수 20개 이상일 때 
+    페이지 하단에 딱 한 번만 넣어줌. (루프 안에 넣더라도 중복 실행되지는 않음)
+-->
+<script>
+    (function($) {
+        // 이미 실행 중인 타이머가 있다면 중복 실행 방지
+        if (window.globalBasketTimer) clearInterval(window.globalBasketTimer);
+
+        window.globalBasketTimer = setInterval(function() {
+            // 1. 페이지 내의 모든 타이머 영역을 한꺼번에 찾습니다.
+            var $items = $('.dc_time');
+
+            // 2. 타이머가 표시될 상품이 없다면 타이머 종료
+            if ($items.length === 0) {
+                clearInterval(window.globalBasketTimer);
+                return;
+            }
+
+            $items.each(function() {
+                var $this = $(this);
+                var $view = $this.find('.timer_view');
+                var $input = $this.find('.timer_val');
+                
+                // 현재 남은 초(second) 가져오기
+                var count = parseInt($input.val());
+
+                // 3. 시간이 없거나 종료된 경우 숨김 처리
+                if (isNaN(count) || count <= 0) {
+                    $this.hide();
+                    return;
+                }
+
+                // 4. 시간 계산 로직
+                var sec = count;
+                var d = Math.floor(sec / 86400);
+                sec -= d * 86400;
+                var h = Math.floor(sec / 3600);
+                sec -= h * 3600;
+                var i = Math.floor(sec / 60);
+                sec -= i * 60;
+                var s = sec;
+
+                var h_str = (h < 10) ? '0' + h : h;
+                var i_str = (i < 10) ? '0' + i : i;
+                var s_str = (s < 10) ? '0' + s : s;
+
+                // 5. 화면에 출력 및 값 업데이트 (1초 차감)
+                var displayTime = (d > 0 ? d + '일 ' : '') + h_str + '시간 ' + i_str + '분 ' + s_str + '초';
+                $view.html(displayTime);
+                $input.val(count - 1); 
+            });
+        }, 1000);
+    })(jQuery);
+</script>

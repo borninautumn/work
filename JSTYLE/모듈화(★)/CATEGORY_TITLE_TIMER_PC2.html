@@ -1,0 +1,115 @@
+<style>
+    /* 타이머 및 진행바 컨테이너 */
+    .timer__container {
+        width: 100%;
+        max-width: 1200px; /* 사이트 너비에 맞게 조절 */
+        margin: 20px auto;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    /* 상단 회색 가이드 라인 */
+    .progress__track {
+        width: 100%;
+        height: 4px;
+        background-color: #eee;
+        position: relative;
+        margin-bottom: 10px;
+    }
+
+    /* 실제 차오르는 주황색 바 */
+    .progress__bar {
+        position: absolute;
+        left: 0; top: 0;
+        height: 100%;
+        background-color: #ff4e00; /* 주황색 포인트 컬러 */
+        width: 0%; /* JS에서 조절함 */
+        transition: width 1s linear;
+    }
+
+    /* 텍스트 영역 레이아웃 */
+    .timer__text-wrap {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Pretendard", sans-serif;
+        font-size: 16px;
+    }
+
+    .time-left {
+        color: #ff4e00;
+        font-weight: bold;
+    }
+
+    .end-date {
+        color: #999;
+    }
+</style>
+
+<div class="timer__container">
+    <div class="progress__track">
+        <div id="progress-bar" class="progress__bar"></div>
+    </div>
+
+    <div class="timer__text-wrap">
+        <div class="time-left">
+            <span id="display-timer">0일 00:00:00</span> 남음
+        </div>
+        <div id="display-end-date" class="end-date">00월 00일 까지</div>
+    </div>
+</div>
+
+<script>
+    function initProgressTimer() {
+        // 1. 설정값 (시작시간, 종료시간)
+        const config = {
+            startTime: '2026/04/27 10:00:00', // 이벤트 시작일
+            endTime: '2026/04/28 10:00:00',   // 이벤트 종료일
+            targetBarId: 'progress-bar',
+            targetTextId: 'display-timer',
+            targetEndId: 'display-end-date'
+        };
+
+        const start = new Date(config.startTime).getTime();
+        const end = new Date(config.endTime).getTime();
+        const totalDuration = end - start;
+
+        // 종료 날짜 텍스트 표시 (예: 05월 04일 까지)
+        const endDateObj = new Date(config.endTime);
+        const endMonth = String(endDateObj.getMonth() + 1).padStart(2, '0');
+        const endDate = String(endDateObj.getDate()).padStart(2, '0');
+        document.getElementById(config.targetEndId).innerText = `${endMonth}월 ${endDate}일 까지`;
+
+        function update() {
+            const now = new Date().getTime();
+            const remain = end - now;
+
+            if (remain <= 0) {
+                document.getElementById(config.targetBarId).style.width = '100%';
+                document.getElementById(config.targetTextId).innerText = '이벤트 종료';
+                clearInterval(timerInterval);
+                return;
+            }
+
+            // 1. 진행률 바 계산
+            // (경과시간 / 전체시간) * 100
+            const elapsed = now - start;
+            let progress = (elapsed / totalDuration) * 100;
+            progress = Math.min(Math.max(progress, 0), 100); // 0~100 사이 유지
+            document.getElementById(config.targetBarId).style.width = progress + '%';
+
+            // 2. 남은 시간 텍스트 계산
+            const days = Math.floor(remain / (1000 * 60 * 60 * 24));
+            const hours = String(Math.floor((remain / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+            const mins = String(Math.floor((remain / (1000 * 60)) % 60)).padStart(2, '0');
+            const secs = String(Math.floor((remain / 1000) % 60)).padStart(2, '0');
+
+            document.getElementById(config.targetTextId).innerText = `${days}일 ${hours}:${mins}:${secs}`;
+        }
+
+        update();
+        const timerInterval = setInterval(update, 1000);
+    }
+
+    initProgressTimer();
+</script>

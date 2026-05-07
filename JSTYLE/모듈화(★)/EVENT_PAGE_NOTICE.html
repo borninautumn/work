@@ -1,0 +1,70 @@
+<style>
+    .event__container { max-width: 900px; margin: 0 auto; padding: 0; }
+    .event__container img { display: block; width: 100%; }
+    .event__container div { line-height: 0; position: relative; }
+    .img__box { margin-top: -1px; }
+
+    /* 유의사항 부분 css */
+    .notice__wrap,
+    .notice__wrap--more { position: relative; }
+    .notice__wrap--more { cursor: pointer; display: block; }
+    .notice__wrap--more img { margin-top: 0; }
+    .notice__wrap--notice {
+        height: 0px;
+        overflow: hidden;
+        transition: height 0.3s ease; /* 애니메이션 효과 추가 */
+    }
+    .notice__wrap--notice.active { overflow: visible; }
+</style>
+
+<div class="event__container">
+    <!-- intro -->
+    <div>
+        <img src="#" />
+    </div>
+    <!-- event contents -->
+    <div>
+        <img src="#" class="img__box" />
+    </div>
+
+    <!-- banner / button / landing links 
+        pc : target="_blank" / mo : target X -->
+    <a href="#">
+        <img src="#" class="img__box" />
+    </a>
+
+    <!-- notice -->
+    <div class="notice__wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0317_patricia_goods/event_07.jpg" alt="notice_image more"
+            class="imgBox">
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="notice__wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0317_patricia_goods/event_08.jpg" alt="notice_image"
+            class="imgBox">
+    </div>
+</div>
+
+<script>
+    /**
+     * NOTICE TOGGLE
+     */
+    function noticeToggle() {
+        const noticeCont = document.querySelector('.notice__wrap--notice');
+        const noticeContImg = noticeCont.querySelector('img');
+        const height = noticeContImg ? noticeContImg.clientHeight : 0;
+
+        noticeCont.classList.toggle('active');
+
+        if (noticeCont.classList.contains('active')) {
+            noticeCont.style.height = height + 'px';
+        } else {
+            noticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const noticeBtn = document.querySelector('.notice__wrap--more');
+    if (noticeBtn) { noticeBtn.addEventListener('click', noticeToggle); }
+</script>
