@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material 탭 - Ripple, Animation, Fade</title>
+  <style>
+    body {
+      font-family: "Roboto", "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f5;
+    }
+
+    .tabs-wrapper {
+      position: relative;
+    }
+
+    .keyword__tabs {
+      display: flex;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border-bottom: 1px solid #ddd;
+      background: #fff;
+      padding: 0 10px;
+      scrollbar-width: none;
+      cursor: grab;
+      position: relative;
+    }
+
+    .keyword__tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .keyword__tabs.dragging {
+      cursor: grabbing;
+    }
+
+    /* 양끝 fade 표시 */
+    .tabs-fade {
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 30px;
+      z-index: 2;
+    }
+
+    .tabs-fade.left {
+      left: 0;
+      background: linear-gradient(to right, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    }
+
+    .tabs-fade.right {
+      right: 0;
+      background: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    }
+
+    .board_cate_tabs {
+      position: relative;
+      flex: 0 0 auto;
+      padding: 12px 16px;
+      margin: 0 4px;
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      overflow: hidden;
+      border-bottom: 2px solid transparent;
+      border-radius: 4px 4px 0 0;
+      transition: color 0.3s, border-color 0.3s, background-color 0.3s;
+    }
+
+    .board_cate_tabs:hover {
+      background: rgba(0, 123, 255, 0.1);
+      color: #007BFF;
+    }
+
+    .board_cate_tabs.active {
+      color: #007BFF;
+      border-color: #007BFF;
+      background: rgba(0, 123, 255, 0.05);
+    }
+
+    /* ripple 효과 */
+    .board_cate_tabs::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      transform: scale(0);
+      background: rgba(0, 123, 255, 0.3);
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      pointer-events: none;
+      transition: transform 0.5s, opacity 1s;
+      opacity: 0;
+    }
+
+    .board_cate_tabs.ripple::after {
+      transform: scale(4);
+      opacity: 1;
+    }
+
+    /* 콘텐츠 */
+    .board_list {
+      padding: 16px;
+      margin: 12px;
+      border-radius: 8px;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    .ripple-effect {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: rgba(0, 123, 255, 0.3);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: ripple-animate 0.6s linear;
+      pointer-events: none;
+    }
+
+    @keyframes ripple-animate {
+      to {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* 반응형 */
+    @media (max-width: 600px) {
+      .board_cate_tabs {
+        padding: 10px 12px;
+        font-size: 0.9em;
+      }
+
+      .board_list {
+        margin: 8px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="tabs-wrapper">
+    <div class="tabs-fade left"></div>
+    <div class="keyword__tabs">
+      <a href="#" class="board_cate_tabs active" data-cate="all">모든 콘텐츠</a>
+      <a href="#" class="board_cate_tabs" data-cate="notice">공지</a>
+      <a href="#" class="board_cate_tabs" data-cate="news">뉴스</a>
+      <a href="#" class="board_cate_tabs" data-cate="event">이벤트</a>
+      <a href="#" class="board_cate_tabs" data-cate="campaign">캠페인</a>
+      <a href="#" class="board_cate_tabs" data-cate="update">업데이트</a>
+      <a href="#" class="board_cate_tabs" data-cate="faq">FAQ</a>
+    </div>
+    <div class="tabs-fade right"></div>
+  </div>
+
+  <div class="board_list" data-cate="all">여기는 모든 콘텐츠 리스트입니다.</div>
+  <div class="board_list" data-cate="notice" style="display:none">여기는 공지 리스트입니다.</div>
+  <div class="board_list" data-cate="news" style="display:none">여기는 뉴스 리스트입니다.</div>
+  <div class="board_list" data-cate="event" style="display:none">여기는 이벤트 리스트입니다.</div>
+  <div class="board_list" data-cate="campaign" style="display:none">여기는 캠페인 리스트입니다.</div>
+  <div class="board_list" data-cate="update" style="display:none">여기는 업데이트 리스트입니다.</div>
+  <div class="board_list" data-cate="faq" style="display:none">여기는 FAQ 리스트입니다.</div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('.board_cate_tabs');
+      const lists = document.querySelectorAll('.board_list');
+      const container = document.querySelector('.keyword__tabs');
+      const fadeLeft = document.querySelector('.tabs-fade.left');
+      const fadeRight = document.querySelector('.tabs-fade.right');
+
+      // 탭 클릭 이벤트 등록
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function (event) {
+          event.preventDefault(); // a 태그의 기본 동작(페이지 이동) 막기
+          const selectedCate = this.dataset.cate; // 클릭한 탭의 data-cate 값
+
+          // 1) 모든 탭에서 active 제거 → 클릭한 탭에 active 추가
+          tabs.forEach(t => t.classList.remove('active'));
+          this.classList.add('active');
+
+          // 2) 콘텐츠 표시/숨김
+          lists.forEach(list => {
+            list.style.display = (selectedCate === 'all' || list.dataset.cate === selectedCate)
+              ? 'block' : 'none';
+          });
+
+          // 3) 클릭한 탭을 가운데로 스크롤
+          clickActiveTabIntoView(this, 'center');
+
+          // 4) ripple 효과 추가
+          const ripple = document.createElement('span');      // 새로운 span 요소 생성
+          ripple.className = 'ripple-effect';                  // ripple 스타일용 클래스 추가
+          this.appendChild(ripple);                             // 클릭한 탭(this)에 붙이기
+
+          // 중앙 기준 위치 설정 (클릭한 위치 기준으로 하고 싶으면 e.clientX 등 사용 가능)
+          ripple.style.left = "50%";
+          ripple.style.top = "50%";
+
+          ripple.classList.add('animate');                     // 애니메이션 시작
+
+          // 애니메이션 끝나면 DOM에서 제거
+          ripple.addEventListener('animationend', () => {
+            ripple.remove();
+          });
+        });
+      });
+
+      // 마우스 드래그 스크롤 기능
+      let isDown = false, startX, scrollLeft;
+      container.addEventListener('mousedown', e => {
+        isDown = true;
+        container.classList.add('dragging');
+        startX = e.pageX - container.offsetLeft;
+        scrollLeft = container.scrollLeft;
+      });
+      container.addEventListener('mouseleave', () => { isDown = false; container.classList.remove('dragging'); });
+      container.addEventListener('mouseup', () => { isDown = false; container.classList.remove('dragging'); });
+      container.addEventListener('mousemove', e => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - container.offsetLeft;
+        const walk = (x - startX) * 1; // 드래그 속도 조절
+        container.scrollLeft = scrollLeft - walk;
+        updateFade(); // fade 업데이트
+      });
+
+      // fade 표시 업데이트 (좌/우 끝에 gradient 표시)
+      function updateFade() {
+        fadeLeft.style.opacity = container.scrollLeft > 5 ? '1' : '0';
+        fadeRight.style.opacity = (container.scrollWidth - container.clientWidth - container.scrollLeft > 5) ? '1' : '0';
+      }
+      container.addEventListener('scroll', updateFade);
+      updateFade(); // 초기 상태에서도 호출
+    });
+
+    // 클릭한 탭을 가운데로 스크롤
+    function clickActiveTabIntoView(activeTab, align = 'center') {
+      const tabsContainer = document.querySelector('.keyword__tabs');
+      if (!tabsContainer) return;
+
+      const containerWidth = tabsContainer.offsetWidth;
+      const tabWidth = activeTab.offsetWidth;
+      const tabLeft = activeTab.offsetLeft;
+
+      let targetScroll;
+      if (align === 'left') {
+        targetScroll = tabLeft - 10;
+      } else if (align === 'center') {
+        targetScroll = tabLeft - (containerWidth / 2) + (tabWidth / 2);
+      } else if (align === 'right') {
+        targetScroll = tabLeft - containerWidth + tabWidth + 10;
+      }
+
+      tabsContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+
+
+
+
+

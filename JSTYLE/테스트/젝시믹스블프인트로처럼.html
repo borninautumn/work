@@ -1,0 +1,95 @@
+<style>
+    /* 기본 레이아웃 */
+    .slot-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 600px;
+        font-size: 60px;
+        font-weight: 900;
+        color: #000;
+        overflow: hidden;
+        gap: 0.15em;
+    }
+
+    /* 개별 슬롯 스타일 */
+    .slot {
+        display: inline-block;
+        position: relative;
+        width: 1em;
+        height: 1em;
+        text-align: center;
+        transform-origin: center;
+        transform: scale(1.6);
+        /* 처음엔 크게 */
+        opacity: 0;
+        transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    }
+
+    .space {
+        width: 0.5em;
+    }
+
+    /* 등장할 때 스케일 다운 */
+    .slot.show {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    section {
+        height: 100vh;
+    }
+</style>
+
+<div class="container">
+    <section class="intro">
+        <div class="slot-container">
+            <span class="slot" data-letter="B"></span>
+            <span class="slot" data-letter="L"></span>
+            <span class="slot" data-letter="A"></span>
+            <span class="slot" data-letter="C"></span>
+            <span class="slot" data-letter="K"></span>
+            <span class="space"></span>
+            <span class="slot" data-letter="F"></span>
+            <span class="slot" data-letter="R"></span>
+            <span class="slot" data-letter="I"></span>
+            <span class="slot" data-letter="D"></span>
+            <span class="slot" data-letter="A"></span>
+            <span class="slot" data-letter="Y"></span>
+        </div>
+    </section>
+    <section></section>
+    <section></section>
+    <section></section>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // JS로 슬롯머신 + 스케일 효과 제어
+    document.querySelectorAll('.slot').forEach((slot, i) => {
+        const finalLetter = slot.dataset.letter;
+        const duration = 1500 + i * 150; // 한 글자씩 순차적으로 멈춤
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let count = 0;
+
+        // 등장 애니메이션 (스케일 다운)
+        setTimeout(() => {
+            slot.classList.add('show');
+        }, i * 120);
+
+        // 랜덤 글자 회전
+        const interval = setInterval(() => {
+            const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+            slot.textContent = randomLetter;
+            count++;
+        }, 60);
+
+        // 최종 글자로 멈춤
+        setTimeout(() => {
+            clearInterval(interval);
+            slot.textContent = finalLetter;
+        }, duration);
+    });
+
+
+</script>

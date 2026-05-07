@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .intro {
+            background-color: black;
+            display: flex;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            height: 90vh;
+        }
+
+        .text_line {
+            stroke-dasharray: 600;
+            stroke-dashoffset: 600;
+            animation: dash 3s linear forwards, filling 3s ease-in forwards;
+        }
+
+        .text_line text {
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: normal;
+            font-style: normal;
+            font-size: 7em;
+        }
+
+        @keyframes dash {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @keyframes filling {
+            0%,
+            90% {
+                fill: black;
+                fill-opacity: 0;
+            }
+
+            100% {
+                fill: #fff;
+                fill-opacity: .3;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="intro">
+        <svg height="100%" stroke="#e9e9e9" stroke-width="1" class="text_line" width="100%">
+            <text x="42%" dominant-baseline="middle" text-anchor="middle" y="95%">
+                THIS IS TEXT-STROKE
+            </text>
+        </svg>
+    </div>
+</body>
+
+</html>

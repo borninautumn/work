@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>슬롯머신 테스트</title>
+
+    <style>
+        .num {
+            display: inline-block;
+            width: 10px;
+            height: 30px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .num-list {
+            display: inline-block;
+            width: 10px;
+            line-height: 30px;
+            margin-top: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="countTest2"></div>
+
+    <script>
+        function RollingNum(id, number) {
+            const cntBox = document.getElementById(id);
+            const cntNum = number;
+            const cntLen = cntNum.length;
+            const numArr = cntNum.split("");
+            const delay = 500;
+            const speed = 70;
+            const numHeight = 80;
+
+            // 입력받은 숫자만큼 칸을 만들어준다 
+            for (let i = 0; i < cntLen; i++) {
+                const num = document.createElement("span");
+                num.classList.add("num", "idx" + i);
+                num.setAttribute("data-num", numArr[i]);
+                num.style = `height:${numHeight}px;line-height:${numHeight}px;width:${numHeight}px;background-color:#07a2e8;margin:0px 7px;font-size:50px;color:white;border-radius:5px`;
+                cntBox.appendChild(num);
+                setNum(num, i);
+            }
+
+            // 숫자 회전 애니메이션
+            function setNum(el, n) {
+                setTimeout(function () {
+                    let no = 0;
+                    const style = document.createElement("style");
+                    style.innerHTML = `.num {overflow: hidden;}.numList {display: inline-block;margin-top:0;text-align:center;transition: all ${speed / 1000
+                        }s;}`;
+                    document.body.appendChild(style);
+
+                    const numbersDiv = document.createElement("span");
+                    const numbers = "0\n1\n2\n3\n4\n5\n6\n7\n8\n9";
+                    numbersDiv.classList.add("numList");
+                    numbersDiv.innerText = numbers;
+                    el.appendChild(numbersDiv);
+
+                    // 초기값 설정
+                    numbersDiv.style.marginTop = "0px";
+
+                    // margin-top의 값이 바뀌면서 회전하고 입력받은 숫자값에서 멈춤
+                    const intervalNo = setInterval(function () {
+                        no++;
+                        numbersDiv.style = `margin-top:${no * numHeight * -1}px`;
+                        if (no === 10) {
+                            clearInterval(intervalNo);
+                            numbersDiv.style = `margin-top:${el.getAttribute("data-num") * numHeight * -1
+                                }px`;
+                        }
+                    }, speed);
+                }, delay * n);
+            }
+        }
+
+        RollingNum("countTest2", "99");
+    </script>
+</body>
+
+</html>

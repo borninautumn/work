@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .tabs {
+            width: 400px;
+            height: inherit;
+            float: left;
+        }
+
+        .tab-button {
+            width: 100px;
+            height: 30px;
+            float: left;
+            cursor: pointer;
+        }
+
+        .tab-content {
+            clear: both;
+            display: none;
+        }
+
+        .sel {
+            background-color: black;
+            color: #ffffff;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <ul class="tab-menu" style="position: absolute;">
+            <button class="tab-button sel">탭메뉴1</button>
+            <button class="tab-button">탭메뉴2</button>
+            <button class="tab-button">탭메뉴3</button>
+            <button class="tab-button">탭메뉴4</button>
+        </ul>
+        <div class="tab-content show">
+            탭내용1
+        </div>
+        <div class="tab-content">
+            탭내용2
+        </div>
+        <div class="tab-content">
+            탭내용3
+        </div>
+        <div class="tab-content">
+            탭내용4
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <script>
+        const tabButton = $('.tab-button');
+        const tabContent = $('.tab-content');
+
+        tabFunc();
+
+        function tabFunc() {
+            for (let i = 0; i < tabContent.length; i++) {
+                tabButton.eq(i).on('click', function () {
+                    tabButton.removeClass('sel');
+                    tabButton.eq(i).addClass('sel');
+                    tabContent.removeClass('show');
+                    tabContent.eq(i).addClass('show');
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

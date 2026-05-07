@@ -1,0 +1,119 @@
+<style>
+    /* PC 베스트 아이템 안보이게 하기 */
+    .recmd-item-wrap { display: none !important; }
+    /* MOBILE 베스트 아이템 안보이게 하기 */
+    .MK_product_list.best_product { display: none !important; }
+    
+    /* 유의사항 부분 css */
+    #categoryTitle img,
+    #categoryTitle .notice__wrap img { width: 100%; display: block; }
+    #categoryTitle .category__title,
+    #categoryTitle .notice__wrap,
+    #categoryTitle .notice__wrap--more { position: relative; }
+    #categoryTitle .notice__wrap--more { cursor: pointer; display: block; }
+    #categoryTitle .notice__wrap--more img { margin-top: 0; }
+    #categoryTitle .notice__wrap--notice {
+        height: 0px;
+        overflow: hidden;
+        transition: height 0.3s ease; /* 애니메이션 효과 추가 */
+    }
+    #categoryTitle .notice__wrap--notice.active { overflow: visible; }
+
+    /* countdown timer */
+    #categoryTitle .timer__wrap {
+        display: flex;
+        align-items: center; justify-content: center;
+        text-align: center;
+    }
+    #categoryTitle .timer__wrap #timer {
+        font-size: 3em;
+        font-weight: 100;
+        color: white;
+        padding: 20px;
+        width: 700px;
+        color: white;
+    }
+    #categoryTitle .timer__wrap #timer div {
+        display: inline-block;
+        min-width: 90px;
+        padding: 15px;
+        background: #020b43;
+        border-radius: 10px;
+        border: 2px solid #030d52;
+        margin: 15px;
+    }
+    #categoryTitle .timer__wrap #timer div span {
+        display: none;
+    }
+</style>
+
+<section id="categoryTitle">
+    <div class="category__title">
+        <div class="timer__wrap">
+            <div id="timer"></div>
+        </div>
+    </div>
+    <!-- 유의사항 토글 -->
+    <div class="notice__wrap--more">
+        <!-- 유의사항 버튼 -->
+        <img src="//jstyle07.jpg3.kr/SITE/TITLE/2024/today_dlvr/wide_05.jpg" alt="notice_image more"
+            class="imgBox">
+    </div>
+    <!-- 유의사항 내용 -->
+    <div class="notice__wrap--notice">
+        <img src="//jstyle07.jpg3.kr/SITE/TITLE/2024/today_dlvr/wide_06.jpg" alt="notice_image"
+            class="imgBox">
+    </div>
+</section>
+
+<script>
+    function init() {
+        countdownTimer();
+    }
+    // countdown timer
+    function countdownTimer() {
+        function updateTimer() {
+        const future = Date.parse('2025/01/13 15:00:00'); // 타이머 멈출 시간
+        const now = new Date(); // 현재시간
+        const diff = future - now;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // 하루(24시간)
+        const hours = Math.floor(diff / (1000 * 60 * 60)); // 한시간(60분)
+        const mins = Math.floor(diff / (1000 * 60)); // 1분(60초)
+        const secs = Math.floor(diff / 1000); // 1초(1000)
+
+        const d = days;
+        const h = hours - days * 24;
+        const m = mins - hours * 60;
+        const s = secs - mins * 60;
+
+        document.getElementById("timer").innerHTML =
+            '<div>' + d + '<span>Days</span></div>' +
+            '<div>' + h + '<span>Hours</span></div>' +
+            '<div>' + m + '<span>Minutes</span></div>' +
+            '<div>' + s + '<span>Seconds</span></div>';
+        }
+
+        setInterval(updateTimer, 1000);
+    }
+
+    function noticeToggle() {
+        const noticeCont = document.querySelector('.notice__wrap--notice');
+        const noticeContImg = noticeCont.querySelector('img');
+        const height = noticeContImg ? noticeContImg.clientHeight : 0;
+
+        noticeCont.classList.toggle('active');
+
+        if (noticeCont.classList.contains('active')) {
+            noticeCont.style.height = height + 'px';
+        } else {
+            noticeCont.style.height = '0px';
+        }
+    }
+
+    // 클릭 이벤트 noticeToggle()과 연결
+    const noticeBtn = document.querySelector('.notice__wrap--more');
+    if (noticeBtn) { noticeBtn.addEventListener('click', noticeToggle); }
+
+    init();
+</script>

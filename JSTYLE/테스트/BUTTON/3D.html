@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Button (Mobile Fixed Version)</title>
+
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+
+        body {
+            font-family: 'Josefin Slab', serif;
+            font-size: 20px;
+            line-height: 24px;
+            color: #333;
+            background: #ececec;
+            overflow-y: scroll;
+        }
+
+        .container {
+            padding-top: 1em;
+            margin-top: 1em;
+            border-top: solid 1px #CCC;
+            text-align: center;
+        }
+
+        a.button {
+            display: inline-block;
+            width: 120px;
+            margin: 10px;
+            font-weight: 600;
+            text-align: center;
+            line-height: 50px;
+            color: #FFF;
+            border-radius: 5px;
+            transition: all 0.15s ease;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+            /* ✅ 개별 이동 */
+        }
+
+        /* 색상 & 기본 그림자 */
+        .btnBlueGreen {
+            background: #00AE68;
+            box-shadow: 0px 5px 0px 0px #007144;
+        }
+
+        .btnLightBlue {
+            background: #5DC8CD;
+            box-shadow: 0px 5px 0px 0px #1E8185;
+        }
+
+        .btnOrange {
+            background: #FFAA40;
+            box-shadow: 0px 5px 0px 0px #A66615;
+        }
+
+        .btnPurple {
+            background: #A74982;
+            box-shadow: 0px 5px 0px 0px #6D184B;
+        }
+
+        /* 공통 눌림 효과 */
+        .button:hover,
+        .button:active {
+            top: 5px;
+            /* ✅ margin 대신 top 사용 */
+        }
+
+        /* 눌렸을 때 그림자 사라지기 */
+        .btnBlueGreen:hover,
+        .btnBlueGreen:active {
+            box-shadow: 0px 0px 0px 0px #007144;
+        }
+
+        .btnLightBlue:hover,
+        .btnLightBlue:active {
+            box-shadow: 0px 0px 0px 0px #1E8185;
+        }
+
+        .btnOrange:hover,
+        .btnOrange:active {
+            box-shadow: 0px 0px 0px 0px #A66615;
+        }
+
+        .btnPurple:hover,
+        .btnPurple:active {
+            box-shadow: 0px 0px 0px 0px #6D184B;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>3D Button (Mobile + Individual Movement)</h3>
+        <a href="#" class="button btnBlueGreen">Push</a>
+        <a href="#" class="button btnLightBlue">Push</a>
+        <a href="#" class="button btnOrange">Push</a>
+        <a href="#" class="button btnPurple">Push</a>
+    </div>
+</body>
+
+</html>

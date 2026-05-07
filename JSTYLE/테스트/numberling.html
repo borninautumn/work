@@ -1,0 +1,77 @@
+<li class="swiper-slide">
+    <figure>
+        <div class="thumb_wrap_slider">
+            <div class="thumb_wrap load">
+                <a href="<!--/[#P1]@link/-->">
+                    <img src="<!--/[#P1]@mobile_image/-->" width="100%" class="listPic" loading="lazy" />
+                </a>
+            </div>
+        </div>
+        <a href="<!--/[#P1]@link/-->">
+            <figcaption class="list_shoppingInfo">
+                <p class="listName bold"><!--/[#P1]@name/--></p>
+                <!--품절 시작-->
+                <!--/if_[#P1]@is_soldout/-->
+                <p class="listSoldout">(품절)</p>
+                <!--품절 아닐때-->
+                <!--/else/-->
+                <!--가격 대체 문구 있을때-->
+                <!--/if_[#P1]@price_replace/-->
+                <p class="listReplce"><!--/[#P1]@price_replace/--></p>
+                <!--가격 대체 문구 없을때-->
+                <!--/else/-->
+                <!--기간할인 시작-->
+                <!--/if_[#P1]@is_term_discount/-->
+                <div class="pricepart">
+                    <p class="listPrice gigan">
+                        <!--/if_[#P1]@discount_apply_type(mobile)/-->
+                        <span class="fa fa-mobile fa-lg"></span>
+                        <!--/end_if/-->
+                        <!--/number/[#P1]@price_discount/-->원
+                    </p>
+                    <p class="listDiscount consumer panmae">
+                        <del><!--/number/[#P1]@price_sell/-->원</del>
+                    </p>
+                    <!--정가 시작-->
+                    <!--/if_[#P1]@price_consumer(+1)/-->
+                    <p class="consumer jung"><!--/number/[#P1]@price_consumer/-->원</p>
+                    <!--/end_if/-->
+                    <!--정가 끝-->
+
+                    <!--정가 할인율 시작-->
+                    <!--/if_[#P1]@price_consumer(+1)/-->
+                    <p class="dc_info 2" style="display:none"><!--/[#P1]@discount_info/--></p>
+                    <!--/end_if/-->
+                    <!--정가 할인율 끝-->
+                </div>
+                <!--기간할인 아닐때-->
+                <!--/else/-->
+                <p class="listPrice nogigan 1"><!--/number/[#P1]@price_sell/-->원</p>
+                <!--기간할인아닐때 정가 시작-->
+                <!-- 소비자가(정가), 할인율 시작 -->
+                <!--/if_[#P1]@price_consumer(+1)/-->
+                <p class="consumer"><!--/number/[#P1]@price_consumer/-->원</p>
+                <p class="dc_perc"><!--/number/[#P1]@discount_percent/-->%</p>
+                <!--/end_if/-->
+                <!-- 소비자가, 할인율 끝 -->
+                <!--기간할인아닐때 정가 끝-->
+                <!--/end_if/-->
+                <!--기간할인 끝-->
+                <!--/end_if/-->
+                <!--가격대체 끝-->
+                <!--/end_if/-->
+                <!--품절 끝-->
+                <!--KD 한줄 추가-->
+                <div class="prod_manufacture"><!--/[#P1]@manufacture/--></div>
+                <!--//KD 한줄 추가 끝-->
+                <p class="subName enName"><!--/[#P1]@engname/--></p>
+            </figcaption>
+            <p class="pro_icons">
+                <!--/if_[#P1]@discount_icon/-->
+                <img src="<!--/[#P1]@discount_icon/-->">
+                <!--/end_if/-->
+                <!--/[#P1]@icons/-->
+            </p>
+        </a>
+    </figure>
+</li>

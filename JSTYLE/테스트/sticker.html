@@ -1,0 +1,111 @@
+<!-- PC 카테고리 타이틀 -->
+<style>
+    /* PC 베스트 아이템 안보이게 하기 */
+    .recmd-item-wrap { display: none !important; }
+
+    /* 카테고리 타이틀 부분 CSS */
+    .category__title { position: relative; }
+    .category__title img { width: 100%; display: block; }
+
+     /* 모바일 터치 관련 기본 설정 */
+    html, body {
+        touch-action: none; /* 모바일에서 터치 스크롤이 드래그랑 충돌하지 않게 */
+    }
+
+    .introArea {
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 500px;
+        height: 100%;
+        overflow: hidden;
+        background: #f7f7f7;
+        border: 1px solid #ddd;
+    }
+
+    .sticker {
+        position: absolute;
+        cursor: grab;
+        touch-action: none; /* 모바일에서 필수! */
+    }
+
+    .sticker:active {
+        cursor: grabbing;
+    }
+
+    .sticker img {
+        width: 130px;
+        height: 130px;
+        object-fit: cover;
+        user-select: none;
+        pointer-events: none;
+        border-radius: 18px;
+
+        /* 모바일 터치 이미지 움직임 방지 */
+        -webkit-touch-callout: none;
+        -webkit-user-drag: none;
+    }
+
+    /* 모바일 화면에서 이미지 사이즈 자동 축소 */
+    @media (max-width: 480px) {
+        .sticker img {
+        width: 100px;
+        height: 100px;
+        }
+    }
+</style>
+
+<section class="category__title">
+        <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1203_oneday/tit.jpg" />
+
+    <div class="introArea">
+        <div class="sticker" style="top: 40px; left: 30px;">
+            <img src="https://picsum.photos/seed/sticker1/130" alt="">
+        </div>
+
+        <div class="sticker" style="top: 200px; left: 150px;">
+            <img src="https://picsum.photos/seed/sticker2/130" alt="">
+        </div>
+
+        <div class="sticker" style="top: 120px; left: 250px;">
+            <img src="https://picsum.photos/seed/sticker3/130" alt="">
+        </div>
+    </div>
+</section>
+
+
+<!-- 스티커 드래그 영역 -->
+
+
+<!-- GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Draggable.min.js"></script>
+
+<script>
+  gsap.registerPlugin(Draggable);
+
+  Draggable.create(".sticker", {
+    type: "x,y",
+    bounds: ".introArea",
+    inertia: true,
+    edgeResistance: 0.85,
+    allowNativeTouchScrolling: false, // 모바일에서 스크롤과 충돌 방지
+    dragClickables: false,
+
+    onDragStart() {
+      gsap.to(this.target, {
+        scale: 1.1,
+        duration: 0.15,
+        ease: "power2.out"
+      });
+    },
+    onDragEnd() {
+      gsap.to(this.target, {
+        scale: 1,
+        duration: 0.2,
+        ease: "power2.out"
+      });
+    },
+    onThrowUpdate() {
+        this.applyBounds(); // ← 던지는 중에도 경계 체크해서 즉시 보정
+    },
+  });
+</script>

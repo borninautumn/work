@@ -1,0 +1,70 @@
+<li>
+    <a href="/shop/shopbrand.html?xcode=170&type=Y&gf_ref=Yz1YeVB1ZnM=" style="color: #9f3b3b;">
+        <span class="mk_tg18">윈터시즌오프</span>
+        <span class="mk_tg18">UP TO ~00%</span>
+        <span class="mk_tg18" aria-hidden="true">윈터시즌오프</span>
+    </a>
+    <div class="icon_new"></div>
+</li>
+
+<style>
+    /* 1. 창문 역할 (고정된 높이에서 넘치는 글자 숨기기) */
+    .menuslide-v {
+        list-style: none;
+        position: relative;
+        height: 20px;
+        /* 한 줄이 보여질 높이 (원하는 높이로 조절 가능) */
+        overflow: hidden;
+        border: 1px solid #eee;
+        /* 위치 확인용 (나중에 삭제하세요) */
+    }
+
+    /* 2. 엘리베이터 역할 (실제 움직이는 부분) */
+    .menuslide-v .roll-box {
+        display: flex;
+        flex-direction: column;
+        text-decoration: none;
+        /* 5초 동안 무한 반복, 부드럽게 멈췄다 이동 */
+        animation: xexyRolling 6s cubic-bezier(0.645, 0.045, 0.355, 1) infinite;
+    }
+
+    /* 3. 각 문구의 높이를 창문 높이와 일치시킴 */
+    .menuslide-v .roll-box span {
+        display: block;
+        height: 20px;
+        /* 반드시 li의 높이와 같아야 합니다 */
+        line-height: 20px;
+        font-size: 14px;
+        font-weight: bold;
+        white-space: nowrap;
+    }
+
+    /* 4. 무한 루프 애니메이션 로직 */
+    @keyframes xexyRolling {
+
+        /* 0~40%: 첫 번째 문구 '윈터시즌오프' 노출 */
+        0%,
+        40% {
+            transform: translateY(0);
+        }
+
+        /* 50~90%: 두 번째 문구 'UP TO ~00%' 노출 */
+        50%,
+        90% {
+            transform: translateY(-20px);
+        }
+
+        /* 100%: 마지막 복사본 노출 직후 0으로 순간이동 */
+        100% {
+            transform: translateY(-40px);
+        }
+    }
+
+    /* 5. 아이콘 위치 고정 (문구 옆에 고정하고 싶을 때) */
+    .icon_new {
+        position: absolute;
+        right: 0;
+        top: 0;
+        /* 아이콘 스타일 추가... */
+    }
+</style>

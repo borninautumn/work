@@ -1,0 +1,66 @@
+<section id="intro" class="intro">
+    <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/1229_campaign/intro.jpg" />
+    <p id="typing-text" class="intro-text"></p>
+</section>
+
+<style>
+    #intro { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; background: #000; }
+    .intro-text { 
+        font-size: 120px; color: #fff; font-weight: bold; margin-top: 20px; text-align: center; 
+        position: absolute; left: 21.3%; top: 31.67%; 
+    }
+
+    /* 글자 개별 스타일 */
+    .char {
+        display: inline-block;
+        opacity: 0;
+        filter: blur(12px);
+        transform: translateY(10px);
+        transition: opacity 0.8s ease, filter 0.8s ease, transform 0.8s ease;
+    }
+
+    /* 자바스크립트로 이 클래스가 붙으면 글자가 나타남 */
+    .char.visible {
+        opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
+    }
+</style>
+
+<script>
+    // DOM이 완전히 로드된 후 실행되도록 보장
+    document.addEventListener('DOMContentLoaded', () => {
+        const textElement = document.getElementById('typing-text');
+        const content = "Be Bold. Be You. Be.";
+        
+        // 1. 기존 텍스트 비우고 스팬 태그로 채우기
+        textElement.innerHTML = ""; 
+        const chars = content.split("");
+
+        chars.forEach((char) => {
+            const span = document.createElement('span');
+            span.classList.add('char');
+            span.innerHTML = char === " " ? "&nbsp;" : char;
+            textElement.appendChild(span);
+        });
+
+        // 2. 약간의 시간차를 두고 타이핑 시작 (이미지 로딩 고려)
+        setTimeout(() => {
+            const spanList = textElement.querySelectorAll('.char');
+            spanList.forEach((span, index) => {
+                setTimeout(() => {
+                    span.classList.add('visible');
+                }, index * 100); // 0.1초 간격으로 한 글자씩
+            });
+        }, 500); // 인트로 시작 후 0.5초 뒤에 타이핑 시작
+
+        // 3. 인트로 전체 종료 처리
+        // setTimeout(() => {
+        //     const intro = document.getElementById('intro');
+        //     if (intro) intro.style.display = 'none';
+            
+        //     const main = document.getElementById('main');
+        //     if (main) main.classList.add('show');
+        // }, 5000); 
+    });
+</script>

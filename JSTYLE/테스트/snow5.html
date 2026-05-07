@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>은은한 눈 효과</title>
+    <style>
+        .snow-area {
+            background-color: navy;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            /* 눈이 밖으로 안 나가도록 */
+            position: relative;
+        }
+
+        article {
+            background-color: #000;
+            width: 100vw;
+            height: 50vh;
+        }
+
+        canvas.snow-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* 눈 위에서도 클릭 가능 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="snow-area">
+        <canvas class="snow-canvas"></canvas>
+    </div>
+
+    <article>
+        본문 내용
+    </article>
+
+    <script>
+        const canvas = document.querySelector(".snow-canvas");
+        const ctx = canvas.getContext("2d");
+
+        let width, height;
+        function resizeCanvas() {
+            width = canvas.offsetWidth;
+            height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        // ❄ 눈송이 옵션
+        const maxFlakes = 100; // 눈송이 개수
+        const colors = [
+            "rgba(255,255,255,0.3)",
+            "rgba(204,230,255,0.2)",
+            "rgba(255,255,204,0.2)"
+        ];
+
+        const flakes = [];
+
+        // 눈송이 생성
+        function createFlakes() {
+            for (let i = 0; i < maxFlakes; i++) {
+                flakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 2 + 1, // 작게
+                    d: Math.random() + 0.5,
+                    color: colors[Math.floor(Math.random() * colors.length)]
+                });
+            }
+        }
+        createFlakes();
+
+        let angle = 0;
+
+        function moveFlakes() {
+            angle += 0.01;
+            for (let i = 0; i < maxFlakes; i++) {
+                const f = flakes[i];
+                f.y += Math.pow(f.d, 2) * 0.05 + 0.05; // 천천히 내려감
+                f.x += Math.sin(angle) * 0.1;           // 은은한 좌우 흔들림
+
+                if (f.y > height) {
+                    flakes[i] = {
+                        x: Math.random() * width,
+                        y: 0,
+                        r: f.r,
+                        d: f.d,
+                        color: f.color
+                    };
+                }
+            }
+        }
+
+        function drawFlakes() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.beginPath();
+            for (let i = 0; i < maxFlakes; i++) {
+                const f = flakes[i];
+                ctx.fillStyle = f.color;
+                ctx.moveTo(f.x, f.y);
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+            }
+            ctx.fill();
+            moveFlakes();
+        }
+
+        function animateSnow() {
+            drawFlakes();
+            requestAnimationFrame(animateSnow);
+        }
+
+        animateSnow();
+    </script>
+</body>
+
+</html>

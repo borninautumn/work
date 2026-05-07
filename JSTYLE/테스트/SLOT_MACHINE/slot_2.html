@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .coupon { width: 600px; height: 300px; border: 1px solid black; box-sizing: border-box; border-radius: 30px; background-color: gray; position: relative; margin: 0 auto; }
+        .random_wrap { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .random_wrap .num span { font-size: 5em; color: #fff; }
+    </style>
+</head>
+<body>
+    <div class="coupon">
+        <div class="random_wrap">        
+            <div class="num">
+                <span id="count1">1</span>
+                <span id="count2">2</span>
+                <span id="cUnit">%</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready( function() {
+            var couponNum1 = 7 // 실제 당첨 10의 자리 수
+            , couponNum2 = 0 // 실제 당첨 1의 자리 수
+            , loadingT = 1000 // 쿠폰 추첨 중인 시간
+            , unitArr = 0;
+    
+            // ing...
+            var randomUnit = setInterval( function(){
+                $('#cUnit').text(couponUnit[unitArr++]);
+                if(unitArr >= couponUnit.length) unitArr = 0;
+            },60);
+            var randomNum1 = setInterval( function() { $('#count1').text(parseInt(Math.random() * 10)) }, 60);
+            var randomNum2 = setInterval( function() { $('#count2').text(parseInt(Math.random() * 10)) }, 60);
+            
+            // result
+            setTimeout( function() {
+                clearInterval(randomUnit);
+                $('#cUnit').text('%');
+            }, loadingT + 540);
+            setTimeout( function() {
+                clearInterval(randomNum2);
+                $('#count2').text(couponNum2);
+            }, loadingT + 1080);
+            setTimeout( function() {
+                clearInterval(randomNum1);
+                $('#count1').text(couponNum1);
+                $('#countR').text(couponNum1.toString() + couponNum2.toString() + '%');
+                $('.random_wrap').addClass('end');
+            }, loadingT + 1620);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="./animate.css">
+    <title>test</title>
+
+    <style>
+        main,
+        section,
+        div {
+            position: relative;
+        }
+
+        .container {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .container__left {
+            width: 40%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+            background-color: rgba(0, 0, 0, .1);
+        }
+
+        .container__right {
+            width: 60%;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        .intro {
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .1);
+        }
+
+        .position__img {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <section class="container__left">
+            <div class="intro"></div>
+            <div class="content__wrap">
+                <img src="https://image.wconcept.co.kr/images/img/event/2024/1029_adidas/mo/sec02_bg.jpg" />
+                <div class="position__img wow animate__rotateInUpLeft" data-wow-duration="2s" data-wow-delay="0.5s">
+                    <img src="https://image.wconcept.co.kr/images/img/event/2024/1029_adidas/mo/sec02_cov01.png" />
+                </div>
+                <div class="position__img wow animate__rotateInUpRight" data-wow-duration="2s" data-wow-delay="0.5s">
+                    <img src="https://image.wconcept.co.kr/images/img/event/2024/1029_adidas/mo/sec02_cov02.png" />
+                </div>
+            </div>
+            <div class="content__wrap" style="height: 100vh;"></div>
+            <div class="content__wrap"></div>
+        </section>
+        <section class="container__right"></section>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./wow.min.js"></script>
+    <script>
+        wow = new WOW(
+            {
+                boxClass: 'wow',
+                animateClass: 'animated',
+                offset: 40,
+                mobile: true,
+                live: true
+            }
+        );
+        wow.init();
+    </script>
+</body>
+
+</html>

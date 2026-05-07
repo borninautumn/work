@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation-play-state 속성2</title>
+    <!-- 커튼을 치고 걷어내는 듯한 효과만들기 -->
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            animation-duration: 5s;
+            animation-timing-function: linear;
+            /* lineer: 처음부터 끝까지 같은속 */
+            animation-delay: 2s;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+            /* 애니메이션을 재생한다 */
+        }
+
+        #div1 {
+            background-color: blue;
+            animation-direction: nomal;
+            /* 순방향으로 재생 : 기본값*/
+            animation-name: L-box;
+        }
+
+        #div2 {
+            background-color: yellow;
+            animation-direction: reverse;
+            animation-name: R-box;
+        }
+
+        @keyframes L-box {
+            0% {
+                left: 0px;
+            }
+
+            50% {
+                left: 200px;
+            }
+
+            100% {
+                left: 0px;
+            }
+        }
+
+        @keyframes R-box {
+            0% {
+                left: 400px;
+            }
+
+            50% {
+                left: 200px;
+            }
+
+            100% {
+                left: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"> 왼쪽박스</div>
+    <div id="div2"> 오른쪽박스</div>
+</body>
+
+</html>

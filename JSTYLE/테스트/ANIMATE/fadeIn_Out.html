@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Fade-in on Scroll</title>
+    <style>
+        /* 기존 animate 스타일 */
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-out {
+            animation: fadeOut 1s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+        }
+
+        /* 스크롤 기반 fade 요소 기본 상태 (transition 사용) */
+        .fade-element {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            will-change: opacity, transform;
+        }
+
+        .fade-element.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 보기용 스타일 */
+        .box {
+            padding: 20px;
+            margin: 20px;
+            background: #eee;
+            border-radius: 8px;
+        }
+
+        .spacer {
+            height: 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="height: 100vh;">
+        <div class="box fade-in">Fade In 예시 (클래스 애니메이션)</div>
+        <div class="box fade-out">Fade Out 예시 (클래스 애니메이션)</div>
+    </div>
+    <!-- 스크롤로 나타나는 요소들 -->
+    <div class="fade-element box">스크롤하면 나타납니다 ✨</div>
+    <div class="spacer"></div> <!-- 스크롤 테스트용 -->
+    <div class="fade-element box">이것도 스크롤 시 등장!</div>
+
+    <script>
+        // 안전하게 DOM 준비 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            // 디버깅: 콘솔에 표시
+            // console.log("DOM ready, setting up observer");
+
+            const elements = document.querySelectorAll(".fade-element");
+            if (!('IntersectionObserver' in window)) {
+                // 오래된 브라우저용 폴백: 뷰포트에 있으면 바로 show 처리
+                elements.forEach(el => el.classList.add('show'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("show");
+                        observer.unobserve(entry.target); // 한 번만 실행하려면 주석 해제
+                    }
+                });
+            }, {
+                threshold: 0.2,          // 요소의 20%가 보이면 트리거
+                root: null,
+                rootMargin: "0px 0px -10% 0px" // 아래 여유를 줘서 더 빨리 트리거하게 할 수 있음
+            });
+
+            elements.forEach(el => observer.observe(el));
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Tabs Fixed</title>
+
+    <style>
+        .event__container,
+        .event__container div,
+        .event__container a,
+        .event__container span { display: block; }
+        .event__container ul,
+        .event__container li { list-style: none; padding: 0; margin: 0; }
+        .event__container img { width: 100%; vertical-align: top; }
+        .event__container a { text-decoration: none; cursor: pointer; color: inherit; }
+        .event__container {
+            font-size: 16px;
+            font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+            max-width: 900px; width: 100%;
+            margin: 0 auto; padding: 0;
+            border: 0; box-sizing: border-box;
+        }
+
+        /* 스티키 탭 */
+        .sticky__wrap {
+            position: sticky; top: 56px; left: 0;
+            width: 100%;
+            background-color: #333335;
+            z-index: 999;
+            overflow-x: hidden;
+        }
+
+        .sticky__tabs {
+            width: inherit; height: inherit;
+            display: flex; flex-direction: row; gap: 4.44%;
+            justify-content: center; align-items: center;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .sticky__tabs li { width: 100%; height: 100%; }
+        .sticky__tabs .tab { padding: 5% 0; text-align: center; }
+        .tab span {
+            display: inline;
+            white-space: nowrap;
+            font-size: 1em; color: #fff;
+        }
+        .tab.tabsel,
+        .tab.tabsel span {
+            text-decoration: underline;
+            text-underline-offset: 7px;
+            font-weight: bold;
+        }
+
+        /* 섹션 */
+        .intro,
+        .event1,
+        .event2,
+        .event3,
+        .event4,
+        .event5 {
+            height: 100vh;
+            background-color: rgba(0, 0, 0, .1);
+            border-top: 1px solid black;
+            box-sizing: border-box;
+        }
+
+        /* 유의사항 */
+        .notice__wrap .notice__btn { position: relative; cursor: pointer; }
+        .notice__wrap .notice__btn img { margin-top: 0; }
+        .notice__wrap .notice__content {
+            overflow: hidden;
+            height: 0;
+            transition: height 0.2s linear;
+            z-index: -99;
+        }
+        .notice__wrap .notice__content.active { height: 100%; }
+    </style>
+</head>
+
+<body>
+    <main class="event__container">
+        <div class="intro"></div>
+
+        <div class="sticky__wrap">
+            <ul class="sticky__tabs">
+                <li><a href="#event1" class="tab tabsel"><span>이벤트1탭</span></a></li>
+                <li><a href="#event2" class="tab"><span>이벤트2탭</span></a></li>
+                <li><a href="#event3" class="tab"><span>이벤트3탭</span></a></li>
+                <li><a href="#event4" class="tab"><span>이벤트4탭</span></a></li>
+                <li><a href="#event5" class="tab"><span>이벤트5탭</span></a></li>
+            </ul>
+        </div>
+
+        <section id="event1" class="event1"></section>
+        <section id="event2" class="event2"></section>
+        <section id="event3" class="event3"></section>
+        <section id="event4" class="event4"></section>
+        <section id="event5" class="event5"></section>
+
+        <div class="notice__wrap">
+            <div class="notice__btn">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0707_all_sale/event3_21.jpg" alt="유의사항 보기 버튼" />
+            </div>
+            <div class="notice__content">
+                <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/0707_all_sale/event3_22.jpg" alt="유의사항 내용" />
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let isScrollingByClick = false;
+        const stickyWrap = document.querySelector('.sticky__wrap');
+        let lastScrollTop = 0;
+
+        function init() {
+            const noticeBtn = document.querySelector('.notice__btn');
+            if (noticeBtn) { noticeBtn.addEventListener('click', noticeToggle); }
+            stickyTabs();
+            updateActiveTabOnScroll();
+        }
+
+        window.addEventListener('scroll', function () {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            stickyWrap.style.top = scrollTop > lastScrollTop ? '56px' : '100px';
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        });
+
+        function stickyTabs() {
+            const tabBtn = document.querySelectorAll('.sticky__wrap .tab');
+            tabBtn.forEach(tab => {
+                tab.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    if (targetSection) {
+                        isScrollingByClick = true;
+                        tabBtn.forEach(t => t.classList.remove('tabsel'));
+                        this.classList.add('tabsel');
+                        const offset = 156;
+                        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
+                        window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+                        scrollActiveTabIntoView(this, 'center');
+                        setTimeout(() => { isScrollingByClick = false; }, 700);
+                    }
+                });
+            });
+        }
+
+        function updateActiveTabOnScroll() {
+            const sections = document.querySelectorAll('.event__container > section');
+            const tabs = document.querySelectorAll('.sticky__wrap .tab');
+            const tabsContainer = document.querySelector('.sticky__tabs');
+
+            window.addEventListener('scroll', () => {
+                if (isScrollingByClick) return;
+
+                let currentSection = null;
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 250 && rect.bottom > 250) { currentSection = section; }
+                });
+
+                if (currentSection) {
+                    tabs.forEach(tab => tab.classList.remove('tabsel'));
+                    const activeTab = document.querySelector(`.sticky__wrap .tab[href="#${currentSection.id}"]`);
+                    if (activeTab) {
+                        activeTab.classList.add('tabsel');
+                        scrollActiveTabIntoView(activeTab, 'center');
+                    }
+                }
+            });
+        }
+
+        function scrollActiveTabIntoView(activeTab, align = 'center') {
+            const tabsContainer = document.querySelector('.sticky__tabs');
+            const containerWidth = tabsContainer.offsetWidth;
+            const tabWidth = activeTab.offsetWidth;
+            const tabLeft = activeTab.offsetLeft;
+            let targetScroll = align === 'left' ? tabLeft - 10 : align === 'center' ? tabLeft - (containerWidth / 2) + (tabWidth / 2) : tabLeft - containerWidth + tabWidth + 10;
+            tabsContainer.scrollTo({ left: targetScroll, behavior: 'smooth' });
+        }
+
+        function noticeToggle() {
+            const noticeCont = document.querySelector('.notice__content');
+            const noticeContImg = noticeCont.querySelector('img');
+            const height = noticeContImg ? noticeContImg.clientHeight : 0;
+            noticeCont.classList.toggle('active');
+            noticeCont.style.height = noticeCont.classList.contains('active') ? height + 'px' : '0px';
+        }
+
+        document.addEventListener("DOMContentLoaded", init);
+    </script>
+</body>
+
+</html>

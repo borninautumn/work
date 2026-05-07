@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            background-color: navy;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        article {
+            background-color: #000; 
+            margin: 0; padding: 0;
+            width: 100vw; height: 50vh;
+        }
+    </style>
+</head>
+
+<body>
+    <main id="snow-area">
+        눈효과
+    </main>
+
+    <article>
+        본문 내용
+    </article>
+
+    <script src="https://app.embed.im/snow.js" defer></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            const snowContainer = document.getElementById("embedim--snow");
+            const main = document.getElementById("snow-area");
+            if (snowContainer && main) {
+                main.appendChild(snowContainer); // body → main으로 이동
+
+                // main 기준으로 눈 내리게 스타일 수정
+                main.style.position = "relative"; // 기준 컨테이너
+                snowContainer.style.position = "absolute";
+                snowContainer.style.width = "100%";
+                snowContainer.style.height = "100%";
+                snowContainer.style.left = "0";
+                snowContainer.style.top = "0";
+            }
+        });
+    </script>
+</body>
+
+</html>

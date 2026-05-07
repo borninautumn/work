@@ -1,0 +1,38 @@
+<main>
+    <!-- 타이머 부분 -->
+    <div class="timer__wrap">
+        <div id="timer"></div>
+    </div>
+    <!-- 타이머 부분분 end -->
+</main>
+
+<script>
+    /**
+     *  EVENT 2 TIMER SCRIPT
+     */
+    function countdownTimer() {
+        function updateTimer() {
+            const future = Date.parse('2025/01/08 10:00:00'); // 타이머 멈출 시간
+            const now = new Date(); // 현재시간
+            const diff = future - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24)); // 하루(24시간)
+            const hours = Math.floor(diff / (1000 * 60 * 60)); // 한시간(60분)
+            const mins = Math.floor(diff / (1000 * 60)); // 1분(60초)
+            const secs = Math.floor(diff / 1000); // 1초(1000)
+
+            const d = days;
+            const h = hours - days * 24;
+            const m = mins - hours * 60;
+            const s = secs - mins * 60;
+
+            document.getElementById("timer").innerHTML =
+                // '<div>' + d + '<span>Days</span></div>' + ':' +
+                '<div>' + h + '<span>Hours</span></div>' + ':' +
+                '<div>' + m + '<span>Minutes</span></div>' + ':' +
+                '<div>' + s + '<span>Seconds</span></div>';
+        }
+
+        setInterval(updateTimer, 1000);
+    }
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>circle scale animation test</title>
+
+    <style>
+        * { margin: 0; padding: 0; border: 0; }
+        .container { background-color: black; width: 100vw; height: 100vh; position: relative; overflow: hidden; }
+        .circle {
+            border: 1px solid rgb(95, 95, 95);
+            position: absolute;
+            width: 10%; height: 20%;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: circleAni 2s linear infinite;
+        }
+        @keyframes circleAni {
+            from { transform: translate(-50%, -50%) scale(0); opacity: .8; }
+            to { transform: translate(-50%, -50%) scale(10); opacity: .3; }
+        }
+        .clock__rotate { position: absolute;
+            bottom: calc(50% - 30px);
+            left: calc(50% - 1px);
+            width: 2px;
+            height: 320px;
+            background-color: rgb(95, 95, 95);
+            transform: rotate(300deg);
+            transform-origin: center 290px;
+            z-index: 3;
+            animation: clockAni 2.5s infinite linear; }
+        @keyframes clockAni {
+            from { transform: rotateZ(0); }
+            to { transform: rotateZ(360deg); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="circle"></div>
+        <div class="clock__rotate"></div>
+        <ul class="clock__frame">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+
+</html>

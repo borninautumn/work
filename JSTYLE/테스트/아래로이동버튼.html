@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        button {
+            position: fixed;
+            top: 0; right: 0;
+            width: 100px; height: 100px;
+            z-index: 99;
+        }
+    </style>
+</head>
+<body>
+    <button class="btm_btn">아래로이동</button>
+    <div></div>
+    <div></div>
+    <div></div>
+
+    <script>
+        const btm_btn = document.querySelector('.btm_btn');
+
+        btm_btn.addEventListener('click', function() {
+            window.scrollTo(0, document.body.scrollHeight);
+        })
+    </script>
+</body>
+</html>

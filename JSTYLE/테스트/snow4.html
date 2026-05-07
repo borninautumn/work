@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snow Area Example</title>
+    <style>
+        .snow-area {
+            background-color: navy;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        article {
+            background-color: #000;
+            width: 100vw;
+            height: 50vh;
+        }
+
+        canvas.snow-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            /* 눈 위에서도 클릭 가능하도록 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="snow-area">
+        눈효과
+        <canvas class="snow-canvas"></canvas>
+    </div>
+
+    <article>
+        본문 내용
+    </article>
+
+    <script>
+        const canvas = document.querySelector(".snow-canvas");
+        const ctx = canvas.getContext("2d");
+
+        let width, height;
+        function resizeCanvas() {
+            width = canvas.offsetWidth;
+            height = canvas.offsetHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        // 눈송이 생성
+        const flakes = [];
+        const maxFlakes = 80; // 눈송이개수
+
+        function createFlakes() {
+            const colors = [
+                "rgba(255,255,255,0.3)",   // 흰색, 투명 0.3
+                "rgba(204,230,255,0.4)",   // 연한 파랑, 0.2
+                "rgba(255,255,204,0.4)"    // 연한 노랑, 0.2]
+            ];
+            for (let i = 0; i < maxFlakes; i++) {
+                flakes.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    r: Math.random() * 3 + 2, // 눈송이 크기 (반지름 px) 최소 2, 최대 5 -> 크게 하고 싶으면 * 5 + 3
+                    d: Math.random() + 1,
+                    color: colors[Math.floor(Math.random() * colors.length)] // 색 랜덤
+                });
+            }
+        }
+        createFlakes();
+
+        // 눈 내리는 애니메이션
+        function drawFlakes() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = "white";
+            ctx.beginPath();
+            for (let i = 0; i < maxFlakes; i++) {
+                const f = flakes[i];
+                ctx.fillStyle = f.color; // 각 눈송이 색깔 지정
+                ctx.moveTo(f.x, f.y);
+                ctx.arc(f.x, f.y, f.r, 0, Math.PI * 2, true);
+            }
+            ctx.fill();
+            moveFlakes();
+        }
+
+        let angle = 0;
+        function moveFlakes() {
+            angle += 0.01;
+            for (let i = 0; i < maxFlakes; i++) {
+                const f = flakes[i];
+                f.y += Math.pow(f.d, 2) + 0.05 + 0.05; // 세로 이동, 눈송이 떨어지는 속도 +0.5로 줄이면 천천히, +2로 바꾸면 빨라짐, Math.pow(f.d, 2)는 눈송이마다 다른 속도
+                f.x += Math.sin(angle) * 0.1; // 좌우 흔들림, 값을 늘리면 좌우로 크게 흔들림. 줄이면 거의 직선으로 떨어짐
+
+                // 화면 밖으로 나가면 위쪽으로 재배치
+                if (f.y > height) {
+                    flakes[i] = {
+                        x: Math.random() * width,
+                        y: 0,
+                        r: f.r,
+                        d: f.d
+                    };
+                }
+            }
+        }
+
+        function animateSnow() {
+            drawFlakes();
+            requestAnimationFrame(animateSnow);
+        }
+
+        animateSnow();
+    </script>
+</body>
+
+</html>

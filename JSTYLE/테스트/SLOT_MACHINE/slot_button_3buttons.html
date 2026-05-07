@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.0/themes/base/jquery-ui.css">
+    <style>
+        .wrap {
+            position: relative;
+            margin-top: 200px;
+            width: 200px;
+            height: 50px;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 5px;
+            margin: 150px auto 0;
+
+            &.view {
+                overflow: visible;
+
+                .list {
+                    transform: rotateY(45deg);
+                }
+            }
+        }
+
+        .list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin: 0;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            transform-style: preserve-3d;
+            transform-origin: 50% 100%;
+            animation-iteration-count: 1;
+            animation-fill-mode: both;
+
+            &.rolling {
+                animation-name: rotate1;
+            }
+
+            &.rolling2 {
+                animation-name: rotate2;
+            }
+        }
+
+        .item {
+            position: absolute;
+            left: 0;
+            top: 0;
+            list-style: none;
+            height: 50px;
+            width: 50px;
+            background-color: skyblue;
+            transform-origin: 50% 50%;
+        }
+
+        .item {
+            &:nth-child(1) {
+                transform: rotateX(0) translateZ(75px);
+            }
+
+            &:nth-child(2) {
+                transform: rotateX(36deg) translateZ(75px);
+            }
+
+            &:nth-child(3) {
+                transform: rotateX(72deg) translateZ(75px);
+            }
+
+            &:nth-child(4) {
+                transform: rotateX(108deg) translateZ(75px);
+            }
+
+            &:nth-child(5) {
+                transform: rotateX(144deg) translateZ(75px);
+            }
+
+            &:nth-child(6) {
+                transform: rotateX(180deg) translateZ(75px);
+            }
+
+            &:nth-child(7) {
+                transform: rotateX(216deg) translateZ(75px);
+            }
+
+            &:nth-child(8) {
+                transform: rotateX(252deg) translateZ(75px);
+            }
+
+            &:nth-child(9) {
+                transform: rotateX(288deg) translateZ(75px);
+            }
+
+            &:nth-child(10) {
+                transform: rotateX(324deg) translateZ(75px);
+            }
+        }
+
+        @keyframes rotate1 {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            50% {
+                transform: rotateX(-1380deg);
+            }
+
+            70% {
+                transform: rotateX(-1420deg);
+            }
+
+            90% {
+                transform: rotateX(-1435deg);
+            }
+
+            100% {
+                transform: rotateX(-1440deg);
+            }
+        }
+
+        @keyframes rotate2 {
+            0% {
+                transform: rotateX(0deg);
+            }
+
+            50% {
+                transform: rotateX(-1280deg);
+            }
+
+            70% {
+                transform: rotateX(-1384deg);
+            }
+
+            90% {
+                transform: rotateX(-1399deg);
+            }
+
+            100% {
+                transform: rotateX(-1404deg);
+            }
+        }
+
+        .imoji {
+            display: block;
+            font-size: 30px;
+            line-height: 50px;
+            text-align: center;
+        }
+
+        .title {
+            margin: 0;
+            padding-left: 60px;
+            font-size: 16px;
+            line-height: 50px;
+        }
+
+        .btn_wrap {
+            margin: 20px auto;
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <ul class="list">
+            <li class="item"><span class=imoji>🐶</span></li>
+            <li class="item"><span class=imoji>😅</span></li>
+            <li class="item"><span class=imoji>🌏</span></li>
+            <li class="item"><span class=imoji>🚖</span></li>
+            <li class="item"><span class=imoji>💰</span></li>
+            <li class="item"><span class=imoji>🐎</span></li>
+            <li class="item"><span class=imoji>🦅</span></li>
+            <li class="item"><span class=imoji>😎</span></li>
+            <li class="item"><span class=imoji>🌟</span></li>
+            <li class="item"><span class=imoji>😵</span></li>
+        </ul>
+        <h1 class=title>css slot machine</h1>
+    </div>
+
+    <div class=btn_wrap>
+        <button type=button class="btn btn_first">first</button>
+        <button type=button class="btn btn_last">last</button>
+        <button type=button class="btn_view">view</button>
+    </div>
+    <!-- import jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script>
+        $(function () {
+            $('.btn_first').on('click', function () {
+                $('.list').removeClass('rolling2');
+                $('.list').addClass('rolling');
+            });
+            $('.btn_last').on('click', function () {
+                $('.list').removeClass('rolling');
+                $('.list').addClass('rolling2');
+            });
+            $('.btn_view').on('click', function () {
+                $('.wrap').toggleClass('view');
+            });
+        })
+    </script>
+</body>
+
+</html>

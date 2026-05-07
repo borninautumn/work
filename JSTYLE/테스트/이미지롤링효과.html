@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>흐르는 css 효과</title>
+
+    <style>
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            border: 1px solid red;
+        }
+
+        
+        .carousel {
+            position: relative;
+        }
+        
+        .carousel img { display: block; width: 100%; }
+        
+        @keyframes rollingOriginal {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-100%);
+            }
+            50.01% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(0);
+            }
+        }
+        @keyframes rollingClone {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-200%);
+            }
+        }
+        .original {
+            animation: rollingOriginal 30s linear infinite normal forwards running;
+        }
+        .clone {
+            animation: rollingClone 30s linear infinite normal none running;
+            position: absolute;
+            top: 0; left: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="carousel">
+            <img class="slide original" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_11_rolling_1.jpg" />
+            <img class="slide clone" src="//jstyle07.jpg3.kr/SITE/EVENT/2024/0327_silver/sec_11_rolling_2.jpg" />
+        </div>
+    </div>
+</body>
+
+</html>
+

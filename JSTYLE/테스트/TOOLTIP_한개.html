@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Click Tooltip</title>
+    <style>
+        .tooltip-wrapper {
+            position: relative;
+            display: inline-block;
+            font-size: 18px;
+            margin: 100px;
+            cursor: pointer;
+        }
+
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 220px;
+            z-index: 100;
+            text-align: left;
+        }
+
+        .tooltip-box a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+
+        .tooltip-wrapper.active .tooltip-box {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tooltip-wrapper" id="tooltipTrigger">
+        툴팁 보기
+        <div class="tooltip-box">
+            더 알아보기: <a href="https://example.com" target="_blank">여기 클릭</a>
+        </div>
+    </div>
+
+    <script>
+        const tooltip = document.getElementById('tooltipTrigger');
+
+        tooltip.addEventListener('click', function (e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+        });
+
+        // 툴팁 바깥을 클릭하면 닫기
+        document.addEventListener('click', function () {
+            tooltip.classList.remove('active');
+        });
+    </script>
+
+</body>
+
+</html>

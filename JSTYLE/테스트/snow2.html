@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            background-color: navy;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <main>눈효과</main>
+    <article></article>
+    <script src="https://app.embed.im/snow.js" defer></script>
+    <script>
+        window.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const snowContainer = document.getElementById("embedim--snow");
+                if (snowContainer) {
+                    snowContainer.style.transition = "opacity 2s ease";
+                    snowContainer.style.opacity = "0";
+
+                    // transition 끝난 뒤 DOM 제거
+                    setTimeout(() => {
+                        snowContainer.remove();
+                    }, 2000);
+                }
+            }, 10000); // 10초 후 시작
+        });
+    </script>
+</body>
+
+</html>

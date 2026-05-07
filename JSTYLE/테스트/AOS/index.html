@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            box-sizing: border-box;
+            border: 1px solid black;
+        }
+
+        .left {
+            width: 40%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .1);
+            overflow-y: scroll;
+        }
+
+        .right {
+            width: 60%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .3);
+            overflow-y: scroll;
+        }
+
+        .contents {
+            position: relative;
+            padding: 0 10px; /* 여백 추가 */
+        }
+
+        .contents div {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-color: black;
+            margin: 150px auto; /* 중앙 정렬 및 여백 */
+            opacity: 0; /* 초기 상태를 숨김 */
+        }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <section class="left">
+            <div class="intro" style="border: 10px solid black; height: 90vh;"></div>
+            <div class="contents">
+                <div style="top: 0; left: 0;" data-aos="fade-up"></div>
+                <div style="top: 300px; right: 0;" data-aos="fade-down"></div>
+                <div style="top: 600px; left: 0;" data-aos="fade-left"></div>
+                <div style="top: 900px; right: 0;" data-aos="fade-right"></div>
+                <div style="top: 1200px; left: 0;" data-aos="flip-left"></div>
+            </div>
+        </section>
+        <section class="right"></section>
+    </main>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // AOS 초기화
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            delay: 200,
+            offset: 120,
+            once: true,
+            mirror: false
+        });
+
+        // IntersectionObserver로 애니메이션 요소 감지
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1; // 요소를 보이게 함
+                    entry.target.classList.add('aos-animate'); // AOS 애니메이션 트리거
+                }
+            });
+        }, { root: document.querySelector('.left'), threshold: 0.1 });
+
+        // 모든 AOS 요소를 관찰
+        document.querySelectorAll('[data-aos]').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

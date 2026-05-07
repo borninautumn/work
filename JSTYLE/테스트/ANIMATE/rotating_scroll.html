@@ -1,0 +1,60 @@
+<style>
+    @keyframes rotateIn {
+        from {
+            transform: rotate(-200deg);
+            opacity: 0;
+        }
+
+        to {
+            transform: rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    .box {
+        display: inline-block;
+        padding: 20px;
+        font-size: 20px;
+        background-color: lightblue;
+        border-radius: 10px;
+        text-align: center;
+        opacity: 0;
+        /* 처음에는 숨김 */
+        transform: rotate(-200deg);
+        transition: opacity 1s, transform 1s ease-out;
+    }
+
+    .show {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    .spacer {
+        height: 100vh;
+        /* 스크롤 테스트용 */
+    }
+</style>
+
+<div class="spacer"></div> <!-- 스크롤 테스트용 -->
+<div id="animatedBox" class="box">회전 등장!</div>
+<div class="spacer"></div> <!-- 스크롤 테스트용 -->
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const box = document.getElementById("animatedBox");
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        box.classList.add("show"); // 화면에 보이면 애니메이션 실행
+                    }
+                });
+            },
+            { threshold: 0.5 } // 요소의 50%가 화면에 보일 때 실행
+        );
+
+        observer.observe(box);
+    });
+
+</script>

@@ -1,0 +1,59 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+<style>
+    .eventTabSwiper { width: 100%; height: 300px; overflow: hidden; overflow: hidden;}
+    .eventTabSwiper .swiper-wrapper { width: 100%; height: inherit; }
+    .eventTabSwiper .swiper-slide { background-color: rgba(0, 0, 0, 0.2); }
+
+    .tab-cont { width: 100%; height: 500px; background-color: rgba(0, 0, 0, 0.1); display: none; }
+    .show { display: block; }
+    .sel { font-weight: bold; }
+</style>
+
+
+<main class="container">
+    <section class="event2">
+        <div class="tabs">
+            <div class="swiper eventTabSwiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide sel">아우터</div>
+                    <div class="swiper-slide">상의</div>
+                    <div class="swiper-slide">하의</div>
+                    <div class="swiper-slide">원피스</div>
+                    <div class="swiper-slide">세트</div>
+                    <div class="swiper-slide">ETC</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-cont show">1</div>
+        <div class="tab-cont">2</div>
+        <div class="tab-cont">3</div>
+        <div class="tab-cont">4</div>
+        <div class="tab-cont">5</div>
+        <div class="tab-cont">6</div>
+    </section>
+</main>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    var swiper = new Swiper('.eventTabSwiper', {
+        slidesPerView: 2.5,
+        spaceBetween: 30,
+    });
+
+    const tabBtn = $('.eventTabSwiper .swiper-slide');
+    const tabCont = $('.tab-cont');
+
+    for (let i = 0; i < tabCont.length; i++) {
+        tabBtn.eq(i).on('click', function() {
+            tabBtn.removeClass('sel');
+            tabBtn.eq(i).addClass('sel');
+            tabCont.removeClass('show');
+            tabCont.eq(i).addClass('show');
+        })
+    }
+</script>

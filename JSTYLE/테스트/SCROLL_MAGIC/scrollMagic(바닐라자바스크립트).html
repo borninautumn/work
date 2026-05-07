@@ -1,0 +1,263 @@
+<link rel="stylesheet" as="style" crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+<style>
+    body, html {
+        margin: 0; padding: 0;
+        height: 100%;
+        overflow-x: hidden;
+    }
+    /* reset css */
+    .brand__container {
+        position: relative;
+        font-size: 16px;
+        font-family: 'Pretendard Variable', Pretendard, sans-serif;
+        overflow: hidden;
+        height: 100vh;
+    }
+
+    .brand__container a {
+        display: block;
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .brand__container ul,
+    .brand__container ol,
+    .brand__container li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .brand__container img {
+        width: 100%;
+    }
+
+    /* custom */
+    .panel {
+        width: 100%;
+        height: 100vh; /* 각각의 섹션이 화면 전체 높이를 차지 */
+        position: absolute;
+        top: 0; left: 0;
+        transform: translateY(100%); /* 처음엔 아래쪽에 배치 */
+        transition: transform 0.6s ease-in-out; /* 애니메이션 부드럽게 */
+    }
+
+    .panel.active {
+        transform: translateY(0);
+    }
+
+    .panel.three {
+        background-color: aquamarine;
+    }
+
+    .panel.four {
+        background-color: bisque;
+    }
+
+    .panel.five {
+        background-color: blueviolet;
+    }
+
+    .panel.six {
+        background-color: tomato;
+    }
+
+    /* 01 section */
+    .brand__container .panel.one {
+        background-color: #dcdbe9;
+    }
+
+    .brand__container .panel.one .logo,
+    .brand__container .panel.one .text__wrap,
+    .brand__container .panel.one .text__infomation {
+        position: absolute;
+        left: 10.42%;
+    }
+
+    .brand__container .panel.one .logo {
+        width: 12.81%;
+        top: 10.86%;
+    }
+
+    .brand__container .panel.one .text__wrap {
+        top: 25.14%;
+        line-height: 1em;
+    }
+
+    .brand__container .panel.one .text__wrap p {
+        font-size: 4.1252em;
+        font-weight: 200;
+    }
+
+    .brand__container .panel.one .text__wrap p:nth-child(1) {
+        animation: fadeUp 0.8s ease-in;
+    }
+
+    .brand__container .panel.one .text__wrap p:nth-child(2) {
+        font-weight: 600;
+        animation: fadeUp 1s ease-in;
+    }
+
+    .brand__container .panel.one .text__infomation {
+        top: 50.23%;
+    }
+
+    .brand__container .panel.one .text__infomation p {
+        font-size: 1.625em;
+        font-weight: 200;
+        animation: fadeUp 1.2s ease-in;
+    }
+
+    .brand__container .panel.one #typing1 {
+        position: absolute;
+        top: 73.06%;
+        left: 24.15%;
+        color: #512771;
+        font-size: 4.1252em;
+    }
+
+    .brand__container .panel.one span.highlight {
+        color: white;
+    }
+
+    .brand__container .panel.one .img__box {
+        float: right;
+        animation: fadeRight 0.6s alternate;
+    }
+
+    @keyframes fadeUp {
+        0% {
+            transform: translateY(40px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadeRight {
+        0% {
+            transform: translateX(calc(100%));
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    /* 02 section */
+    .brand__container .panel.two {
+        background-color: #512771;
+    }
+</style>
+
+<main class="brand__container">
+    <section class="panel one">
+        <div class="img__box">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/brand_story/01_section_img.jpg" class="background">
+        </div>
+        <div class="logo">
+            <img src="//jstyle07.jpg3.kr/SITE/EVENT/2025/brand_story/00_logo.png" alt="logo__evellet" />
+        </div>
+        <div class="text__wrap">
+            <p>누구보다 나다운 순간,</p>
+            <p>이블렛이 함께합니다.</p>
+        </div>
+        <div class="text__infomation">
+            <p>
+                <strong>이블렛</strong>은 개개인의 고유한 아름다움을 존중하며,<br />
+                여성들이 자신만의 아이덴티티를 표현할 수 있도록 돕는<br />
+                컨템포러리 브랜드입니다.
+            </p>
+        </div>
+        <p id="typing1"></p>
+    </section>
+    <section class="panel two">
+        <p id="typing2"></p>
+    </section>
+    <section class="panel three"></section>
+    <section class="panel four"></section>
+    <section class="panel five"></section>
+    <section class="panel six"></section>
+</main>
+
+
+<script>
+    function init() {
+        typeWriterFunc();
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const panels = document.querySelectorAll(".panel");
+        const container = document.querySelector(".brand__container");
+
+        let currentPanelIndex = 0; // 현재 활성화된 패널의 인덱스
+        const totalPanels = panels.length;
+
+        // 초기 패널 활성화
+        panels[currentPanelIndex].classList.add("active");
+
+        // 스크롤 이벤트
+        function onScroll(e) {
+            const delta = e.deltaY; // 스크롤 방향 (위/아래)
+
+            if (delta > 0 && currentPanelIndex < totalPanels - 1) {
+            // 아래로 스크롤 (다음 섹션)
+            panels[currentPanelIndex].classList.remove("active");
+            currentPanelIndex++;
+            panels[currentPanelIndex].classList.add("active");
+            } else if (delta < 0 && currentPanelIndex > 0) {
+            // 위로 스크롤 (이전 섹션)
+            panels[currentPanelIndex].classList.remove("active");
+            currentPanelIndex--;
+            panels[currentPanelIndex].classList.add("active");
+            }
+        }
+
+        // 스크롤 이벤트 리스너 추가
+        container.addEventListener("wheel", onScroll);
+    });
+
+    // 타이핑 애니메이션 함수
+    function typeWriterFunc() {
+        const text1 = 'I LOVE MY SELF, NOW';
+        let index = 0;
+        let speed = 100;
+        const typingElement1 = document.querySelector('#typing1');
+
+        function typeWriter() {
+            if (index < text1.length) {
+                if (text1[index] === 'N' && text1.substring(index, index + 3) === 'NOW') {
+                    // "NOW" 처리
+                    const nowSpan = document.createElement('span');
+                    nowSpan.className = 'highlight';
+                    typingElement1.appendChild(nowSpan);
+
+                    function typeNow() {
+                        if (nowSpan.textContent.length < 3) {
+                            nowSpan.textContent += text1[index];
+                            index++;
+                            setTimeout(typeNow, speed);
+                        } else {
+                            typeWriter();
+                        }
+                    }
+                    typeNow();
+                } else {
+                    typingElement1.textContent += text1[index];
+                    index++;
+                    setTimeout(typeWriter, speed);
+                }
+            }
+        }
+
+        typeWriter();
+    }
+
+    init();
+</script>

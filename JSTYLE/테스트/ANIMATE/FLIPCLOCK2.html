@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8" />
+    <title>FlipClock DailyCounter 반응형 카운트다운</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.2/flipclock.css" />
+    <style>
+        body {
+            font-family: "Segoe UI", "맑은 고딕", sans-serif;
+            background: #f9fafc;
+            color: #333;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        #clock {
+            display: inline-block;
+            background: #222;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .flip-clock-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: auto;
+        }
+
+        .flip-clock-wrapper ul {
+            background: #333;
+            border-radius: 6px;
+        }
+
+        .flip-clock-wrapper ul li a div div.inn {
+            font-size: 1em;
+            background: #333;
+            color: #fff;
+        }
+
+        .flip-clock-label {
+            color: #ccc !important;
+            font-weight: bold;
+            font-size: 0.8em;;
+        }
+
+        /* ✅ 반응형: 화면 폭이 좁을 때 숫자·라벨 축소 */
+        @media (max-width: 768px) {
+            .flip-clock-wrapper ul li a div div.inn {
+                font-size: 1.5em;
+            }
+            .flip-clock-label {
+                font-size: 0.7em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flip-clock-wrapper ul li a div div.inn {
+                font-size: 1.2em;
+            }
+            .flip-clock-label {
+                font-size: 0.6em;
+            }
+            #clock {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>2025년 8월 1일 카운트다운</h1>
+<div id="clock"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flipclock/0.7.2/flipclock.min.js"></script>
+<script>
+    $(function () {
+        const targetDate = new Date('2025-08-01T00:00:00');
+        const now = new Date();
+        let diff = Math.floor((targetDate - now) / 1000);
+
+        if (diff < 0) diff = 0;
+
+        const clock = $('#clock').FlipClock(diff, {
+            clockFace: 'DailyCounter',
+            countdown: true,
+            autoStart: true,
+            language: 'ko'
+        });
+
+        // ✅ 라벨을 한글로 변경
+        // setTimeout(() => {
+        //     $('.flip-clock-label').eq(0).text('일');
+        //     $('.flip-clock-label').eq(1).text('시');
+        //     $('.flip-clock-label').eq(2).text('분');
+        //     $('.flip-clock-label').eq(3).text('초');
+        // }, 100);
+    });
+</script>
+
+</body>
+</html>

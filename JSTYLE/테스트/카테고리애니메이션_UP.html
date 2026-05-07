@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        li {
+            position: relative;
+            border: 1px solid red;
+        }
+        li::after {
+            content: 'UP';
+            position: absolute;
+            bottom: 0;
+            padding-left: 2px;
+            color: #ff6d44;
+            font-size: 10px;
+            font-weight: bold;
+            animation: slideInUp 1.5s ease infinite;
+            animation-iteration-count: infinite;
+        }
+        @keyframes slideInUp {
+            0% {
+                bottom: 0;
+            }
+            100% {
+                bottom: 50%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <li>신상할인</li>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<style>
+    @keyframes rotateIn {
+        from {
+            transform: rotate(-200deg);
+            opacity: 0;
+        }
+
+        to {
+            transform: rotate(0deg);
+            opacity: 1;
+        }
+    }
+
+    @keyframes rotateInDownLeft {
+        from {
+            transform: rotate(-90deg) translateX(-100px);
+            opacity: 0;
+        }
+
+        to {
+            transform: rotate(0deg) translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .rotate-in-down-left {
+        animation: rotateInDownLeft 1s ease-out;
+    }
+
+
+    .rotate-in {
+        animation: rotateIn 1s ease-out;
+    }
+
+    .box {
+        display: inline-block;
+        padding: 20px;
+        font-size: 20px;
+        background-color: lightblue;
+        border-radius: 10px;
+        text-align: center;
+    }
+</style>
+
+<!-- <div class="box rotate-in">회전 등장!</div> -->
+<button onclick="startAnimation()">애니메이션 실행</button>
+<div id="animatedBox" class="box">회전 등장!</div>
+
+<script>
+    function startAnimation() {
+        const element = document.getElementById("animatedBox");
+        element.classList.remove("rotate-in-down-left"); // 기존 애니메이션 제거
+        void element.offsetWidth; // 리플로우 강제 (애니메이션 재시작 트릭)
+        element.classList.add("rotate-in-down-left"); // 애니메이션 추가
+    }
+
+</script>

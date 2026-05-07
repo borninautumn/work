@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sticky Scroll Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: sans-serif;
+        }
+
+        .menu-bar {
+            position: sticky;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            background: #3398ff;
+            padding: 10px 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item {
+            flex: 1;
+            text-align: center;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            line-height: 1.4;
+            padding: 5px 0;
+            position: relative;
+            transition: opacity 0.3s;
+        }
+
+        .menu-item:hover {
+            opacity: 0.8;
+        }
+
+        .menu-item strong {
+            font-weight: bold;
+        }
+
+        .menu-item.active::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            width: 40%;
+            height: 4px;
+            background: white;
+            border-radius: 2px;
+        }
+
+        section {
+            height: 800px;
+            padding-top: 60px;
+            text-align: center;
+            font-size: 24px;
+        }
+
+        section:nth-child(even) {
+            background: #f0f0f0;
+        }
+
+        section:nth-child(odd) {
+            background: #ffffff;
+        }
+
+        @media (max-width: 600px) {
+            .menu-bar {
+                flex-wrap: wrap;
+            }
+
+            .menu-item {
+                flex: 50%;
+                font-size: 13px;
+                padding: 10px 0;
+            }
+
+            .menu-item.active::after {
+                height: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="menu-bar" id="menuBar">
+        <a href="#sec1" class="menu-item active"><strong>선착순<br>30% 쿠폰</strong></a>
+        <a href="#sec2" class="menu-item">시즌오프<br>~80%</a>
+        <a href="#sec3" class="menu-item">당일발송<br>무료배송</a>
+        <a href="#sec4" class="menu-item">적립금<br>이벤트</a>
+        <a href="#sec5" class="menu-item">굿바이<br>쿠폰 2종</a>
+    </div>
+
+    <section id="sec1">섹션 1</section>
+    <section id="sec2">섹션 2</section>
+    <section id="sec3">섹션 3</section>
+    <section id="sec4">섹션 4</section>
+    <section id="sec5">섹션 5</section>
+
+    <script>
+        const menuItems = document.querySelectorAll('.menu-item');
+        const sections = document.querySelectorAll('section');
+
+        // 클릭 시 active 처리 및 부드러운 스크롤
+        menuItems.forEach(item => {
+            item.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').slice(1);
+                const targetSection = document.getElementById(targetId);
+                window.scrollTo({
+                    top: targetSection.offsetTop - 50,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 스크롤에 따라 active 메뉴 업데이트
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 60;
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            menuItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href').slice(1) === current) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

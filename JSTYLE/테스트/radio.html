@@ -1,0 +1,122 @@
+<!-- 배송방법 선택 UI -->
+<div class="delivery-options">
+    <!-- 각 배송 옵션 -->
+    <div class="option active" data-price="0">
+        <input type="radio" name="delivery" id="today" checked>
+        <label for="today">오늘출발</label>
+        <span class="desc">07-10 도착예상</span>
+    </div>
+    <div class="option" data-price="1000">
+        <input type="radio" name="delivery" id="today-arrive">
+        <label for="today-arrive">오늘도착+1000</label>
+        <span class="desc">오늘 결제 상품 오후 바로받기</span>
+    </div>
+    <div class="option" data-price="1000">
+        <input type="radio" name="delivery" id="early">
+        <label for="early">새벽도착+1000</label>
+        <span class="desc">오늘 결제 상품 새벽에 받기</span>
+    </div>
+</div>
+
+<!-- 선택한 배송비 표시 -->
+<div class="price-summary">
+    선택한 배송비: <span id="selected-price">0</span>원
+</div>
+
+<style>
+    /* 배송 옵션 컨테이너 */
+    .delivery-options {
+        display: flex;
+        /* 세로 정렬 */
+        flex-direction: column;
+        gap: 10px;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    /* 각 옵션 스타일 */
+    .option {
+        border: 2px solid #eee;
+        border-radius: 12px;
+        padding: 12px;
+        background: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    /* 라디오 버튼 색상 */
+    .option input[type="radio"] {
+        accent-color: #ff6a6a;
+        width: 18px;
+        height: 18px;
+    }
+
+    /* 옵션 라벨 */
+    .option label {
+        flex: 1;
+        font-weight: 500;
+    }
+
+    /* 추가 설명 */
+    .option .desc {
+        font-size: 0.8em;
+        color: #999;
+    }
+
+    /* 선택된 옵션 스타일 */
+    .option.active {
+        border-color: #ff6a6a;
+        box-shadow: 0 0 5px rgba(255, 106, 106, 0.3);
+    }
+
+    /* 배송비 요약 영역 */
+    .price-summary {
+        margin-top: 20px;
+        font-size: 1.1em;
+        text-align: center;
+    }
+</style>
+
+<script>
+    // 배송 옵션 선택 기능
+    // 1. 각 옵션의 라디오 버튼에 change 이벤트를 등록
+    // 2. 사용자가 옵션을 선택하면 모든 옵션에서 active 클래스를 제거하고 선택한 옵션에 active 추가
+    // 3. 선택한 옵션의 배송비를 dataset.price에서 읽어와 화면에 표시
+
+    const options = document.querySelectorAll('.option'); // 모든 배송 옵션 요소를 선택
+    const priceEl = document.getElementById('selected-price'); // 배송비 표시할 요소
+
+    options.forEach(option => {
+        const radio = option.querySelector('input[type="radio"]'); // 각 옵션 안의 라디오 버튼 찾기
+        radio.addEventListener('change', () => {
+            options.forEach(o => o.classList.remove('active')); // 모든 옵션에서 active 제거
+            option.classList.add('active'); // 선택한 옵션에 active 추가
+            const price = option.dataset.price; // 선택한 옵션의 data-price 값 가져오기
+            priceEl.textContent = price; // 가져온 가격을 화면에 표시
+        });
+    });
+</script>
+
+<!-- <script>
+    // 배송 옵션 선택 기능
+    // 각 옵션을 클릭했을 때도 동작하도록 option 요소에 click 이벤트 추가
+
+    const options = document.querySelectorAll('.option');
+    const priceEl = document.getElementById('selected-price');
+
+    options.forEach(option => {
+        option.addEventListener('click', () => {
+        const radio = option.querySelector('input[type="radio"]');
+        radio.checked = true; // 라디오 버튼 체크
+
+        options.forEach(o => o.classList.remove('active'));
+        option.classList.add('active');
+
+        const price = option.dataset.price;
+        priceEl.textContent = price;
+        });
+    });
+</script> -->

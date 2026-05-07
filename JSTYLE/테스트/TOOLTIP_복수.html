@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Multiple Click Tooltips</title>
+    <style>
+        .tooltip-wrapper {
+            position: relative;
+            display: inline-block;
+            margin: 30px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .tooltip-box {
+            display: none;
+            position: absolute;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            width: 220px;
+            z-index: 100;
+            text-align: left;
+        }
+
+        .tooltip-box a {
+            color: #00ffff;
+            text-decoration: underline;
+        }
+
+        .tooltip-wrapper.active .tooltip-box {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="tooltip-wrapper">
+        툴팁 1
+        <div class="tooltip-box">
+            링크1: <a href="https://example.com/1" target="_blank">여기 클릭</a>
+        </div>
+    </div>
+
+    <div class="tooltip-wrapper">
+        툴팁 2
+        <div class="tooltip-box">
+            링크2: <a href="https://example.com/2" target="_blank">여기 클릭</a>
+        </div>
+    </div>
+
+    <div class="tooltip-wrapper">
+        툴팁 3
+        <div class="tooltip-box">
+            링크3: <a href="https://example.com/3" target="_blank">여기 클릭</a>
+        </div>
+    </div>
+
+    <script>
+        const tooltips = document.querySelectorAll('.tooltip-wrapper');
+
+        tooltips.forEach(tooltip => {
+            tooltip.addEventListener('click', function (e) {
+                e.stopPropagation();
+
+                // 다른 툴팁 닫기
+                tooltips.forEach(t => {
+                    if (t !== tooltip) t.classList.remove('active');
+                });
+
+                // 현재 툴팁 토글
+                this.classList.toggle('active');
+            });
+        });
+
+        // 바깥 클릭 시 전체 툴팁 닫기
+        document.addEventListener('click', () => {
+            tooltips.forEach(t => t.classList.remove('active'));
+        });
+    </script>
+
+</body>
+
+</html>
